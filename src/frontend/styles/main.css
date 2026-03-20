@@ -1,0 +1,40 @@
+body.auth {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to left, var(--cor-principal), var(--cor-secundaria));
+    background-size: 200% 100%;
+    animation: gradient-animado 5s linear infinite alternate;
+    font-family: var(--fonte-principal);
+}
+
+@keyframes gradient-animado {
+    0% {
+        background-position-x: 0%;
+    }
+    100% {
+        background-position-x: 100%;
+    }
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-principal);
+}
+
+
+
+/* animação */
+
+html.is-changing body {
+    overflow: hidden;
+}
+
+main {
+    transition: all 0.4s;
+}
+
+html.is-animating main {
+    opacity: 0;
+    transform: translateY(20rem); /* antes 400px */
+}

@@ -1,0 +1,95 @@
+.button-entrar {
+
+    width: 90%;
+    max-width: 33.5rem; 
+    height: 3rem; 
+    padding: 0.75rem; 
+    background-color: var(--cor-principal);
+    color: white;
+    border: none;
+    border-radius: 1.5rem; 
+    font-size: 2rem;
+    font-style: none;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-entrar:hover {
+    background-color: var(--cor-secundaria);
+}
+
+.button-cadastro-ususario {
+    width: 90%;
+    max-width: 33.5rem; /* antes 574px */
+    height: 3.2rem; /* antes 66px */
+    padding: 0.75rem;
+    color: var(--cor-principal);
+    border: 0.125rem solid var(--cor-principal); /* antes 2px */
+    border-radius: 1.5rem;
+    font-size: 1rem; /* antes 18px */
+    cursor: pointer;
+    background-color: #ffff;
+}
+
+.button-cadastro-ususario:hover {
+    color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    background-color: rgba(217, 217, 217, 0.8);
+}
+
+.button-cadastro-empresa {
+    width: 90%;
+    max-width: 33.5rem;
+    height: 3.2rem;
+    padding: 0.75rem;
+    color: var(--cor-secundaria);
+    border: 0.125rem solid var(--cor-secundaria);
+    border-radius: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #ffff;
+}
+
+.button-cadastro-empresa:hover {
+    color: var(--cor-principal);
+    border-color: var(--cor-principal);
+    background-color: rgba(217, 217, 217, 0.8);
+}
+
+.trocar-idioma {
+    width: 100%;
+    max-width: 14rem; /* antes 252px */
+    padding: 0.75rem;
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1.1rem; /* antes 20px */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* antes 30px */
+}
+
+.trocar-idioma:hover {
+    background-color: rgba(162, 162, 162, 0.8);
+}
+
+.bandeira-idioma {
+    width: 2rem; /* antes 40px */
+    height: 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.0625rem solid #000; /* antes 1px */
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #D9D9D9;
+    border: 0.0625rem solid #6B7280;
+    border-radius: 1.5rem;
+    font-size: 1rem; /* antes 18px */
+    box-sizing: border-box;
+}

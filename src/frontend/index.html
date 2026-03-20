@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="Pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <title>Integra+</title>
 </head>
-<body>
-    <h1>Olá Mundo!</h1>
+
+<body class="auth">
+    <main id="swup" class="transition-fade">
+        <section class="main-container">
+            <section class="container">
+                <section class="site-name">
+                    <h1 class="site-titulo" id="titulo">
+                        INTEGRA+
+                    </h1>
+                    <h2 class="sub-titulo">
+                        Conectando Imigrantes a oportunidades
+                        de trabalho e informações essenciais
+                    </h2>
+                </section>
+                <aside class="box-login">
+                    <h2 class="">
+                        Acesse sua conta</h2>
+                   <a href="pages/login.html" class="button-entrar">Entrar</a>
+                    <div class="divider">
+                        <span>ou</span>
+                    </div>
+
+                    <button class="button-cadastro-ususario">
+                        Criar conta como Usuário
+                    </button>
+
+                    <button class="button-cadastro-empresa">
+                        Criar conta como empresa
+                    </button>
+
+                    <button class="trocar-idioma">
+                        Trocar idioma
+                        <img class="bandeira-idioma" src="assets/img/bandeira.png" alt="">
+                    </button>
+                </aside>
+            </section>
+            <div class="info-texto">
+                <h2>Plataforma de integração para oportunidades de emprego, documentação e saúde</h2>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+    <script type="module" src="scripts/animations.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --cor-principal: #2563EB;
+  --cor-secundaria: #153885;
+  --fonte-principal: 'Abel', sans-serif;
+  --espacamento-padrao: 16px;
+}

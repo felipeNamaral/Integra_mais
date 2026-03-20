@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "dev": "nodemon server.js",
-  "start": "node server.js"
-},
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "O **Integra+** é uma plataforma web desenvolvida para facilitar a conexão entre **usuários, empresas e unidades de serviço**. O sistema permite que usuários encontrem empresas, visualizem informações relevantes e salvem unidades como favoritas.",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
@@ -17,5 +17,9 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
   }
 }
