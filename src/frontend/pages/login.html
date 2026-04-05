@@ -24,13 +24,13 @@
                 <h1>Integra +</h1>
                 <h2>Entre na sua conta</h2>
 
-                <form>
+                <form id="loginForm">
                     <h5 class="txt">Email</h5>
-                    <input type="email" class="input-field" placeholder="Seu@email.com" required>
+                    <input id="email" type="email" class="input-field" placeholder="Seu@email.com" required>
 
                     <h5 class="txt">Senha</h5>
-                    <input type="password" class="input-field" placeholder="Digite sua senha" required>
-
+                    <input id="password" type="password" class="input-field" placeholder="Digite sua senha" required>
+                    <p id="error-message"></p>
                     <button type="submit" class="button-entrar">Entrar</button>
                 </form>
 
@@ -53,6 +53,7 @@
     <script src="https://unpkg.com/swup@4"></script>
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script type="module" src="../scripts/animations.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 
 </html>
