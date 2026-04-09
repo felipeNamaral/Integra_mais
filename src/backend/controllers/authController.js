@@ -1,16 +1,15 @@
 const User = require('../models/User');
-const User = require('../models/Empresa');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
-    const user = await User.findByEmail(email);
-    const tipo = "usuario";
+    let user = await User.findByEmail(email);
+    let tipo = "usuario";
 
     if (!user) {
-    user = await Empresa.findByEmail(email);
+    user = await User.findByEmailEmpresa(email);
     tipo = 'empresa';
 }
 
@@ -19,7 +18,7 @@ exports.login = async (req, res) => {
     }
 
 
-    const senhaValida = await bcrypt.compare(password, user.password);
+    const senhaValida = await bcrypt.compare(password, user.senha);
 
     if (!senhaValida) {
         return res.status(401).json({ message: 'Email ou senha inválidos' });
@@ -33,5 +32,5 @@ exports.login = async (req, res) => {
 
     return res.json({ token,tipo });
 
-};
+}; 
 
