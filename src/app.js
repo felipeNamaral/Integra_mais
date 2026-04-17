@@ -1,29 +1,34 @@
-const express = require('express')
-const cors = require('cors')
-const path = require('path')
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 
+const app = express();
 
+app.use(cors());
+app.use(express.json());
 
-const app = express()
+app.use(express.static(path.join(__dirname, 'frontend')));
 
-app.use(cors())
-app.use(express.json())
+// DB
+require('./backend/config/db');
 
-app.use(express.static(path.join(__dirname, 'frontend')))
+// ROTAS
+const authRoutes = require('./backend/routes/authRoutes');
+const healthRoutes = require('./backend/routes/healthRoutes');
 
-const db = require('./backend/config/db') // confere o caminho
+app.use('/api', authRoutes);
+app.use('/api', healthRoutes);
+
+// teste simples
+const db = require('./backend/config/db');
 
 app.get('/usuario', (req, res) => {
-    const sql = 'SELECT * FROM usuario'
-
-    db.query(sql, (err, result) => {
+    db.query('SELECT * FROM usuario', (err, result) => {
         if (err) {
-            console.error(err)
-            return res.status(500).json({ erro: 'Erro no banco' })
+            return res.status(500).json({ erro: 'Erro no banco' });
         }
+        res.json(result);
+    });
+});
 
-        res.json(result)
-    })
-})
-
-module.exports = app
+module.exports = app;

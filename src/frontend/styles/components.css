@@ -93,3 +93,38 @@
     font-size: 1rem; /* antes 18px */
     box-sizing: border-box;
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background-color: white;
+    height: 3rem;
+}
+.title {
+    font-family: var(--fonte-principal);
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.sair {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}

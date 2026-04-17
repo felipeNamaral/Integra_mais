@@ -22,9 +22,9 @@ form.addEventListener('submit', async (event) => {
 
 
             if (data.tipo === 'empresa') {
-                window.location.href = '../pages/teste.html';
+                window.location.href = '../pages/health.html';
             } else {
-                window.location.href = '../pages/teste.html';
+                window.location.href = '../pages/health.html';
             }
         } else {
             errorMessage.textContent = data.message;
