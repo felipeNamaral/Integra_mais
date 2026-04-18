@@ -1,0 +1,154 @@
+:root {
+    --cor-fundo: rgba(217,217,217,1);
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    font-family: var(--fonte-principal);
+}
+
+.title {
+    font-family: var(--fonte-principal);
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.sair {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    background: white;
+    gap: 0.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.voltar-idioma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.5rem;
+    padding: 0 1rem; /* melhora no mobile */
+    margin-top: 1rem;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+}
+
+.trocar-idioma {
+    width: auto;
+    background-color: gray;
+    color: white;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+.menu-container {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.menu-topo h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-topo p {
+    color: #6B7280;
+    font-size: 0.95rem;
+}
+
+.menu-cards {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card {
+    background: #eeeeee;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h2 {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #6B7280;
+}
+
+.icone {
+    font-size: 2rem;
+    color: var(--cor-principal);
+}
+
+@media (min-width: 768px) {
+
+    .menu-topo h1 {
+        font-size: 2rem;
+    }
+
+    .menu-cards {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .card {
+        width: 25%;
+    }
+
+}
