@@ -7,6 +7,7 @@ router.post('/login', authController.login);
 
 router.get('/protected', authMiddleware, (req, res) => {
   res.json({
+    id: req.user.id,
     nome: req.user.nome,
     email: req.user.email
   });

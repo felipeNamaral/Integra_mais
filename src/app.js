@@ -15,9 +15,14 @@ require('./backend/config/db');
 // ROTAS
 const authRoutes = require('./backend/routes/authRoutes');
 const healthRoutes = require('./backend/routes/healthRoutes');
+const empresaPageRoutes = require('./backend/routes/empresaPageRoutes');
+const ususarioPageRoutes = require('./backend/routes/usuarioPageRoutes')
+
 
 app.use('/api', authRoutes);
 app.use('/api', healthRoutes);
+app.use('/api', empresaPageRoutes);
+app.use('/api', ususarioPageRoutes);
 
 // teste simples
 const db = require('./backend/config/db');
