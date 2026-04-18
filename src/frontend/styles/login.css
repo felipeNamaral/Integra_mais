@@ -1,135 +1,112 @@
-
+/* Container que centraliza tudo na tela */
 .container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 0;
-    gap: 2rem;
+    position: relative;
+    padding: 20px;
 }
 
-.btn-voltar {
-    margin-top: 0.5rem;
-    width: 100%;
-    max-width: 38rem;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    align-self: flex-start;
+/* O "Botão Voltar" no canto superior esquerdo */
+.btn-voltar-login {
+    position: absolute;
+    top: 50px;
+    left: 10%;
+    color: white;
     text-decoration: none;
-    color: #fff;
-}
-
-.btn-voltar:hover {
-    color: rgba(217, 217, 217, 0.8);
-}
-
-.container-login {
-    height: auto;
-    width: 65%;
-    max-width: 20rem;
+    font-size: 1.1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    background-color: #ffff;
-    padding: 1rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
-    gap: 0.25rem;
-
-    h1 {
-        color: var(--cor-principal);
-        margin-bottom: 0.5rem;
-    }
-
-    h2 {
-        font-size: 1.1rem;
-        color: #1E1E1E;
-        margin-top: 0.05rem;
-    }
-
-    h5 {
-        margin: 1rem 0;
-        color: #1E1E1E;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-    }
+    gap: 8px;
+    transition: opacity 0.3s;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.btn-voltar-login:hover {
+    opacity: 0.7;
+}
+
+/* O Card Branco Principal */
+.card-login {
+    background: white;
+    padding: 3.5rem 2.5rem;
+    border-radius: 3rem;
     width: 100%;
+    max-width: 480px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-.txt {
-    align-self: flex-start;
+.logo-text {
+    color: #2b63d9;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
 }
 
-.button-entrar {
-    margin-top: 1rem;
+.subtitle {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+/* Grupos de Input */
+.input-group {
+    text-align: left;
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    color: #444;
+}
+
+.input-field {
     width: 100%;
-    height: 3rem;
-    font-size: 1.6rem;
+    padding: 15px 20px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0; /* Cor cinza do print */
+    outline: none;
+    font-size: 1rem;
 }
 
-.linha {
-    width: 100%;
-    border: none;
-    height: 0.05rem;
-    background-color: #ccc;
-    margin: 1rem 0;
-}
-
-.button-rec-senha {
+/* Link Vermelho "Esqueceu sua senha" */
+.link-esqueceu {
     color: #ff0000;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
+    text-decoration: underline;
+    display: block;
+    margin: 15px 0;
+    font-weight: bold;
 }
 
-.button-rec-senha:hover {
-    color: #ff0000cc;
+/* Divisor de texto */
+.divisor-login {
+    margin: 20px 0;
+    color: #333;
+    font-weight: 600;
 }
 
-.trocar-idioma {
-    width: auto;
-    max-width: 10rem;
-    height: 2.5rem;
-    font-size: 0.9rem;
-    align-self: center;
+/* Botão de Idioma Flutuante (Canto inferior direito) */
+.trocar-idioma-float {
+    position: absolute;
+    bottom: 30px;
+    right: 5%;
+    background: #d9d9d9;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-
-
-@media (min-width: 600px) {
-
-    .container {
-        gap: 0;
-    }
-
-    .container-login {
-        width: 85%;
-        max-width: 33rem;
-        padding: 2rem;
-        border-radius: 2rem;
-    }
-
-    .button-entrar {
-        max-width: 26rem;
-    }
-
-    .linha {
-        max-width: 28rem;
-    }
-
-    .trocar-idioma {
-        align-self: flex-end;
-        margin-right: 1rem;
-        height: 3rem;
-        width: 100%;
-        max-width: 14rem;
-        font-size: 1rem;
-    }
+.bandeira-icon {
+    width: 24px;
+    height: auto;
 }

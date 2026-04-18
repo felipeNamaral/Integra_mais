@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html lang="Pt-br">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/variables.css">
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/components.css">
-    <link rel="stylesheet" href="/styles/login.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back" />
-    <title>Integra+</title>
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <title>Integra+ | Login</title>
 </head>
-
 <body class="auth">
     <main id="swup" class="transition-fade">
         <section class="container">
-            <a href="../index.html" class="btn-voltar">
-                <span class="material-symbols-outlined">arrow_back</span>
-                <span>Voltar</span>
+            <a href="../index.html" class="btn-voltar-login">
+                <span>&larr; Voltar</span>
             </a>
-            <section class="container-login">
-                <h1>Integra +</h1>
-                <h2>Entre na sua conta</h2>
 
-                <form>
-                    <h5 class="txt">Email</h5>
-                    <input type="email" class="input-field" placeholder="Seu@email.com" required>
+            <section class="card-login">
+                <h1 class="logo-text">Integra +</h1>
+                <p class="subtitle">Entrar na sua conta</p>
 
-                    <h5 class="txt">Senha</h5>
-                    <input type="password" class="input-field" placeholder="Digite sua senha" required>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" class="input-field" placeholder="Seu@email.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Senha</label>
+                        <input type="password" class="input-field" placeholder=".........." required>
+                    </div>
 
                     <button type="submit" class="button-entrar">Entrar</button>
+                    
+                    <a href="#" class="link-esqueceu">Esqueceu sua senha?</a>
                 </form>
 
-                <hr class="linha">
-                <a class="button-rec-senha" href="">Esqueceu sua senha?</a>
+                <div class="divisor-login">
+                    <p>Ainda não tem uma conta?</p>
+                </div>
 
-                <h2>Ainda não tem uma conta?</h2>
-
-                <button class="button-cadastro-ususario">Criar conta como Usuário</button>
-                <button class="button-cadastro-empresa">Criar conta como empresa</button>
+                <div class="login-actions">
+                    <a href="cadastroUSU.html" class="button-outline">Criar conta como Usuário</a>
+                    <a href="cadastroEMP.html" class="button-outline">Criar conta como empresa</a>
+                </div>
             </section>
-            <button class="trocar-idioma">
-                Trocar idioma
-                <img class="bandeira-idioma" src="../assets/img/bandeira.png" alt="">
+
+            <button class="trocar-idioma-float">
+                Trocar idioma <img src="../assets/img/bandeira.png" class="bandeira-icon">
             </button>
         </section>
     </main>
 
-
     <script src="https://unpkg.com/swup@4"></script>
-    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script type="module" src="../scripts/animations.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
-
 </html>
