@@ -49,22 +49,12 @@ img {
 
 .voltar-idioma {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     max-width: 100%;
     gap: 0.5rem;
-    padding: 0 1rem; /* melhora no mobile */
     margin-top: 1rem;
-}
-
-.btn-voltar {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-    color: var(--cor-principal);
-    font-size: 0.9rem;
 }
 
 .trocar-idioma {
@@ -84,13 +74,13 @@ img {
 }
 
 .menu-topo h1 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
 .menu-topo p {
     color: #6B7280;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
 }
 
 .menu-cards {
@@ -115,23 +105,23 @@ img {
 
 .card h2 {
     margin: 0.5rem 0;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .card p {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     color: #6B7280;
 }
 
 .icone {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--cor-principal);
 }
 
 @media (min-width: 768px) {
 
     .menu-topo h1 {
-        font-size: 2rem;
+        font-size: 3rem;
     }
 
     .menu-cards {
