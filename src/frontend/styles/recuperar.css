@@ -1,0 +1,65 @@
+.container-central {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+.card-branco {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+.logo-azul { color: #2b63d9; margin-bottom: 5px; }
+.status-tela { font-weight: bold; margin-bottom: 25px; }
+.field-group { text-align: left; margin-bottom: 20px; }
+.field-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+.input-gray {
+    width: 100%;         
+    box-sizing: border-box; 
+    padding: 12px 20px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    background: #e0e0e0;
+    outline: none;
+}
+.button-principal {
+    width: 100%;
+    background: #2b63d9;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+.idioma-fixo {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: #d9d9d9;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.bandeira-pequena {
+    width: 25px !important; 
+    height: auto;
+}
+.btn-voltar {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    color: white;
+    text-decoration: none;
+}
