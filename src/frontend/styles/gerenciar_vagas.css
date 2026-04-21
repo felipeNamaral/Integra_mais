@@ -1,0 +1,198 @@
+:root {
+    --cor-fundo: rgba(217,217,217,1);
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    font-family: var(--fonte-principal);
+}
+
+.title {
+    font-family: var(--fonte-principal);
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.sair {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    background: white;
+    gap: 0.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.voltar-idioma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+}
+
+.trocar-idioma {
+    width: auto;
+    background-color: gray;
+    color: white;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+.vagas-section {
+    padding: 1rem;
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.subtitulo {
+    font-size: 1.3rem;
+    color: #666;
+    margin: -0.5rem 0 1rem 0.8rem;
+}
+
+.card-vaga {
+    background: #f5f5f5;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+}
+
+.card-vaga h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.info {
+    margin-top: 0.5rem;
+    color: #6B7280;
+    font-size: 0.9rem;
+}
+
+.descricao {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #444;
+}
+
+.acoes {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-editar,
+.btn-excluir {
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-editar {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-excluir {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-editar:hover,
+.btn-excluir:hover {
+    opacity: 0.9;
+}
+
+.topo-vagas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-cadastrar {
+    background: var(--cor-principal);
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-cadastrar:hover {
+    opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+    .card-vaga {
+        padding: 1.5rem;
+    }
+
+    .card-vaga h2 {
+        font-size: 1.4rem;
+    }
+
+    .descricao {
+        font-size: 1rem;
+    }
+
+    .topo-vagas {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-cadastrar {
+        width: auto;
+        padding: 0.6rem 1rem;
+    }
+}

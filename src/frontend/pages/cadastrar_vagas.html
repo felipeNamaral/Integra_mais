@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="/styles/variables.css">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/components.css">
-    <link rel="stylesheet" href="/styles/perfil_empresa.css">
+    <link rel="stylesheet" href="/styles/cadastrar_vagas.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <title>Perfil Empresa</title>
 </head>
 
 <body>
@@ -39,46 +38,33 @@
                     <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
                 </button>
         </div>
-        <div class="perfil-container">
-            <div class="perfil-header">
-                <div class="perfil-avatar" id="avatar">
-                    Foto de perfil
-                </div>
-            </div>
-            <div class="perfil-identidade">
-                <div class="perfil-nome" id="nomeUsuario">
-                    Empresa
-                </div>
-                <div class="perfil-cnpj" id="cnpjUsuario">
-                    CNPJ
-                </div>
-            </div>
 
-            <div class="perfil-conteudo">
-                <div class="perfil-topo">
-                    <div>
-                        <div class="perfil-info">
-                            <span id="emailUsuario">
-                                email
-                            </span>
-                            <span id="telefoneUsuario">
-                                telefone
-                            </span>
-                            <span id="enderecoUsuario">
-                                endereço
-                            </span>
-                        </div>
-                    </div>
-                    <button class="perfil-editar">
-                        Editar perfil
-                    </button>
-                </div>
- 
-            </div>
-        </div>
-    </main>
+         <h1 class="titulo-secao">
+        Painel da Empresa
+        </h1>
+    <p class="subtitulo">Gerencie suas vagas de emprego</p>
+
+    <form class="form-vaga">
+        <input type="text" placeholder="Título">
+        <input type="text" placeholder="Endereço">
+        <input type="text" placeholder="Carga Horária">
+        <input type="text" placeholder="Modelo">
+        <input type="text" placeholder="Requisitos">
+        <input type="text" placeholder="Salário">
+        <textarea placeholder="Descrição"></textarea>
+
+        <button type="button" class="btn-publicar">Publicar</button>
+    </form>
+
+    <section class="vagas">
+        <h2>📋 Vagas Cadastradas</h2>
+
+        <div id="lista-vagas"></div>
+    </section>
+</section>
+</main>
     <script src="/scripts/animations.js"></script>
+    <script src="/scripts/cadastrar_vagas.js"></script>
     <script src="/scripts/token.js"></script>
-    <script src="/scripts/perfil_empresa.js"></script>
 </body>
 </html>

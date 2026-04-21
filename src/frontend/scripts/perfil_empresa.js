@@ -1,0 +1,64 @@
+const token = localStorage.getItem('token');
+const nome = document.getElementById('nome');
+let id;
+
+async function init() {
+    await carregar();
+    await carregaDados();
+}
+
+init();
+
+async function carregar() {
+    try {
+        const response = await fetch('http://localhost:3000/api/protected', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+
+        nome.textContent = data.nome;
+        id = data.id;
+
+    } catch (error) {
+        console.error('Erro ao carregar usuário:', error);
+    }
+}
+
+async function carregaDados() {
+    try {
+        const response = await fetch(
+            `http://localhost:3000/api/empresa?id=${id}`
+        );
+
+        const data = await response.json();
+
+        trocaDadosPerfilEmpresa(data);
+
+    } catch (error) {
+        alert('Erro ao carregar dados da empresa. Tente novamente.' + id);
+        console.error('Erro:', error);
+    }
+}
+
+function trocaDadosPerfilEmpresa(data) {
+
+    let nomeEmpresa = document.getElementById('nomeUsuario');
+    let cnpj = document.getElementById('cnpjUsuario');
+    let email = document.getElementById('emailUsuario');
+    let telefone = document.getElementById('telefoneUsuario');
+    let endereco = document.getElementById('enderecoUsuario');
+
+    nomeEmpresa.textContent = data.nome;
+    cnpj.textContent = data.cnpj;
+    email.textContent = data.email;
+    telefone.textContent = data.telefone;
+
+    if (!data.endereco) {
+        endereco.textContent = "Sem endereço";
+    } else {
+        endereco.textContent = data.endereco;
+    }
+}
