@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
-let id ;
+let id;
 
 
 async function init() {
@@ -13,7 +13,7 @@ init();
 
 
 async function carregar() {
-    
+
     const response = await fetch('http://localhost:3000/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
@@ -23,7 +23,7 @@ async function carregar() {
     const data = await response.json();
     nome.textContent = `${data.nome}`;
     id = data.id;
-    
+
 
 };
 
@@ -36,7 +36,7 @@ async function carregaDados() {
         trocaDadosPerfil(data);
     }
     catch (error) {
-        alert('Erro ao carregar dados do usuário. Por favor, tente novamente mais tarde.'+id);
+        alert('Erro ao carregar dados do usuário. Por favor, tente novamente mais tarde.' + id);
         console.error('Erro ao carregar dados:', error);
     }
 };
@@ -44,10 +44,10 @@ async function carregaDados() {
 
 async function favoritados() {
     try {
-        const response = await fetch()
+        const response = await fetch(`http://localhost:3000/api/vagasFavoritadas?id=${id}`);
         const dataVagasFavoritadas = await response.json();
 
-        const response2 = await fetch()
+        const response2 = await fetch(`http://localhost:3000/api/vagasEnviadas?id=${id}`);
         const dataVagasEnviadas = await response2.json();
 
         trocaVagasFavoritadas(dataVagasFavoritadas);
@@ -110,19 +110,25 @@ function trocaVagasEnviadas(data) {
 }
 
 
-async function printaVagasFavoritadas(data){
+async function printaVagasFavoritadas(data) {
 
     try {
-        const responseVagas = await fetch()
+
+        //bucar todas as vagas de data 
+        const responseVagas = await fetch(
+            `http://localhost:3000/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
+        );
+
+
         const dataVagas = await responseVagas.json();
 
         const container = document.getElementById('vagasFavoritadas');
 
         let html = `<div class="scroll-vagas">`;
 
-        data.forEach(v => {
+        dataVagas.forEach(v => {
             html += `
-        <div class="card-vaga" onclick="abrirVaga(${v.id})">
+        <div class="card-vaga" onclick="abrirVaga(${v.ID_vaga})">
 
             <div class="card-header">
                 <h4>${v.titulo}</h4>
@@ -130,7 +136,12 @@ async function printaVagasFavoritadas(data){
 
             <div class="info">
                 <p>🏢 ${v.empresa}</p>
-                <p>📍 ${v.cidade}, ${v.estado}</p>
+                <p>💰 ${Number(v.salario).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            })}</p>
+                <p>📄 ${v.tipo_vaga}</p>
+                <p>⏱️ ${v.carga_horaria}h</p>
             </div>
 
         </div>
@@ -142,66 +153,70 @@ async function printaVagasFavoritadas(data){
         container.innerHTML = html;
 
 
-/*
-
-
-.scroll-vagas {
-  max-height: 40vh; 
-  overflow-y: auto;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  padding-right: 0.5rem;
+        /*
+        
+        
+        .scroll-vagas {
+          max-height: 40vh; 
+          overflow-y: auto;
+        
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        
+          padding-right: 0.5rem;
+        }
+        
+        
+        .card-vaga {
+          background: #fff;
+          border-radius: 0.75rem;
+          padding: 0.75rem;
+        
+          box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
+        
+          cursor: pointer;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+          .card-vaga:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
 }
-
-
-.card-vaga {
-  background: #fff;
-  border-radius: 0.75rem;
-  padding: 0.75rem;
-
-  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
-
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.card-vaga:active {
-  transform: scale(0.98); 
-
-
-.card-header h4 {
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-
-.info p {
-  font-size: 0.8rem;
-  margin: 0.125rem 0;
-}
-
-@media (min-width: 48rem) {
-  .scroll-vagas {
-    max-height: 50vh;
-  }
-
-  .card-vaga {
-    padding: 1rem;
-  }
-
-  .card-header h4 {
-    font-size: 1rem;
-  }
-
-  .info p {
-    font-size: 0.9rem;
-  }
-}
-
-*/
+        
+        .card-vaga:active {
+          transform: scale(0.98); 
+        
+        
+        .card-header h4 {
+          font-size: 0.9rem;
+          margin-bottom: 0.25rem;
+        }
+        
+        
+        .info p {
+          font-size: 0.8rem;
+          margin: 0.125rem 0;
+        }
+        
+        @media (min-width: 48rem) {
+          .scroll-vagas {
+            max-height: 50vh;
+          }
+        
+          .card-vaga {
+            padding: 1rem;
+          }
+        
+          .card-header h4 {
+            font-size: 1rem;
+          }
+        
+          .info p {
+            font-size: 0.9rem;
+          }
+        }
+        
+        */
 
     } catch (error) {
         console.error('Erro ao carregar dados das vagas:', error);
@@ -211,17 +226,23 @@ async function printaVagasFavoritadas(data){
 
 
 async function printaVagasEnviadas(data) {
-    try {
-        const responseVagas = await fetch()
+     try {
+
+        //bucar todas as vagas de data 
+        const responseVagas = await fetch(
+            `http://localhost:3000/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
+        );
+
+
         const dataVagas = await responseVagas.json();
 
         const container = document.getElementById('vagasEnviadas');
 
         let html = `<div class="scroll-vagas">`;
 
-        data.forEach(v => {
+        dataVagas.forEach(v => {
             html += `
-        <div class="card-vaga" onclick="abrirVaga(${v.id})">
+        <div class="card-vaga" onclick="abrirVaga(${v.ID_vaga})">
 
             <div class="card-header">
                 <h4>${v.titulo}</h4>
@@ -229,7 +250,12 @@ async function printaVagasEnviadas(data) {
 
             <div class="info">
                 <p>🏢 ${v.empresa}</p>
-                <p>📍 ${v.cidade}, ${v.estado}</p>
+                <p>💰 ${Number(v.salario).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            })}</p>
+                <p>📄 ${v.tipo_vaga}</p>
+                <p>⏱️ ${v.carga_horaria}h</p>
             </div>
 
         </div>
@@ -238,16 +264,11 @@ async function printaVagasEnviadas(data) {
 
         html += `</div>`;
 
-        container.innerHTML = html;    
+        container.innerHTML = html;
 
-
-
-}    catch (error) {
+    } catch (error) {
         console.error('Erro ao carregar dados das vagas:', error);
     }
-
-
-
 };
 
 

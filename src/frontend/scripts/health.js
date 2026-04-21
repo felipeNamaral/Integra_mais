@@ -126,7 +126,7 @@ function criarMapa(lat, lng) {
 
   L.marker([lat, lng])
     .addTo(map)
-    .openPopup("Você está aqui");
+    .bindPopup("Você está aqui");
 }
 
 
