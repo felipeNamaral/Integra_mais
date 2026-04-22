@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/detalhes_vaga.css">
+    <title>Integra+ | Detalhes da Vaga</title>
+</head>
+<body>
+
+    <header class="header">
+        <a class="logo" href="index.html">Integra +</a>
+        <div class="header-right">
+            <div class="user-profile">
+                <span class="material-symbols-outlined">account_circle</span>
+                <span>João Silva</span>
+            </div>
+            <a class="btn-sair" href="login.html">
+                <span class="material-symbols-outlined">logout</span>
+                sair
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="vagas.html" class="btn-voltar">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Voltar para vagas
+        </a>
+
+        <div class="card-vaga">
+            <div class="header-vaga">
+                <h1>Mecânico</h1>
+                <div class="info-linha">
+                    <div class="info-item">
+                        <span class="material-symbols-outlined">apartment</span>
+                        Mecânica Mēcanica
+                    </div>
+                    <div class="info-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        Campinas, SP
+                    </div>
+                </div>
+            </div>
+
+            <div class="conteudo-vaga">
+                <section class="secao">
+                    <h3>Descrição da Vaga</h3>
+                    <p>Estamos buscando um desenvolvedor front-end para integrar nossa equipe de tecnologia. Você irá trabalhar com React, TypeScript e outras tecnologias modernas.</p>
+                </section>
+
+                <section class="secao">
+                    <h3>Requisitos</h3>
+                    <ul class="lista-requisitos">
+                        <li><span class="material-symbols-outlined">check_circle</span> Experiência com React e TypeScript</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Conhecimento em HTML, CSS e JavaScript</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Familiaridade com Git</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Boas práticas de desenvolvimento</li>
+                    </ul>
+                </section>
+
+                <section class="acoes">
+                    <h3>Ações</h3>
+                    <div class="botoes-grupo">
+                        <button class="btn-favoritar">
+                            <span class="material-symbols-outlined">star</span>
+                            Favoritar vaga
+                        </button>
+                        <button class="btn-enviar">
+                            <span class="material-symbols-outlined">send</span>
+                            Marcar como enviado
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/detalhes_vaga.js"></script>
+</body>
+</html>

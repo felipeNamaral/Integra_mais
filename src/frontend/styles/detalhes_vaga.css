@@ -1,0 +1,125 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #d9d9d9;
+    color: #1c1e21;
+}
+
+/* HEADER */
+.header {
+    background: white;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo { font-size: 1.6rem; font-weight: bold; color: #2b63d9; text-decoration: none; }
+
+.header-right { display: flex; align-items: center; gap: 20px; }
+
+.user-profile { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+
+.btn-sair { 
+    display: flex; align-items: center; gap: 5px; 
+    text-decoration: none; color: #717684; 
+}
+
+/* CONTAINER */
+.container { width: 90%; max-width: 800px; margin: 0 auto; }
+
+.btn-voltar {
+    display: flex; align-items: center; gap: 8px;
+    text-decoration: none; color: #2b63d9;
+    padding: 30px 0; font-weight: 500;
+}
+
+/* CARD VAGA */
+.card-vaga {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header-vaga {
+    background: linear-gradient(135deg, #2b63d9, #1e40af);
+    color: white;
+    padding: 40px 30px;
+}
+
+.header-vaga h1 { margin-bottom: 15px; font-size: 2rem; }
+
+.info-linha { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.info-item { display: flex; align-items: center; gap: 5px; font-size: 0.9rem; }
+
+.conteudo-vaga { padding: 30px; }
+
+.conteudo-vaga h3 { margin-bottom: 10px; color: #000; }
+
+.secao { margin-bottom: 25px; }
+
+/* REQUISITOS */
+.lista-requisitos { list-style: none; }
+
+.lista-requisitos li { 
+    display: flex; align-items: center; gap: 10px; 
+    margin-bottom: 12px; color: #4b5563; 
+}
+
+.lista-requisitos .material-symbols-outlined {
+    color: #2b63d9; font-size: 20px;
+}
+
+/* BOTÕES DE AÇÃO */
+.acoes {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.botoes-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn-favoritar, .btn-enviar {
+    padding: 14px;
+    border-radius: 12px; /* Arredondamento do Figma */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.btn-favoritar {
+    background: white;
+    color: #f59e0b;
+    border: 2px solid #f59e0b;
+}
+
+.btn-enviar {
+    background: #2b63d9;
+    color: white;
+}
+
+.btn-favoritar:hover { background: #fffbeb; }
+.btn-enviar:hover { background: #1e40af; }
+
+/* DESKTOP */
+@media (min-width: 600px) {
+    .botoes-grupo { flex-direction: row; }
+    .btn-favoritar, .btn-enviar { flex: 1; }
+}
