@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/editar_vagas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+    <header class="header">
+            <a class="title" href="">Integra+</a>
+
+            <a class="perfil" href="">
+                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+                <span id="nome"></span>
+            </a>
+
+            <a class="sair" href="login.html">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
+    </header>
+    <main>
+        <div class="voltar-idioma">
+                <a href="" class="btn-voltar">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <span>Voltar</span>
+                </a>
+                <button class="trocar-idioma">
+                    Trocar idioma
+                    <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+                </button>
+        </div>
+
+        <h1 class="titulo-secao">
+        Painel da Empresa
+        </h1>
+    <p class="subtitulo">Editar Vaga</p>
+
+    <form class="form-vaga">
+        <input type="text" placeholder="Título">
+        <input type="text" placeholder="Endereço">
+        <input type="text" placeholder="Carga Horária">
+        <input type="text" placeholder="Modelo">
+        <input type="text" placeholder="Requisitos">
+        <input type="text" placeholder="Salário">
+        <textarea placeholder="Descrição"></textarea>
+
+        <button type="button" class="btn-editar">Editar</button>
+    </form>
+
+    </main>
+    <script src="/scripts/animations.js"></script>
+    <script src="/scripts/token.js"></script>
+</body>
+</html>
