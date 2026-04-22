@@ -31,16 +31,5 @@ app.use('/api', vagasEnviadasRoutes);
 app.use('/api', buscaVagaRoutes);
     
 
-// teste simples
-const db = require('./backend/config/db');
-
-app.get('/usuario', (req, res) => {
-    db.query('SELECT * FROM usuario', (err, result) => {
-        if (err) {
-            return res.status(500).json({ erro: 'Erro no banco' });
-        }
-        res.json(result);
-    });
-});
 
 module.exports = app;

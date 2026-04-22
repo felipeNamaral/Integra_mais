@@ -5,7 +5,7 @@ const vagasEnviadas = require("../models/VagasEnviadasModel");
 const getVagasEnviadas = async (req, res) => {
   try {
 
-    const {id} = req.query;
+    const id= req.user.id;
     const result = await vagasEnviadas.getVagasEnviadas(id);  
     res.json(result);
     } catch (error) {   

@@ -6,6 +6,7 @@ const getVaga = async (req, res) => {
   try {
 
     const ids = req.query.id.split(',');
+    
     const result = await vaga.getVaga(ids);  
     res.json(result);
     } catch (error) {   

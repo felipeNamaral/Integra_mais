@@ -1,6 +1,6 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
-let id;
+
 
 
 async function init() {
@@ -22,21 +22,21 @@ async function carregar() {
 
     const data = await response.json();
     nome.textContent = `${data.nome}`;
-    id = data.id;
-
-
 };
 
 async function carregaDados() {
     try {
         const response = await fetch(
-            `http://localhost:3000/api/usuario?id=${id}`
-        );
+
+            `http://localhost:3000/api/usuario`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         const data = await response.json();
         trocaDadosPerfil(data);
     }
     catch (error) {
-        alert('Erro ao carregar dados do usuário. Por favor, tente novamente mais tarde.' + id);
         console.error('Erro ao carregar dados:', error);
     }
 };
@@ -44,10 +44,18 @@ async function carregaDados() {
 
 async function favoritados() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagasFavoritadas?id=${id}`);
+        const response = await fetch(`http://localhost:3000/api/vagasFavoritadas`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         const dataVagasFavoritadas = await response.json();
 
-        const response2 = await fetch(`http://localhost:3000/api/vagasEnviadas?id=${id}`);
+        const response2 = await fetch(`http://localhost:3000/api/vagasEnviadas`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
         const dataVagasEnviadas = await response2.json();
 
         trocaVagasFavoritadas(dataVagasFavoritadas);
@@ -61,8 +69,6 @@ async function favoritados() {
 }
 
 
-
-
 function trocaDadosPerfil(data) {
 
     let nome = document.getElementById('nomeUsuario');
@@ -72,14 +78,14 @@ function trocaDadosPerfil(data) {
     let idade = document.getElementById('idadeUsuario');
 
     nome.textContent = `${data.nome}`;
-    email.textContent = `${data.email}`;
-    telefone.textContent = `${data.telefone}`;
+    email.textContent ='📧​ ' +`${data.email}`;
+    telefone.textContent ="📞 " + `${data.telefone}`;
     if (!data.descricao) {
         descricao.textContent = `Sem descrição`;
     } else {
         descricao.textContent = `${data.descricao}`;
     }
-    idade.textContent = `${data.idade}`;
+    idade.textContent ='​🎂 '+ `${data.idade}`;
 
 
 }
@@ -226,7 +232,7 @@ async function printaVagasFavoritadas(data) {
 
 
 async function printaVagasEnviadas(data) {
-     try {
+    try {
 
         //bucar todas as vagas de data 
         const responseVagas = await fetch(

@@ -4,7 +4,7 @@ const vagasFavoritadas = require("../models/VagasFavoritadasModel");
 
 const getVagasFavoritadas = async (req, res) => {
   try {
-    const {id} = req.query;
+    const id = req.user.id;
     const result = await vagasFavoritadas.getVagasFavoritadas(id);  
     res.json(result);
     } catch (error) {   
