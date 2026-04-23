@@ -20,7 +20,10 @@ const ususarioPageRoutes = require('./backend/routes/usuarioPageRoutes')
 const vagasFavoritasRoutes = require('./backend/routes/VagasFavoritadasRoutes.js');
 const vagasEnviadasRoutes = require('./backend/routes/VagasEnviadasRoutes');
 const buscaVagaRoutes = require('./backend/routes/buscaVagaRoutes');
-
+const getAllVagas = require('./backend/routes/getAllVagas');
+const getVagaById = require('./backend/routes/getVagaById');
+const verificaSeVFavorita = require('./backend/routes/verificaSeFavoritaRoutes');
+const verificaSeEnviado = require('./backend/routes/verificaSeEnviadoRoutes');
 
 app.use('/api', authRoutes);
 app.use('/api', healthRoutes);
@@ -29,7 +32,8 @@ app.use('/api', ususarioPageRoutes);
 app.use('/api', vagasFavoritasRoutes);
 app.use('/api', vagasEnviadasRoutes);
 app.use('/api', buscaVagaRoutes);
-    
-
-
+app.use('/api', getAllVagas); 
+app.use('/api', getVagaById); 
+app.use('/api', verificaSeVFavorita); 
+app.use('/api', verificaSeEnviado); 
 module.exports = app;

@@ -80,13 +80,15 @@ function trocaDadosPerfil(data) {
     nome.textContent = `${data.nome}`;
     email.textContent ='📧​ ' +`${data.email}`;
     telefone.textContent ="📞 " + `${data.telefone}`;
+
+    idade.textContent ='​🎂 '+ `${data.idade}`;
+
     if (!data.descricao) {
         descricao.textContent = `Sem descrição`;
     } else {
         descricao.textContent = `${data.descricao}`;
     }
-    idade.textContent ='​🎂 '+ `${data.idade}`;
-
+    
 
 }
 
@@ -159,70 +161,6 @@ async function printaVagasFavoritadas(data) {
         container.innerHTML = html;
 
 
-        /*
-        
-        
-        .scroll-vagas {
-          max-height: 40vh; 
-          overflow-y: auto;
-        
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-        
-          padding-right: 0.5rem;
-        }
-        
-        
-        .card-vaga {
-          background: #fff;
-          border-radius: 0.75rem;
-          padding: 0.75rem;
-        
-          box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
-        
-          cursor: pointer;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-          .card-vaga:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-}
-        
-        .card-vaga:active {
-          transform: scale(0.98); 
-        
-        
-        .card-header h4 {
-          font-size: 0.9rem;
-          margin-bottom: 0.25rem;
-        }
-        
-        
-        .info p {
-          font-size: 0.8rem;
-          margin: 0.125rem 0;
-        }
-        
-        @media (min-width: 48rem) {
-          .scroll-vagas {
-            max-height: 50vh;
-          }
-        
-          .card-vaga {
-            padding: 1rem;
-          }
-        
-          .card-header h4 {
-            font-size: 1rem;
-          }
-        
-          .info p {
-            font-size: 0.9rem;
-          }
-        }
-        
-        */
 
     } catch (error) {
         console.error('Erro ao carregar dados das vagas:', error);
@@ -280,5 +218,5 @@ async function printaVagasEnviadas(data) {
 
 
 function abrirVaga(id) {
-    window.location.href = `/vaga.html?id=${id}`;
+    window.location.href = `/pages/detalhes_vaga.html?id=${id}`;
 }

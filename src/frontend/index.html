@@ -1,49 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="Pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/variables.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/components.css">
-    <link rel="stylesheet" href="./styles/index.css">
-    <title>Integra+ | Home</title>
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <title>Integra+</title>
 </head>
+
 <body class="auth">
     <main id="swup" class="transition-fade">
-        <section class="container-home">
-            
-            <div class="welcome-section">
-                <h1 class="logo-main">Integra+</h1>
-                <p class="slogan">Conectando Imigrantes a oportunidades de trabalho e informações essenciais</p>
-            </div>
-
-            <div class="card-access">
-                <h2>Acesse sua conta</h2>
-                
-                <div class="button-group">
-                    <a href="pages/login.html" class="button-entrar">Entrar</a>
-                    
-                    <div class="separator">
+        <section class="main-container">
+            <section class="container">
+                <section class="site-name">
+                    <h1 class="site-titulo" id="titulo">
+                        INTEGRA+
+                    </h1>
+                    <h2 class="sub-titulo">
+                        Conectando Imigrantes a oportunidades
+                        de trabalho e informações essenciais
+                    </h2>
+                </section>
+                <aside class="box-login">
+                    <h2 class="">
+                        Acesse sua conta</h2>
+                   <a href="pages/login.html" class="button-entrar">Entrar</a>
+                    <div class="divider">
                         <span>ou</span>
                     </div>
 
-                    <a href="pages/cadastroUSU.html" class="button-outline">Criar conta como Usuário</a>
-                    <a href="pages/cadastroEMP.html" class="button-outline">Criar conta como Empresa</a>
-                </div>
+                    <button class="button-cadastro-ususario" onclick="window.location.href='pages/cadastroUSU.html'">
+                        Criar conta como Usuário
+                    </button>
 
-                <button class="trocar-idioma-home">
-                    Trocar idioma 
-                    <img src="./assets/img/bandeira.png" alt="Bandeira" class="bandeira-img">
-                </button>
+                    <button class="button-cadastro-empresa" onclick="window.location.href='pages/cadastroEMP.html'">
+                        Criar conta como empresa
+                    </button>
+
+                    <button class="trocar-idioma">
+                        Trocar idioma
+                        <img class="bandeira-idioma" src="assets/img/bandeira.png" alt="">
+                    </button>
+                </aside>
+            </section>
+            <div class="info-texto">
+                <h2>Plataforma de integração para oportunidades de emprego, documentação e saúde</h2>
             </div>
-
         </section>
     </main>
 
+
     <script src="https://unpkg.com/swup@4"></script>
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
-    <script type="module" src="./scripts/animations.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script type="module" src="scripts/animations.js"></script>
 </body>
+
 </html>

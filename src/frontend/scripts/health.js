@@ -135,10 +135,10 @@ function criarMapa(lat, lng) {
 let unidades;
 let unidadesGlobais = [];
 
-async function buscarUnidades(lat, lng,cidade) {
+async function buscarUnidades(lat, lng, cidade) {
   try {
 
-    
+
     const response = await fetch(
 
       `http://localhost:3000/api/unidades?lat=${lat}&lng=${lng}`
@@ -146,10 +146,10 @@ async function buscarUnidades(lat, lng,cidade) {
 
     if (!response.ok) throw new Error("Erro ao buscar unidades");
 
-     unidades = await response.json();
-     unidadesGlobais = unidades;
+    unidades = await response.json();
+    unidadesGlobais = unidades;
 
-     aplicarFiltro();
+    aplicarFiltro();
 
 
   } catch (err) {
@@ -165,24 +165,22 @@ function adicionarMarcadores(unidades) {
   markersLayer.clearLayers();
 
   unidades.forEach(u => {
+    if (!u?.latitude || !u?.longitude) return;
 
     const tipo = (u.tipo || "").toLowerCase().trim();
+
     let icon;
 
-    if (tipo.includes("hospital")) {
-      icon = icons.hospital;
-    } else if (tipo.includes("ubs")) {
-      icon = icons.ubs;
-    } else {
-      icon = icons.upa;
-    }
+    if (tipo.includes("hospital")) icon = icons.hospital;
+    else if (tipo.includes("ubs")) icon = icons.ubs;
+    else icon = icons.upa;
 
-    L.marker([u.latitude, u.longitude], { icon })
+    L.marker([Number(u.latitude), Number(u.longitude)], { icon })
       .bindPopup(`
         <b>${u.nome}</b><br>
         ${u.tipo}<br>
         ${u.telefone || "Sem telefone"}<br>
-        ${(u.distancia || 0).toFixed(1) } km
+        ${(u.distancia || 0).toFixed(1)} km
       `)
       .addTo(markersLayer);
   });
@@ -274,7 +272,7 @@ function filtrarUnidades(unidades) {
 
 
 function aplicarFiltro() {
-  const filtradas = filtrarUnidades(unidadesGlobais);
+  const filtradas = filtrarUnidades(unidadesGlobais).filter(u => u?.latitude != null && u?.longitude != null);
 
   adicionarMarcadores(filtradas);
   renderizarUnidades(filtradas);
@@ -288,7 +286,7 @@ const input = document.getElementById("cidade-input");
 input.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
 
-  
+
     buscarCidade(input.value);
   }
 });
@@ -306,8 +304,8 @@ async function buscarCidade(nomeCidade) {
     return;
   }
 
-  const lat = data[0].lat;
-  const lon = data[0].lon;
+  const lat = Number(data[0].lat);
+  const lon = Number(data[0].lon);
 
   map.setView([lat, lon], 12);
 
@@ -319,14 +317,14 @@ async function buscarCidade(nomeCidade) {
 
     if (!response.ok) throw new Error("Erro ao buscar unidades ");
 
-     unidades = await response.json();
-     unidadesGlobais = unidades;
+    unidades = await response.json();
+    unidadesGlobais = unidades;
 
-     aplicarFiltro();
+    aplicarFiltro();
 
 
   } catch (err) {
     console.error(err);
-    alert("Erro ao carregar unidades");
+    alert("Erro ao carregar unidades aaaaaa" + err);
   }
 }

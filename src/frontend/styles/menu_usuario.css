@@ -4,43 +4,12 @@
 
 body {
     margin: 0;
+    padding: 0;
     background-color: var(--cor-fundo);
     font-family: var(--fonte-principal);
 }
 
-.title {
-    font-family: var(--fonte-principal);
-    font-size: 1.8rem;
-    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: none;
-}
 
-.perfil {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
-.sair {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    padding: 0.8rem;
-    background: white;
-    gap: 0.5rem;
-}
 
 img {
     max-width: 100%;
@@ -54,18 +23,12 @@ img {
     width: 100%;
     max-width: 100%;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 3rem;
 }
 
 .trocar-idioma {
-    width: auto;
     background-color: gray;
-    color: white;
-    font-size: 0.85rem;
-    padding: 0.4rem 0.7rem;
-    border: none;
-    border-radius: 0.4rem;
-    cursor: pointer;
+    margin-left: auto;
 }
 
 .menu-container {
@@ -130,9 +93,20 @@ img {
         flex-wrap: wrap;
     }
 
+        .header {
+        padding: 2rem 3rem;
+    }
+        .title {
+        font-size: 3.5rem;
+    }
+
     .card {
         width: 45%;
     }
+    .voltar-idioma {
+
+    margin-top: 4rem;
+}
 }
 
 @media (min-width: 1024px) {
@@ -140,5 +114,18 @@ img {
     .card {
         width: 25%;
     }
+    .voltar-idioma {
+
+    margin-top: 6rem;
+}
+
+    .header {
+        padding: 2rem 3rem;
+    }
+        .title {
+        font-size: 3.5rem;
+    }
+
+
 
 }

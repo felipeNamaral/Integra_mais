@@ -1,5 +1,5 @@
 :root {
-    --cor-fundo: rgba(217,217,217,1);
+    --cor-fundo: rgba(217, 217, 217, 1);
 }
 
 body {
@@ -40,17 +40,15 @@ body {
     margin: 2rem auto;
     background: #ffffff;
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.05);
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
     overflow: hidden;
     font-family: var(--fonte-principal);
 }
 
 .perfil-header {
-    background: linear-gradient(
-        to right,
-        var(--cor-secundaria),
-        var(--cor-principal)
-    );
+    background: linear-gradient(to right,
+            var(--cor-secundaria),
+            var(--cor-principal));
     height: 6rem;
     position: relative;
     padding: 2rem;
@@ -182,10 +180,21 @@ body {
     padding: 0.3rem 0.6rem;
 }
 
+
+
+
 @media (min-width: 768px) {
 
     .perfil-header {
         height: 9rem;
+    }
+
+    .header {
+        padding: 2rem 3rem;
+    }
+
+    .title {
+        font-size: 3.5rem;
     }
 
     .perfil-avatar {
@@ -218,13 +227,69 @@ body {
         justify-content: space-around;
     }
 
-    .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem;
-    background-color: white;
-    height: 3rem;
-    }
+
 }
+
+
+
+.scroll-vagas {
+    max-height: 40vh;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    padding-right: 0.5rem;
+}
+
+
+.card-vaga {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-vaga:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.card-vaga:active {
+    transform: scale(0.98);
+
+
+    .card-header h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+
+    .info p {
+        font-size: 0.8rem;
+        margin: 0.125rem 0;
+    }
+
+}
+    @media (min-width: 48rem) {
+        .scroll-vagas {
+            max-height: 50vh;
+        }
+
+        .card-vaga {
+            padding: 1rem;
+        }
+
+        .card-header h4 {
+            font-size: 1rem;
+        }
+
+        .info p {
+            font-size: 0.9rem;
+        }
+    }

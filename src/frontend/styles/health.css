@@ -4,9 +4,6 @@ body {
     background-color: var(--cor-fundo);
 }
 
-
-
-
 .container {
     display: flex;
     justify-content: center;

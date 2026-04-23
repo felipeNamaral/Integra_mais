@@ -111,15 +111,86 @@ body {
 }
 
 .btn-enviar {
-    background: #2b63d9;
-    color: white;
+
+
+    background: #ffffff;
+    color: #2b63d9;
+    border: 2px solid #2b63d9;
 }
 
 .btn-favoritar:hover { background: #fffbeb; }
-.btn-enviar:hover { background: #1e40af; }
+.btn-enviar:hover { background: #2b63d9;
+color: white; }
 
 /* DESKTOP */
 @media (min-width: 600px) {
     .botoes-grupo { flex-direction: row; }
     .btn-favoritar, .btn-enviar { flex: 1; }
 }
+
+
+.toast {
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%) translateY(20px);
+    
+    width: calc(100% - 32px);
+    max-width: 400px;
+
+    background: #333;
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 12px;
+
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    font-size: 14px;
+    text-align: center;
+    z-index: 9999;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* quando aparece */
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* estados */
+.toast.success {
+    background: #2ecc71;
+}
+
+.toast.error {
+    background: #e74c3c;
+}
+
+
+
+
+
+
+
+
+.btn-favoritar.ativo {
+    background: #f59e0b;
+    color: white;
+    border: 2px solid #f59e0b;
+}
+
+.btn-favoritar.ativo:hover{
+   background: #f59f0bb8; 
+}
+
+.btn-enviar.ativo{
+    background: #2b63d9;
+    color: white;
+}
+
+.btn-enviar.ativo:hover{
+   background: #2b62d9cc; 
+}
+

@@ -48,7 +48,10 @@ async function getUnidadesPorCidade(cidade) {
     FROM unidade_de_saude
 
     WHERE nome_municipio = ?
+
+    limit 401
     ;
+
   `, [cidade]);
 
   return rows;

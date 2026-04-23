@@ -1,24 +1,40 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Lógica dos Acordeões
-    const headers = document.querySelectorAll(".accordion-header");
+const token = localStorage.getItem('token');
+const nome = document.getElementById('nome');
 
-    headers.forEach(header => {
-        header.addEventListener("click", () => {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector(".arrow");
+async function carregar() {
+  const response = await fetch('http://localhost:3000/api/protected', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
 
-            // Fecha outros acordeões se quiser o efeito "um por vez"
-            document.querySelectorAll(".accordion-content").forEach(item => {
-                if(item !== content) item.classList.remove("open");
-            });
+  const data = await response.json();
 
-            // Abre o atual
-            content.classList.toggle("open");
-        });
+  nome.textContent = `${data.nome}`;
+}
+
+carregar();
+
+
+const headers = document.querySelectorAll(".accordion-header");
+
+headers.forEach(header => {
+  header.addEventListener("click", () => {
+    const content = header.nextElementSibling;
+
+    document.querySelectorAll(".accordion-content").forEach(c => {
+      if (c !== content) {
+        c.style.maxHeight = null;
+        c.classList.remove("open");
+      }
     });
 
-    // 2. Simular nome do usuário (ou puxar do localStorage)
-    const nomeUser = document.getElementById("nomeUser");
-    const nomeSalvo = localStorage.getItem("nomeUsuario") || "Pedro Guimarães";
-    if(nomeUser) nomeUser.innerText = nomeSalvo;
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+      content.classList.remove("open");
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.classList.add("open");
+    }
+  });
 });

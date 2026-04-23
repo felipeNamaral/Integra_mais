@@ -8,39 +8,7 @@ body {
     font-family: var(--fonte-principal);
 }
 
-.title {
-    font-family: var(--fonte-principal);
-    font-size: 1.8rem;
-    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: none;
-}
 
-.perfil {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
-.sair {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
-.header {
-    display: flex;
-    align-items: center;
-    padding: 0.8rem;
-    background: white;
-    gap: 0.5rem;
-}
 
 img {
     max-width: 100%;
@@ -67,14 +35,7 @@ img {
 }
 
 .trocar-idioma {
-    width: auto;
     background-color: gray;
-    color: white;
-    font-size: 0.85rem;
-    padding: 0.4rem 0.7rem;
-    border: none;
-    border-radius: 0.4rem;
-    cursor: pointer;
 }
 
 .titulo {
@@ -157,6 +118,12 @@ img {
     .titulo {
         font-size: 2rem;
     }
+            .header {
+        padding: 2rem 3rem;
+    }
+        .title {
+        font-size: 3.5rem;
+    }
 
     .lista-vagas {
         grid-template-columns: repeat(2, 1fr);
@@ -164,16 +131,17 @@ img {
 }
 
 @media (min-width: 1024px) {
-    .header {
-        padding: 1rem 2rem;
-    }
 
     .voltar-idioma {
         padding: 0rem 0rem;
     }
 
-    .titulo {
-        padding: 0rem 2rem;
+
+        .header {
+        padding: 2rem 3rem;
+    }
+        .title {
+        font-size: 3.5rem;
     }
 
     .filtro-vagas {

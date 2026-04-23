@@ -1,242 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/documentacao.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>Integra+ | Documentação</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #1c1e21;
-        }
-
-        /* --- NOVO CABEÇALHO --- */
-        .header-doc {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .logo { 
-            font-size: 1.5rem; 
-            font-weight: bold; 
-            color: #2b63d9; 
-            text-decoration: none; 
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-
-        .user-profile .material-symbols-outlined {
-            font-size: 32px;
-        }
-
-        .btn-sair-header {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            text-decoration: none;
-            color: #717684;
-            font-size: 1rem;
-        }
-
-        /* --- BARRA DE AÇÕES --- */
-        .nav-bar-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-            margin-bottom: 20px;
-        }
-
-        .btn-voltar-vagas {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: #2b63d9;
-            font-weight: 500;
-        }
-
-        .btn-trocar-idioma {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #717684;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .bandeira-icon {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-        }
-
-        /* --- RESTO DO SEU CSS --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            padding: 0 20px;
-        }
-
-        .banner-azul {
-            background: linear-gradient(90deg, #2b63d9, #1e40af);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        details {
-            background: white;
-            margin-bottom: 10px;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-
-        summary {
-            font-weight: bold;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #000000; 
-        }
-
-        .secao-obter h4 {
-            color: #000000 !important;
-            font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 8px;
-        }
-
-        .alerta-caixa {
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border-left: 5px solid;
-        }
-        .verde { background: #dcfce7; border-color: #22c55e; color: #166534; }
-        .vermelho { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
-        .azul { background: #eff6ff; border-color: #2563eb; color: #1e40af; }
-
-        .alerta-amarelo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #fffbeb;
-            border-left: 5px solid #f59e0b;
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .alerta-dica {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background-color: #eff6ff;
-            border-left: 5px solid #2563eb;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        .grid-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .icon-box-blue {
-            width: 45px;
-            height: 45px;
-            background-color: #2563eb;
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .link-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            border: 1px solid #e5e7eb;
-            border-radius: 15px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .link-item:hover {
-            border-color: #2563eb;
-            background-color: #f8fafc;
-        }
-    </style>   
-
 </head>
+
 <body>
-    <header class="header-doc">
-        <a href="../index.html" class="logo">Integra+</a>
-        <div class="header-right">
-            <div class="user-profile">
-                <span class="material-symbols-outlined">account_circle</span>
-                <span>João Silva</span>
-            </div>
-            <a href="login.html" class="btn-sair-header">
-                <span class="material-symbols-outlined">logout</span>
-                sair
-            </a>
-        </div>
+    <header class="header">
+        <a class="title" href="menu_usuario.html">Integra+</a>
+
+        <a class="perfil" href="">
+            <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+            <span id="nome"></span>
+        </a>
+
+        <a class="sair" href="login.html">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
     </header>
 
     <div class="container">
-        
+
         <div class="nav-bar-actions">
             <a href="vagas.html" class="btn-voltar-vagas">
                 <span class="material-symbols-outlined">arrow_back</span>
                 Voltar para vagas
             </a>
             <button class="btn-trocar-idioma">
-                Trocar idioma 
+                Trocar idioma
                 <img src="../assets/img/bandeira.png" alt="Bandeira" class="bandeira-icon">
             </button>
         </div>
@@ -249,7 +49,8 @@
 
         <div class="card">
             <h3>Bem-vindo ao Brasil!</h3>
-            <p>Ao chegar ao Brasil como imigrante, é essencial obter a documentação necessária para regularizar sua situação e ter acesso a serviços básicos como trabalho, saúde e educação.</p>
+            <p>Ao chegar ao Brasil como imigrante, é essencial obter a documentação necessária para regularizar sua
+                situação e ter acesso a serviços básicos como trabalho, saúde e educação.</p>
             <p>Abaixo, você encontrará informações detalhadas sobre cada documento importante e como obtê-los.</p>
         </div>
 
@@ -263,9 +64,11 @@
             <div style="padding-top:10px;">
                 <div class="secao-obter">
                     <h4>Como obter:</h4>
-                    <p>O CRNM (Carteira de Registro Nacional Migratório), anteriormente conhecido como RNE, é o principal documento de identificação para estrangeiros no Brasil.</p>
+                    <p>O CRNM (Carteira de Registro Nacional Migratório), anteriormente conhecido como RNE, é o
+                        principal documento de identificação para estrangeiros no Brasil.</p>
                     <ul>
-                        <li>Solicitar através do site da Polícia Federal: <a href="https://www.gov.br/pf" target="_blank">www.gov.br/pf</a></li>
+                        <li>Solicitar através do site da Polícia Federal: <a href="https://www.gov.br/pf"
+                                target="_blank">www.gov.br/pf</a></li>
                         <li>Agendar atendimento presencial na unidade da Polícia Federal mais próxima</li>
                         <li>Apresentar passaporte válido e comprovante de entrada no Brasil</li>
                         <li>Pagar a taxa de emissão (GRU)</li>
@@ -290,11 +93,13 @@
             </summary>
             <div class="secao-obter">
                 <h4>O que é:</h4>
-                <p>O CPF é o número de identificação fiscal de todas as pessoas no Brasil. É essencial para trabalhar, abrir conta bancária, fazer compras a prazo e acessar diversos serviços.</p>
+                <p>O CPF é o número de identificação fiscal de todas as pessoas no Brasil. É essencial para trabalhar,
+                    abrir conta bancária, fazer compras a prazo e acessar diversos serviços.</p>
 
                 <h4>Como obter:</h4>
                 <ul>
-                    <li>Solicitar online pelo site da Receita Federal: <a href="https://www.gov.br/receitafederal" target="_blank">www.gov.br/receitafederal</a></li>
+                    <li>Solicitar online pelo site da Receita Federal: <a href="https://www.gov.br/receitafederal"
+                            target="_blank">www.gov.br/receitafederal</a></li>
                     <li>Comparecer a uma agência dos Correios ou Banco do Brasil</li>
                     <li>Apresentar documento de identificação (passaporte ou RNE/CRNM)</li>
                     <li>O serviço é <strong>GRATUITO</strong></li>
@@ -314,13 +119,15 @@
             </summary>
             <div class="secao-obter">
                 <h4>O que é:</h4>
-                <p>A Carteira de Trabalho e Previdência Social (CTPS) é o documento que registra sua vida profissional no Brasil. Atualmente, é totalmente digital.</p>
+                <p>A Carteira de Trabalho e Previdência Social (CTPS) é o documento que registra sua vida profissional
+                    no Brasil. Atualmente, é totalmente digital.</p>
 
                 <h4>Como obter:</h4>
                 <ul>
                     <li>Baixe o aplicativo "Carteira de Trabalho Digital" na loja do seu celular</li>
                     <li>Faça login com sua conta <strong>gov.br</strong></li>
-                    <li>Se não tiver conta gov.br, crie uma no site: <a href="https://www.gov.br" target="_blank">www.gov.br</a></li>
+                    <li>Se não tiver conta gov.br, crie uma no site: <a href="https://www.gov.br"
+                            target="_blank">www.gov.br</a></li>
                     <li>Sua carteira digital estará disponível imediatamente</li>
                 </ul>
 
@@ -339,7 +146,8 @@
             </summary>
             <div class="secao-obter">
                 <h4>O que é:</h4>
-                <p>Documento que comprova onde você mora. É necessário para abrir conta bancária, solicitar documentos, matricular filhos na escola, entre outros serviços.</p>
+                <p>Documento que comprova onde você mora. É necessário para abrir conta bancária, solicitar documentos,
+                    matricular filhos na escola, entre outros serviços.</p>
 
                 <h4>Tipos aceitos:</h4>
                 <ul>
@@ -353,7 +161,8 @@
                 <h4>Se morar com alguém:</h4>
                 <div class="alerta-dica">
                     <span class="material-symbols-outlined">lightbulb</span>
-                    <p>Você pode usar uma Declaração de Residência assinada pelo proprietário ou locatário, junto com uma cópia do RG/CPF dele e um comprovante de residência no nome dele.</p>
+                    <p>Você pode usar uma Declaração de Residência assinada pelo proprietário ou locatário, junto com
+                        uma cópia do RG/CPF dele e um comprovante de residência no nome dele.</p>
                 </div>
             </div>
         </details>
@@ -365,7 +174,8 @@
             </summary>
             <div class="secao-obter">
                 <h4>Para que servem:</h4>
-                <p>Se você tiver filhos nascidos no Brasil ou casar-se no Brasil, precisará registrar esses eventos no cartório para obter as certidões brasileiras.</p>
+                <p>Se você tiver filhos nascidos no Brasil ou casar-se no Brasil, precisará registrar esses eventos no
+                    cartório para obter as certidões brasileiras.</p>
 
                 <h4>Nascimento de filho no Brasil:</h4>
                 <ul>
@@ -411,7 +221,8 @@
 
                 <div class="alerta-dica">
                     <span class="material-symbols-outlined">lightbulb</span>
-                    <p>Todas as crianças e adolescentes têm direito à educação pública e gratuita no Brasil, independentemente da situação migratória dos pais.</p>
+                    <p>Todas as crianças e adolescentes têm direito à educação pública e gratuita no Brasil,
+                        independentemente da situação migratória dos pais.</p>
                 </div>
             </div>
         </details>
@@ -448,7 +259,8 @@
 
         <div class="alerta-caixa vermelho">
             <strong>⚠️ Cuidado com golpes!</strong>
-            <p>Nunca pague valores absurdos para "despachantes" ou pessoas que prometem acelerar processos de documentação. Muitos serviços são GRATUITOS ou têm taxas oficiais baixas.</p>
+            <p>Nunca pague valores absurdos para "despachantes" ou pessoas que prometem acelerar processos de
+                documentação. Muitos serviços são GRATUITOS ou têm taxas oficiais baixas.</p>
         </div>
 
         <div class="alerta-caixa verde">
@@ -463,7 +275,9 @@
 
         <div class="alerta-caixa azul">
             <strong> Seus Direitos:</strong>
-            <p>Todo imigrante regularizado no Brasil tem direito a trabalhar, estudar, acessar saúde pública e ter os mesmos direitos trabalhistas que os brasileiros. Não aceite trabalho irregular ou condições degradantes!</p>
+            <p>Todo imigrante regularizado no Brasil tem direito a trabalhar, estudar, acessar saúde pública e ter os
+                mesmos direitos trabalhistas que os brasileiros. Não aceite trabalho irregular ou condições degradantes!
+            </p>
         </div>
 
         <section class="card">
@@ -515,5 +329,9 @@
             </div>
         </section>
     </div>
+
+
+    <script src="/scripts/documentaçao.js"></script>
 </body>
+
 </html>

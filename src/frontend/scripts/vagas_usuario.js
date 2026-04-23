@@ -1,28 +1,42 @@
-const vagas = [
-    {
-        titulo: "Mecânico",
-        empresa: "Mecânica Mecânica",
-        local: "Campinas, SP",
-        descricao: "Oportunidade para trabalhar em uma mecânica...",
-    },
-    {
-        titulo: "Eletricista",
-        empresa: "Elétrica Silva",
-        local: "Sorocaba, SP",
-        descricao: "Vaga para eletricista com experiência..."
-    },
-    {
-        titulo: "Soldador",
-        empresa: "Metalúrgica XP",
-        local: "São Paulo, SP",
-        descricao: "Atuar com soldagem industrial..."
+const token = localStorage.getItem('token');
+const nome = document.getElementById('nome');
+
+async function carregar() {
+    const response = await fetch('http://localhost:3000/api/protected', {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+
+    const data = await response.json();
+
+    nome.textContent = `${data.nome}`;
+}
+
+carregar();
+carregaVagas();
+
+
+
+
+async function carregaVagas() {
+    try {
+        const response = await fetch('http://localhost:3000/api/vagaAll');
+        const data = await response.json();
+
+        renderizarVagas(data);
     }
-];
+    catch (error) {
+        console.error("Erro ao carregar vagas:", error);
+    }
+}
+
 
 const container = document.getElementById("lista-vagas");
 const contador = document.getElementById("contador");
 
-function renderizarVagas() {
+function renderizarVagas(vagas) {
+
     container.innerHTML = "";
 
     vagas.forEach(vaga => {
@@ -32,9 +46,11 @@ function renderizarVagas() {
         card.innerHTML = `
             <h2>${vaga.titulo}</h2>
             <p>🏢 ${vaga.empresa}</p>
-            <p>📍 ${vaga.local}</p>
+            <p>📍 ${vaga.cidade}</p>
             <p>${vaga.descricao}</p>
-            <button class="btn-detalhes">Ver detalhes</button>
+            <button class="btn-detalhes" onclick="verDetalhes(${vaga.ID_vaga})">
+    Ver detalhes
+</button>
         `;
 
         container.appendChild(card);
@@ -43,4 +59,35 @@ function renderizarVagas() {
     contador.textContent = `${vagas.length} vagas encontradas`;
 }
 
-renderizarVagas();
+
+
+const input = document.getElementById("buscaVaga");
+
+input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+
+        filtraVaga(input.value);
+    }
+});
+
+
+
+async function filtraVaga(input) {
+    try {
+        const response = await fetch(
+            `http://localhost:3000/api/vagaAll?busca=${encodeURIComponent(input)}`
+        );
+
+        const data = await response.json();
+        renderizarVagas(data);
+
+    } catch (error) {
+        console.error("Erro ao carregar vagas:", error);
+    }
+}
+
+
+function verDetalhes(id) {
+    window.location.href = `/pages/detalhes_vaga.html?id=${id}`;
+    
+}
