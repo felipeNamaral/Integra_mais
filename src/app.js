@@ -31,7 +31,7 @@ const verificaSeEnviado = require('./backend/routes/verificaSeEnviadoRoutes');
 
 
 
-ROTAS
+//ROTAS
 app.use('/api', authRoutes);
 app.use('/api', healthRoutes);
 app.use('/api', empresaPageRoutes);

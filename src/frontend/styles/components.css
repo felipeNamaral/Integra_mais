@@ -104,6 +104,18 @@
     height: 3rem;
 }  
 
+#error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+#error-message2 {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+
 
 .title {
     font-family: var(--fonte-principal);

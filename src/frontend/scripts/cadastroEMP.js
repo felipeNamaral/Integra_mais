@@ -2,47 +2,69 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
 
     if (form) {
-        form.addEventListener("submit", (event) => {
-           
+        form.addEventListener("submit", async (event) => {
             event.preventDefault();
 
-         
-            const nomeEmpresa = document.querySelector('input[placeholder="Nome da empresa"]').value;
-            const cnpj = document.querySelector('input[placeholder="00.000.000/0000-00"]').value;
-            const email = document.querySelector('input[type="email"]').value;
-            const endereco = document.querySelector('input[placeholder="Rua, Cidade, Estado"]').value;
-            
-            
-            const inputsSenha = document.querySelectorAll('input[type="password"]');
-            const senha = inputsSenha[0].value;
-            const confirmaSenha = inputsSenha[1].value;
 
-         
-            if (senha !== confirmaSenha) {
-                alert("As senhas não coincidem. Por favor, verifique.");
-                return; 
-            }
+            const erroSenha = document.getElementById("error-message2");
+            const erroEmail = document.getElementById("error-message");
 
-            if (cnpj.length < 14) {
-                alert("Por favor, insira um CNPJ válido.");
+            const nomeEmpresa = document.getElementById("nomeEmpresa").value;
+            const cnpj = document.getElementById("cnpj").value;
+            const emailCorporativo = document.getElementById("emailCorporativo").value;
+            const endereco = document.getElementById("endereco").value;
+            const senha = document.getElementById("senha").value;
+            const confirmarSenha = document.getElementById("confirmarSenha").value;
+
+
+            erroSenha.textContent = "";
+            erroEmail.textContent = "";
+
+
+            // validação
+            if (senha !== confirmarSenha) {
+                erroSenha.textContent = "As senhas não coincidem!";
                 return;
             }
 
-            
-            const dadosEmpresa = {
-                razaoSocial: nomeEmpresa,
-                documento: cnpj,
-                contato: email,
-                localizacao: endereco,
-                senha: senha
-            };
+            if (cnpj.length < 14) {
+                alert("CNPJ inválido.");
+                return;
+            }
 
-     
-            console.log("Dados da Empresa Prontos:", dadosEmpresa);
-            
-            alert("Cadastro de Empresa enviado com sucesso!");
-            
-          
+            try {
+                const response = await fetch("http://localhost:3000/api/cadastro/empresa", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        nomeEmpresa,
+                        cnpj,
+                        emailCorporativo,
+                        endereco,
+                        senha,
+                        confirmarSenha
+                    })
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    if (data.mensagem === "Email já cadastrado.") {
+                        erroEmail.textContent = data.mensagem;
+                    } else {
+                        alert(data.mensagem || "Erro ao cadastrar empresa");
+                    }
+                    return;
+                }
+
+
+                window.location.href = "login.html";
+
+            } catch (error) {
+                console.error(error);
+                alert("Erro ao conectar com o servidor");
+            }
         });
     }
 });

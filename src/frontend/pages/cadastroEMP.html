@@ -25,32 +25,34 @@
                 <form>
                     <div class="input-group">
                         <h5 class="txt">Nome da empresa</h5>
-                        <input type="text" class="input-field" placeholder="Nome da empresa" required>
+                        <input type="text" id="nomeEmpresa" class="input-field" placeholder="Nome da empresa" required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">CNPJ</h5>
-                        <input type="text" class="input-field" placeholder="00.000.000/0000-00" required>
+                        <input type="text" id="cnpj" class="input-field" placeholder="00.000.000/0000-00" required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Email corporativo</h5>
-                        <input type="email" class="input-field" placeholder="contato@empresa.com" required>
+                        <input type="email" id="emailCorporativo" class="input-field" placeholder="contato@empresa.com" required>
+                        <p id="error-message"></p>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Endereço</h5>
-                        <input type="text" class="input-field" placeholder="Rua, Cidade, Estado" required>
+                        <input type="text" id="endereco" class="input-field" placeholder="Rua, Cidade, Estado" required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Senha</h5>
-                        <input type="password" class="input-field" placeholder=".........." required>
+                        <input type="password" id="senha" class="input-field" placeholder=".........." required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Confirmar Senha</h5>
-                        <input type="password" class="input-field" placeholder=".........." required>
+                        <input type="password" id="confirmarSenha" class="input-field" placeholder=".........." required>
+                        <p id="error-message2"></p>
                     </div>
 
                     <button type="submit" class="button-entrar">Entrar</button>
@@ -72,7 +74,7 @@
     <script src="https://unpkg.com/swup@4"></script>
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script type="module" src="../scripts/animations.js"></script>
-    <script src="../scripts/cadastroEMP.js"></script>
+    <script src="/scripts/cadastroEMP.js"></script>
 </body>
 
 

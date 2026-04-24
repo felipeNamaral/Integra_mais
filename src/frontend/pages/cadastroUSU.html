@@ -25,30 +25,32 @@
                 <form>
                     <div class="input-group">
                         <h5 class="txt">Nome Completo</h5>
-                        <input type="text" class="input-field" placeholder="Seu nome completo" required>
+                        <input type="text" id="nome" class="input-field" placeholder="Seu nome completo" required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Email</h5>
-                        <input type="email" class="input-field" placeholder="Seu @email.com" required>
+                        <input type="email" id="email" class="input-field" placeholder="Seu @email.com" required>
+                        <p id="error-message"></p>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Data de Nascimento</h5>
-                        <input type="text" class="input-field" placeholder="dd/mm/aaaa" required>
+                        <input type="date" id="dataNascimento" class="input-field" placeholder="dd/mm/aaaa" required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Senha</h5>
-                        <input type="password" class="input-field" placeholder=".........." required>
+                        <input type="password" id="senha" class="input-field" placeholder=".........." required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt">Confirmar Senha</h5>
-                        <input type="password" class="input-field" placeholder=".........." required>
+                        <input type="password"  class="input-field" id="confirmarSenha" placeholder=".........." required>
+                        <p id="error-message2"></p>
                     </div>
-
-                    <button type="submit" class="button-entrar">Entrar</button>
+ 
+                    <button type="submit" class="button-entrar">Cadastrar</button>
                 </form>
 
                 <hr class="linha">
@@ -68,6 +70,6 @@
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script type="module" src="../scripts/animations.js"></script>
     
-    <script src="../scripts/cadastroUSU.js"></script>
+    <script src="/scripts/cadastroUSU.js"></script>
 </body>
 </html>
