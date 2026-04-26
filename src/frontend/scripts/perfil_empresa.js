@@ -1,11 +1,12 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
-let id;
+
 
 async function init() {
     await carregar();
     await carregaDados();
 }
+
 
 init();
 
@@ -16,21 +17,29 @@ async function carregar() {
                 Authorization: `Bearer ${token}`
             }
         });
-
+ 
         const data = await response.json();
 
         nome.textContent = data.nome;
-        id = data.id;
+        
+        
 
     } catch (error) {
         console.error('Erro ao carregar usuário:', error);
     }
 }
 
+
 async function carregaDados() {
     try {
+
+
         const response = await fetch(
-            `http://localhost:3000/api/empresa?id=${id}`
+            `http://localhost:3000/api/empresa`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
         );
 
         const data = await response.json();
@@ -38,7 +47,7 @@ async function carregaDados() {
         trocaDadosPerfilEmpresa(data);
 
     } catch (error) {
-        alert('Erro ao carregar dados da empresa. Tente novamente.' + id);
+        alert('Erro ao carregar dados da empresa. Tente novamente.\n' + error);
         console.error('Erro:', error);
     }
 }
@@ -46,11 +55,11 @@ async function carregaDados() {
 function trocaDadosPerfilEmpresa(data) {
 
     let nomeEmpresa = document.getElementById('nomeUsuario');
-    let cnpj = document.getElementById('cnpjUsuario');
-    let email = document.getElementById('emailUsuario');
-    let telefone = document.getElementById('telefoneUsuario');
-    let endereco = document.getElementById('enderecoUsuario');
-
+    let cnpj = document.getElementById('CnpjEmpresa');
+    let email = document.getElementById('emailEmpresa');
+    let telefone = document.getElementById('telefoneEmpresa');
+    let endereco = document.getElementById('enderecoEmpresa');
+    let descricao = document.getElementById('descricao')
     nomeEmpresa.textContent = data.nome;
     cnpj.textContent = data.cnpj;
     email.textContent = data.email;
@@ -61,4 +70,6 @@ function trocaDadosPerfilEmpresa(data) {
     } else {
         endereco.textContent = data.endereco;
     }
+
+    descricao.textContent = data.descricao;
 }

@@ -28,8 +28,8 @@ const getAllVagas = require('./backend/routes/getAllVagas');
 const getVagaById = require('./backend/routes/getVagaById');
 const verificaSeVFavorita = require('./backend/routes/verificaSeFavoritaRoutes');
 const verificaSeEnviado = require('./backend/routes/verificaSeEnviadoRoutes');
-
-
+const buscaVagaEmpresa = require('./backend/routes/buscaVagaEmpresaRoutes');
+const favoritarMarcar = require('./backend/routes/favoritarMarcarRoutes');
 
 //ROTAS
 app.use('/api', authRoutes);
@@ -46,6 +46,8 @@ app.use('/api', verificaSeEnviado);
 app.use('/api', cadastroRoutes);
 app.use('/api', perfilRoutes);
 app.use('/api', vagaRoutes);
+app.use('/api', buscaVagaEmpresa);
+app.use('/api', favoritarMarcar);
 
 
 

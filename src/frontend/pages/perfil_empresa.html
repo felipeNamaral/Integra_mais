@@ -16,69 +16,72 @@
 
 <body>
     <header class="header">
-            <a class="title" href="">Integra+</a>
+        <a class="title" href="menu_empresa.html">Integra+</a>
 
-            <a class="perfil" href="">
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
-                <span id="nome"></span>
-            </a>
+        <a class="perfil" href="">
+            <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
+            <span id="nome"></span>
+        </a>
 
-            <a class="sair" href="login.html">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
-            </a>
+        <a class="sair" href="login.html">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
     </header>
     <main>
         <div class="voltar-idioma">
-                <a href="" class="btn-voltar">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    <span>Voltar</span>
-                </a>
-                <button class="trocar-idioma">
-                    Trocar idioma
-                    <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
-                </button>
+
+            <a href="menu_empresa.html" class="btn-voltar">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span>Voltar</span>
+            </a>
+
         </div>
         <div class="perfil-container">
             <div class="perfil-header">
-                <div class="perfil-avatar" id="avatar">
-                    Foto de perfil
-                </div>
+
+                <img class="perfil-avatar" id="avatar" src="/assets/img/user.png">
+                </img>
             </div>
             <div class="perfil-identidade">
                 <div class="perfil-nome" id="nomeUsuario">
                     Empresa
                 </div>
-                <div class="perfil-cnpj" id="cnpjUsuario">
-                    CNPJ
-                </div>
+
             </div>
 
             <div class="perfil-conteudo">
                 <div class="perfil-topo">
                     <div>
                         <div class="perfil-info">
-                            <span id="emailUsuario">
+                            <span id="emailEmpresa">
                                 email
                             </span>
-                            <span id="telefoneUsuario">
+                            <span id="telefoneEmpresa">
                                 telefone
                             </span>
-                            <span id="enderecoUsuario">
+                            <span id="enderecoEmpresa">
                                 endereço
+                            </span>
+                            <span id="CnpjEmpresa">
+                                cnpj
                             </span>
                         </div>
                     </div>
-                    <button class="perfil-editar">
+
+                    <button class="perfil-editar" onclick="window.location.href='editar_empresa.html'">
                         Editar perfil
                     </button>
                 </div>
- 
+                <div class="descricao" id="descricao">
+                    descriçao
+                </div>
             </div>
         </div>
     </main>
     <script src="/scripts/animations.js"></script>
-    <script src="/scripts/token.js"></script>
+   
     <script src="/scripts/perfil_empresa.js"></script>
 </body>
+
 </html>

@@ -159,6 +159,17 @@ btnFavoritar.addEventListener('click', async () => {
         if (favoritada) {
             // Rota de remover favorito
 
+            await fetch("http://localhost:3000/api/favoritar", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    idVaga: id
+                })
+            });
+
 
             favoritada = false;
             btnFavoritar.classList.remove('ativo');
@@ -166,6 +177,17 @@ btnFavoritar.addEventListener('click', async () => {
 
         } else {
             // Rota de ADD aos favoritos 
+
+            await fetch("http://localhost:3000/api/favoritar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    idVaga: id
+                })
+            });
 
 
             favoritada = true;
@@ -181,37 +203,50 @@ btnFavoritar.addEventListener('click', async () => {
 });
 
 
-
-
-
-
 // Lógica para Marcar como Enviado
 btnEnviar.addEventListener('click', async () => {
     try {
         if (enviada) {
-            
+            // ❌ DESMARCAR
+
+            await fetch("http://localhost:3000/api/marcar", {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    idVaga: id
+                })
+            });
 
             enviada = false;
             btnEnviar.classList.remove('ativo');
-            showToast("Desmarcado como enviado ❌", "error");
+            showToast("Desmarcado ❌", "error");
 
         } else {
-            // 🟢 marcar como enviado
+            // 🟢 MARCAR
 
+            await fetch("http://localhost:3000/api/marcar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    idVaga: id
+                })
+            });
 
             enviada = true;
             btnEnviar.classList.add('ativo');
-            showToast("Marcado como enviado 🚀");
+            showToast("Marcado com sucesso 📌");
         }
 
     } catch (error) {
         alert(error);
         console.error(error);
     }
-
-
-
-
 });
 
 

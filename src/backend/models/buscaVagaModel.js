@@ -33,7 +33,4 @@ const getVagaById = async (id) => {
 };
 
 
-
-
-
 module.exports = { getVaga,getVagaById };

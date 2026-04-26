@@ -15,49 +15,50 @@
 
 <body>
     <header class="header">
-            <a class="title" href="">Integra+</a>
+        <a class="title" href="menu_empresa.html">Integra+</a>
 
-            <a class="perfil" href="">
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
-                <span id="nome"></span>
-            </a>
+        <a class="perfil" href="perfil_empresa.html">
+            <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+            <span id="nome"></span>
+        </a>
 
-            <a class="sair" href="login.html">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
-            </a>
+        <a class="sair" href="login.html">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
     </header>
     <main>
         <div class="voltar-idioma">
-                <a href="" class="btn-voltar">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    <span>Voltar</span>
-                </a>
-                <button class="trocar-idioma">
-                    Trocar idioma
-                    <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
-                </button>
+            <a href="gerenciar_vagas.html" class="btn-voltar">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span>Voltar</span>
+            </a>
+
         </div>
 
         <h1 class="titulo-secao">
-        Painel da Empresa
+            Painel da Empresa
         </h1>
-    <p class="subtitulo">Editar Vaga</p>
+        <p class="subtitulo">Editar Vaga</p>
 
-    <form class="form-vaga">
-        <input type="text" placeholder="Título">
-        <input type="text" placeholder="Endereço">
-        <input type="text" placeholder="Carga Horária">
-        <input type="text" placeholder="Modelo">
-        <input type="text" placeholder="Requisitos">
-        <input type="text" placeholder="Salário">
-        <textarea placeholder="Descrição"></textarea>
+        <form class="form-vaga">
+            <input id="titulo" type="text" placeholder="Título">
+            <input id="cidade" type="text" placeholder="Cidade">
+            <input id="carga" type="text" placeholder="Carga Horária">
+            <input id="modelo" type="text" placeholder="Modelo">
+            <input id="requisitos" type="text" placeholder="Requisitos">
+            <input id="salario" type="text" placeholder="Salário">
+            <textarea id="descricao" placeholder="Descrição"></textarea>
+            
 
-        <button type="button" class="btn-editar">Editar</button>
-    </form>
+            <button id="envia" type="button" class="btn-editar">Editar</button>
+        </form>
 
     </main>
     <script src="/scripts/animations.js"></script>
-    <script src="/scripts/token.js"></script>
+    <script src="/scripts/editarVaga.js"></script>
+    
+    
 </body>
+
 </html>

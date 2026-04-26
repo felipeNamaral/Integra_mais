@@ -9,9 +9,9 @@ exports.login = async (req, res) => {
     let tipo = "usuario";
 
     if (!user) {
-    user = await User.findByEmailEmpresa(email);
-    tipo = 'empresa';
-}
+        user = await User.findByEmailEmpresa(email);
+        tipo = 'empresa';
+    }
 
     if (!user) {
         return res.status(401).json({ message: 'Email ou senha inválidos' });
@@ -24,13 +24,24 @@ exports.login = async (req, res) => {
         return res.status(401).json({ message: 'Email ou senha inválidos' });
     }
 
-    const token = jwt.sign(
-        { id: user.ID_usuario, email: user.email, nome: user.nome  },
-        'segredo',
-        { expiresIn: '1h' }
-    );
+    let token;
 
-    return res.json({ token,tipo });
+    if (tipo === 'usuario') {
+        token = jwt.sign(
+            { id: user.ID_usuario, email: user.email, nome: user.nome, tipo },
+            'segredo',
+            { expiresIn: '1h' }
+        );
+    } else {
+        token = jwt.sign(
+            { id: user.ID_empresa, email: user.email, nome: user.nome, tipo },
+            'segredo',
+            { expiresIn: '1h' }
+        );
+    }
 
-}; 
+
+    return res.json({ token, tipo });
+
+};
 

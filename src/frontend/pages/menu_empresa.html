@@ -17,8 +17,8 @@
     <header class="header">
             <a class="title" href="">Integra+</a>
 
-            <a class="perfil" href="">
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+            <a class="perfil" href="perfil_empresa.html">
+                <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
                 <span id="nome"></span>
             </a>
 
@@ -29,24 +29,18 @@
     </header>
 
     <main class="menu-container">
-    <div class="voltar-idioma">
-            <button class="trocar-idioma">
-                Trocar idioma
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
-            </button>
-     </div>
      <div class="menu-topo">
         <h1>Bem-Vindo, <span id="nomeUsuario"></span>!</h1>
         <p>Painel de gestão</p>
     </div>
 
      <div class="menu-cards">
-        <div class="card">
+        <div class="card" onclick="window.location.href='/pages/vagas_empresa.html'">
             <span class="material-symbols-outlined icone">work</span>
             <h2>Vagas</h2>
             <p>Explore vagas ativas</p>
         </div>
-        <div class="card">
+        <div class="card" onclick="window.location.href='/pages/gerenciar_vagas.html'">
             <span class="material-symbols-outlined icone">description</span>
             <h2>Gerenciar vagas</h2>
             <p>Cadastre e gerencie suas vagas</p>

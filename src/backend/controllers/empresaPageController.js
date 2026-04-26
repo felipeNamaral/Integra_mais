@@ -2,8 +2,6 @@ const empresaPageModel = require("../models/empresaPageModel");
 
 const getEmpresaPage = async (req, res) => {
     try{
-        
-
         const id = req.user.id;
         const empresa = await empresaPageModel.getEmpresa(id);
         res.json(empresa);

@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (data.mensagem === "Email já cadastrado.") {
                         erroEmail.textContent = data.mensagem;
                     } else {
-                        alert(data.mensagem || "Erro ao cadastrar empresa");
+                        alert(data.mensagem || "Erro ao cadastrar empresa ");
                     }
                     return;
                 }

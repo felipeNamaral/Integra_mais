@@ -16,7 +16,7 @@ const criarUsuario = async (nome, email, dataNascimento, senha) => {
 const criarEmpresa = async (nomeEmpresa, cnpj, emailCorporativo, endereco, senha) => {
     const [result] = await db.promise().query(
         `INSERT INTO empresa 
-        (nome_empresa, cnpj, email, endereco, senha)
+        (nome, cnpj, email, endereco, senha)
         VALUES (?, ?, ?, ?, ?)`,
         [nomeEmpresa, cnpj, emailCorporativo, endereco, senha]
     );

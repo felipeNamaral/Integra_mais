@@ -6,33 +6,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--cor-fundo);
+    overflow-x: hidden;
 }
 
-.title {
-    font-family: var(--fonte-principal);
-    font-size: 1.8rem;
-    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: none;
-}
-
-.perfil {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
-.sair {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
 
 .perfil-container {
     width: 90%;
@@ -43,6 +19,14 @@ body {
     box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.05);
     overflow: hidden;
     font-family: var(--fonte-principal);
+}
+
+
+
+.voltar-idioma{
+    margin-top: 1rem;
+    margin-left:1rem ;
+    width: 90%;
 }
 
 .perfil-header {
@@ -77,26 +61,19 @@ body {
 }
 
 .perfil-identidade {
-    margin-top: 1rem;
-    margin-left: 11rem;
-    text-align: left;
+    margin-top: 3rem;
+
 }
 
 .perfil-nome {
     font-size: 2rem;
-    font-weight: bold;
+    margin-left: 3rem;
     color: #000;
-    margin-bottom: -5rem;
-}
-
-.perfil-cnpj {
-    font-size: 0.8rem;
-    color: #6B7280;
-    font-weight: normal;
+    
 }
 
 .perfil-conteudo {
-    padding: 4rem 2rem 10rem 2rem;
+    padding: 0rem 2rem 10rem 2rem;
 }
 
 .perfil-topo {
@@ -113,6 +90,7 @@ body {
     color: #6B7280;
     font-size: 0.9rem;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .perfil-editar {

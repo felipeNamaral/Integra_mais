@@ -1,9 +1,9 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
-    color: #1c1e21;
+    padding: 0;
+    background-color: var(--cor-fundo);
 }
+
 
 .header-doc {
     background: white;
@@ -27,6 +27,33 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 0 20px;
+}
+
+
+.voltar-idioma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.5rem;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+}
+
+.trocar-idioma {
+    width: auto;
+    background-color: gray;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
 }
 
 .banner-azul {
@@ -137,4 +164,86 @@ summary {
 .link-item:hover {
     border-color: #2563eb;
     background-color: #f8fafc;
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        padding: 2rem;
+    }
+
+    .header {
+        padding: 1.5rem 2rem;
+    }
+
+    .trocar-idioma {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .saude span {
+        font-size: 6rem;
+    }
+
+    .saude h2 {
+        font-size: 2.2rem;
+    }
+
+    .accordion-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .map {
+        height: 35rem;
+    }
+
+    .pesquisa{
+        flex-direction: row;
+    }
+
+
+}
+
+
+/* Telas grandes (desktop) */
+@media (min-width: 1024px) {
+
+    .container {
+        max-width: 1200px;
+    }
+
+    .header {
+        padding: 2rem 3rem;
+    }
+
+    .trocar-idioma {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .saude {
+        padding: 3rem;
+    }
+
+    .descricao-saude,
+    .informacao-saude,
+    .mapa-saude {
+        padding: 3rem;
+
+    }
+
+    .map {
+        height: 40rem;
+    }
+
+        .pesquisa{
+        flex-direction: row;
+    }
+
 }
