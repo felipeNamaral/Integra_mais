@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/perfil_empresa.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <title>Perfil Empresa</title>
+</head>
+
+<body>
+    <header class="header">
+        <a class="title" href="menu_empresa.html">Integra+</a>
+
+        <a class="perfil" href="">
+            <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
+            <span id="nome"></span>
+        </a>
+
+        <a class="sair" href="login.html">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
+    </header>
+    <main>
+        <div class="voltar-idioma">
+
+            <a href="menu_empresa.html" class="btn-voltar">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span>Voltar</span>
+            </a>
+
+        </div>
+        <div class="perfil-container">
+            <div class="perfil-header">
+
+                <img class="perfil-avatar" id="avatar" src="/assets/img/user.png">
+                </img>
+            </div>
+            <div class="perfil-identidade">
+                <div class="perfil-nome" id="nomeUsuario">
+                    Empresa
+                </div>
+
+            </div>
+
+            <div class="perfil-conteudo">
+                <div class="perfil-topo">
+                    <div>
+                        <div class="perfil-info">
+                            <span id="emailEmpresa">
+                                email
+                            </span>
+                            <span id="telefoneEmpresa">
+                                telefone
+                            </span>
+                            <span id="enderecoEmpresa">
+                                endereço
+                            </span>
+                            <span id="CnpjEmpresa">
+                                cnpj
+                            </span>
+                        </div>
+                    </div>
+
+                    <button class="perfil-editar" onclick="window.location.href='editar_empresa.html'">
+                        Editar perfil
+                    </button>
+                </div>
+                <div class="descricao" id="descricao">
+                    descriçao
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/scripts/animations.js"></script>
+   
+    <script src="/scripts/perfil_empresa.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../styles/variables.css">
+   <link rel="stylesheet" href="../styles/main.css">
+   <link rel="stylesheet" href="../styles/components.css">
+   <link rel="stylesheet" href="../styles/cadastroEMP.css">
+    <title>Integra+ | Cadastro Empresa</title>
+</head>
+
+<body class="auth">
+    <main id="swup" class="transition-fade">
+        <section class="container">
+            <a href="../index.html" class="btn-voltar">
+                <span>&larr;Voltar</span>
+            </a>
+
+            <section class="container-login">
+                <h1>Integra +</h1>
+                <h2>Criar conta como Empresa</h2>
+
+                <form>
+                    <div class="input-group">
+                        <h5 class="txt">Nome da empresa</h5>
+                        <input type="text" id="nomeEmpresa" class="input-field" placeholder="Nome da empresa" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">CNPJ</h5>
+                        <input type="text" id="cnpj" class="input-field" placeholder="00.000.000/0000-00" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Email corporativo</h5>
+                        <input type="email" id="emailCorporativo" class="input-field" placeholder="contato@empresa.com" required>
+                        <p id="error-message"></p>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Endereço</h5>
+                        <input type="text" id="endereco" class="input-field" placeholder="Rua, Cidade, Estado" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Senha</h5>
+                        <input type="password" id="senha" class="input-field" placeholder=".........." required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Confirmar Senha</h5>
+                        <input type="password" id="confirmarSenha" class="input-field" placeholder=".........." required>
+                        <p id="error-message2"></p>
+                    </div>
+
+                    <button type="submit" class="button-entrar">Entrar</button>
+                </form>
+
+                <hr class="linha">
+                
+                <h2>Já tem uma conta?</h2>
+                <a class="button-rec-senha" href="login.html">Fazer Login</a>
+            </section>
+
+            <button class="trocar-idioma">
+                Trocar idioma
+                <img class="bandeira-idioma" src="../assets/img/bandeira.png" alt="Bandeira">
+            </button>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+    <script type="module" src="/scripts/animations.js"></script>
+    <script src="/scripts/cadastroEMP.js"></script>
+</body>
+
+
+
+</html>

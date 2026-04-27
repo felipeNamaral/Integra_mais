@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/health.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <title>Integra+</title>
+</head>
+
+<body>
+    <main id="swup" class="transition-fade">
+        <header class="header">
+            <a class="title" href="menu_usuario.html">Integra+</a>
+
+            <a class="perfil" href="">
+                <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
+                <span id="nome"></span>
+            </a>
+
+            <a class="sair" href="login.html">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
+        </header>
+
+        <section class="container">
+            <div class="voltar-idioma">
+                <a href="menu_usuario.html" class="btn-voltar">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <span>Voltar</span>
+                </a>
+                <button class="trocar-idioma">
+                    Trocar idioma
+                    <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+                </button>
+            </div>
+
+            <section class="saude">
+                <span class="material-symbols-outlined">
+                    heart_plus
+                </span>
+                <h2>Saúde para Imigrantes</h2>
+                <h3>Conheça seus direitos e o Sistema Único de Saúde (SUS) do Brasil</h3>
+            </section>
+
+
+            <section class="descricao-saude">
+                <h2>Sistema Único de Saúde (SUS)</h2>
+
+                <h3>O SUS é o sistema público de saúde do Brasil, que oferece atendimento <b>GRATUITO </b> e
+                    <b>UNIVERSAL</b> a todos
+                    os cidadãos e imigrantes, independentemente de sua situação migratória ou nacionalidade.<br><br>Você
+                    tem
+                    direito a consultas, exames, internações, cirurgias, vacinas, medicamentos e muito mais, tudo sem
+                    custo!
+                </h3>
+
+                <div class="verde-descrição">
+                    <p>✅ Não é necessário ter documentos brasileiros para ser atendido em caso de emergência!</p>
+                </div>
+
+            </section>
+
+
+            <section class="informacao-saude">
+                <h2>Seus Direitos na Saúde</h2>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span style="color: #2563EB;" class="material-symbols-outlined">
+                            heart_check
+                        </span>
+                        <h2>Direitos Fundamentais do Imigrante</h2>
+                    </button>
+                    <div class="accordion-content">
+
+                        <h3>Todo imigrante tem direito a:</h3>
+                        <ul>
+                            <li><b>Atendimento de urgência e emergência</b> - sem necessidade de documentos</li>
+                            <li><b>Vacinação gratuita</b> - para todas as idades, incluindo COVID-19</li>
+                            <li><b>Pré-natal e parto</b> - assistência completa para gestantes</li>
+                            <li><b>Exames laboratoriais e de imagem</b> - gratuitos pelo SUS</li>
+                            <li><b>Internações e cirurgias</b> - quando necessário</li>
+                            <li><b>Medicamentos</b> - distribuição gratuita em farmácias populares</li>
+                            <li><b>Tratamento de doenças crônicas</b> - diabetes, hipertensão, HIV, etc.</li>
+                            <li><b>Saúde mental</b> - atendimento psicológico e psiquiátrico.</li>
+                            <li><b>Odontologia</b>- tratamento dentário básico</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span style="color: #2563EB;" class="material-symbols-outlined">
+                            location_on
+                        </span>
+                        <h2>Como Acessar os Serviços de Saúde</h2>
+                    </button>
+                    <div class="accordion-content">
+
+                        <h3>1. Cartão SUS (Cartão Nacional de Saúde):</h3>
+                        <h4>Para facilitar o atendimento, solicite seu Cartão SUS em qualquer Unidade Básica de Saúde
+                            (UBS):</h4>
+                        <ul>
+                            <li>Procure a UBS mais próxima da sua casa</li>
+                            <li>Leve um documento com foto (passaporte, RNE/CRNM) ou declare seus dados</li>
+                            <li>Leve comprovante de residência (se tiver)</li>
+                            <li>O cartão é emitido na hora e é gratuito</li>
+                        </ul>
+                        <h3>2. Tipos de unidades de saúde:</h3>
+                        <ul class="lista_unidades">
+                            <li>
+                                <strong>UBS - Unidade Básica de Saúde (Posto de Saúde)</strong><br>
+                                Para consultas de rotina, vacinas, acompanhamento de doenças crônicas, pré-natal e
+                                encaminhamentos para especialistas.
+                            </li>
+
+                            <li>
+                                <strong>UPA - Unidade de Pronto Atendimento</strong><br>
+                                Para urgências e emergências de média complexidade. Aberto 24 horas.
+                            </li>
+
+                            <li>
+                                <strong>AMA - Assistência Médica Ambulatorial</strong><br>
+                                Para casos não urgentes, mas que precisam de atendimento rápido.
+                            </li>
+
+                            <li>
+                                <strong>Hospital / Pronto Socorro</strong><br>
+                                Para emergências graves. Ligue 192 (SAMU) em casos críticos.
+                            </li>
+                        </ul>
+                        <h3>3. Para agendar consultas:</h3>
+                        <ul>
+                            <li>Dirija-se à UBS mais próxima</li>
+                            <li>Fale com o atendimento e solicite agendamento</li>
+                            <li>Leve comprovante de residência (se tiver)</li>
+                            <li>Algumas cidades permitem agendamento online ou por telefone</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span style="color: red;" class="material-symbols-outlined">
+                            heart_check
+                        </span>
+                        <h2>Direitos das Gestantes Imigrantes</h2>
+                    </button>
+                    <div class="accordion-content">
+
+                        <h3>Você tem direito a:</h3>
+                        <ul>
+                            <li><b>Pré-natal completo</b> - no mínimo 6 consultas durante a gravidez</li>
+                            <li><b>Exames gratuitos</b> - ultrassom, exames de sangue, etc.</li>
+                            <li><b>Parto gratuito</b> - em hospital público, com direito a acompanhante</li>
+                            <li><b>Medicamentos e vitaminas</b> - ácido fólico, sulfato ferroso, etc.</li>
+                            <li><b>Vacinas</b> - vacinas importantes para gestantes</li>
+                            <li><b>Acompanhamento pós-parto</b> - para mãe e bebê</li>
+                            <li><b>Licença-maternidade</b> - se trabalhar com carteira assinada (120 dias)</li>
+                        </ul>
+
+                        <div class="container_gestante">
+                            <p>
+                                <strong>💗 Bebê nascido no Brasil:</strong><br>
+                                Seu bebê nascido no Brasil é automaticamente BRASILEIRO, independentemente da sua
+                                nacionalidade.
+                                Registre o nascimento no cartório em até 15 dias (gratuito).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span style="color:#00A859;" class="material-symbols-outlined">
+                            syringe
+                        </span>
+                        <h2>Vacinação Gratuita</h2>
+                    </button>
+                    <div class="accordion-content">
+
+                        <h3>Vacinas disponíveis gratuitamente:</h3>
+                        <ul>
+                            <li><b>COVID-19 - para todas as idades</b></li>
+                            <li><b>Gripe (Influenza) - campanha anual</b></li>
+                            <li><b>Vacinas infantis - calendário completo de vacinação</b></li>
+                            <li><b>Hepatite A e B</b></li>
+                            <li><b>Febre Amarela - importante em algumas regiões do Brasil</b></li>
+                            <li><b>Tríplice viral (Sarampo, Caxumba, Rubéola)</b></li>
+                            <li><b>HPV - para meninas e meninos até 14 anos</b></li>
+                        </ul>
+
+                        <h3>Onde vacinar:</h3>
+                        <h4>Procure qualquer UBS (Posto de Saúde) com a carteira de vacinação (se tiver). Se não tiver
+                            carteira, uma nova será fornecida gratuitamente.</h4>
+                        <div class="container_vacina">
+                            <p>
+                                <strong>⚠️ Importante:</strong><br>
+                                Crianças precisam estar com a vacinação em dia para matricular na escola. Se você tem
+                                filhos, leve-os para atualizar as vacinas o quanto antes.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span class="material-symbols-outlined">
+                            pill
+                        </span>
+                        <h2>Medicamentos Gratuitos</h2>
+                    </button>
+                    <div class="accordion-content">
+
+                        <h3>Como conseguir medicamentos gratuitos:</h3>
+                        <ol>
+                            <li>
+                                <strong>Farmácia da UBS:</strong><br>
+                                Muitas UBS têm farmácia que distribui medicamentos básicos gratuitamente. É necessário
+                                apresentar receita médica do SUS.
+                            </li>
+
+                            <li>
+                                <strong>Farmácia Popular:</strong><br>
+                                Programa do governo que oferece medicamentos gratuitos ou com desconto de até 90%.
+                                Medicamentos para diabetes, hipertensão, asma e anticoncepcionais são 100% gratuitos.
+                            </li>
+
+                            <li>
+                                <strong>Medicamentos de Alto Custo:</strong><br>
+                                Medicamentos caros para doenças graves são fornecidos gratuitamente pelo SUS. Consulte
+                                seu médico sobre como solicitar.
+                            </li>
+                        </ol>
+                        <h3>Documentos necessários:</h3>
+                        <ul>
+                            <li>Receita médica (pode ser do SUS ou particular)</li>
+                            <li>Documento com foto (RG, RNE, passaporte ou CPF)</li>
+                            <li>Para Farmácia Popular: também é necessário CPF</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span style="color:#2563EB" class="material-symbols-outlined">
+                            call
+                        </span>
+                        <h2>Números de emergência</h2>
+                    </button>
+                    <div class="accordion-content">
+
+                        <h3>Ligue imediatamente em caso de emergência:</h3>
+                        <div class="emergency-grid">
+
+                            <div class="card card-red">
+                                <span class="material-symbols-outlined">call</span>
+                                <div>
+                                    <h2>192</h2>
+                                    <h4>SAMU</h4>
+                                    <p>Emergências médicas graves - ambulância</p>
+                                </div>
+                            </div>
+
+                            <div class="card card-orange">
+                                <span class="material-symbols-outlined">call</span>
+                                <div>
+                                    <h2>190</h2>
+                                    <h4>Polícia Militar</h4>
+                                    <p>Emergências policiais e segurança</p>
+                                </div>
+                            </div>
+
+                            <div class="card card-blue">
+                                <span class="material-symbols-outlined">call</span>
+                                <div>
+                                    <h2>188</h2>
+                                    <h4>CVV</h4>
+                                    <p>Apoio emocional e prevenção ao suicídio</p>
+                                </div>
+                            </div>
+
+                            <div class="card card-purple">
+                                <span class="material-symbols-outlined">call</span>
+                                <div>
+                                    <h2>180</h2>
+                                    <h4>Mulher</h4>
+                                    <p>Central de Atendimento à Mulher</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="alert-box">
+                            🚨 <strong>Todas as ligações são GRATUITAS!</strong><br>
+                            Você pode ligar de qualquer telefone fixo ou celular, mesmo sem créditos.
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+            <section class="mapa-saude">
+
+                <div class="container-title">
+                    <span class="material-symbols-outlined">
+                        location_on
+                    </span>
+                    <h2>Encontre Unidades de Saúde Perto de Você</h2>
+                </div>
+
+
+                <div class="pesquisa">
+                    <input type="text" placeholder="Busque por cidade" id="cidade-input">
+                    <div class="botoes">
+
+                        <input type="radio" name="filtro" id="todos" checked>
+                        <button class="botao" onclick="document.getElementById('todos').checked = true;aplicarFiltro()">Todos</button>
+
+                        <input type="radio" name="filtro" id="ubs">
+                        <button class="botao" onclick="document.getElementById('ubs').checked = true;aplicarFiltro()">UBS</button>
+
+                        <input type="radio" name="filtro" id="upa">
+                        <button class="botao" onclick="document.getElementById('upa').checked = true;aplicarFiltro()">UPA</button>
+
+                        <input type="radio" name="filtro" id="hospital">
+                        <button class="botao"
+                            onclick="document.getElementById('hospital').checked = true;aplicarFiltro()">HOSPITAL</button>
+
+                    </div>
+                </div>  
+
+                <div class="map" id="map"></div>
+
+                <div id="lista-unidades"></div>
+
+            </section>
+
+
+
+            <section class="mapa-saude">
+                <h2>💡 Dicas Importantes</h2>
+
+                <div class="dica-box azul">
+                    <h3>Sempre tenha em mãos:</h3>
+                    <ul>
+                        <li>Cartão SUS (se tiver)</li>
+                        <li>Documento de identificação (passaporte, RNE, RG)</li>
+                        <li>Carteira de vacinação (se tiver)</li>
+                        <li>Lista de medicamentos que você usa regularmente</li>
+                    </ul>
+                </div>
+
+                <div class="dica-box verde">
+                    <h3>Lembre-se:</h3>
+                    <ul>
+                        <li>O atendimento no SUS é GRATUITO – não pague para ser atendido</li>
+                        <li>Você tem direito ao mesmo tratamento que os brasileiros</li>
+                        <li>Em emergências, procure a UPA ou hospital mais próximo imediatamente</li>
+                        <li>Não deixe de buscar atendimento por medo ou vergonha</li>
+                    </ul>
+                </div>
+
+                <div class="dica-box roxo">
+                    <h3>Para denúncias de discriminação:</h3>
+                    <p>Se você sofrer discriminação ou for impedido de receber atendimento, procure:</p>
+                    <ul>
+                        <li>Defensoria Pública da União (DPU)</li>
+                        <li>Ministério Público</li>
+                        <li>Ouvidoria do SUS: ligue 136</li>
+                    </ul>
+                </div>
+
+            </section>
+
+        </section>
+
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/swup@4"></script>
+        <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+        <script type="module" src="scripts/animations.js"></script>
+        <script src="/scripts/health.js"></script>
+    </main>
+</body>
+
+</html>

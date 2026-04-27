@@ -3,6 +3,7 @@
 :root {
   --cor-principal: #2563EB;
   --cor-secundaria: #153885;
+  --cor-fundo: rgba(217, 217, 217, 1);
   --fonte-principal: 'Abel', sans-serif;
   --espacamento-padrao: 16px;
 }

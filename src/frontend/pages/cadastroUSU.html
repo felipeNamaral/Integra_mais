@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/cadastroEMP.css">
+    <title>Integra+ | Cadastro de Usuário</title>
+</head>
+
+<body class="auth">
+    <main id="swup" class="transition-fade">
+        <section class="container">
+            <a href="../index.html" class="btn-voltar">
+                <span>&larr;Voltar</span>
+            </a>
+
+            <section class="container-login">
+                <h1>Integra +</h1>
+                <h2>Criar conta como Usuário</h2>
+
+                <form>
+                    <div class="input-group">
+                        <h5 class="txt">Nome Completo</h5>
+                        <input type="text" id="nome" class="input-field" placeholder="Seu nome completo" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Email</h5>
+                        <input type="email" id="email" class="input-field" placeholder="Seu @email.com" required>
+                        <p id="error-message"></p>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Data de Nascimento</h5>
+                        <input type="date" id="dataNascimento" class="input-field" placeholder="dd/mm/aaaa" required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Senha</h5>
+                        <input type="password" id="senha" class="input-field" placeholder=".........." required>
+                    </div>
+
+                    <div class="input-group">
+                        <h5 class="txt">Confirmar Senha</h5>
+                        <input type="password"  class="input-field" id="confirmarSenha" placeholder=".........." required>
+                        <p id="error-message2"></p>
+                    </div>
+ 
+                    <button type="submit" class="button-entrar">Cadastrar</button>
+                </form>
+
+                <hr class="linha">
+                
+                <h2>Já tem uma conta?</h2>
+                <a class="button-rec-senha" href="login.html">Fazer Login</a>
+            </section>
+
+            <button class="trocar-idioma">
+                Trocar idioma
+                <img class="bandeira-idioma" src="../assets/img/bandeira.png" alt="Bandeira">
+            </button>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+    <script type="module" src="/scripts/animations.js"></script>
+    
+    <script src="/scripts/cadastroUSU.js"></script>
+</body>
+</html>

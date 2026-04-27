@@ -1,0 +1,249 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-fundo);
+}
+
+
+.header-doc {
+    background: white;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; color: #2b63d9; text-decoration: none; }
+
+.bandeira-pequena {
+    width: 30px;
+    height: auto;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+
+.voltar-idioma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.5rem;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+}
+
+.trocar-idioma {
+    width: auto;
+    background-color: gray;
+    color: white;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+}
+
+.banner-azul {
+    background: linear-gradient(90deg, #2b63d9, #1e40af);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+details {
+    background: white;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+summary {
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #000000; 
+}
+
+.secao-obter h4 {
+    color: #000000 !important;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.alerta-caixa {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 5px solid;
+}
+.verde { background: #dcfce7; border-color: #22c55e; color: #166534; }
+.vermelho { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
+.azul { background: #eff6ff; border-color: #2563eb; color: #1e40af; }
+
+.alerta-amarelo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fffbeb;
+    border-left: 5px solid #f59e0b;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.alerta-dica {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.grid-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.icon-box-blue {
+    width: 45px;
+    height: 45px;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.link-item:hover {
+    border-color: #2563eb;
+    background-color: #f8fafc;
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        padding: 2rem;
+    }
+
+    .header {
+        padding: 1.5rem 2rem;
+    }
+
+    .trocar-idioma {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .saude span {
+        font-size: 6rem;
+    }
+
+    .saude h2 {
+        font-size: 2.2rem;
+    }
+
+    .accordion-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .map {
+        height: 35rem;
+    }
+
+    .pesquisa{
+        flex-direction: row;
+    }
+
+
+}
+
+
+/* Telas grandes (desktop) */
+@media (min-width: 1024px) {
+
+    .container {
+        max-width: 1200px;
+    }
+
+    .header {
+        padding: 2rem 3rem;
+    }
+
+    .trocar-idioma {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 3.5rem;
+    }
+
+    .saude {
+        padding: 3rem;
+    }
+
+    .descricao-saude,
+    .informacao-saude,
+    .mapa-saude {
+        padding: 3rem;
+
+    }
+
+    .map {
+        height: 40rem;
+    }
+
+        .pesquisa{
+        flex-direction: row;
+    }
+
+}
