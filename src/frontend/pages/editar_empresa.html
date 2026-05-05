@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/editar_empresa.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+    <header class="header">
+            <a class="title" href="menu_empresa.html">Integra+</a>
+
+            <a class="perfil" href="perfil_empresa.html">
+                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+                <span id="nome"></span>
+            </a>
+
+            <a class="sair" href="login.html">
+                <span class="material-symbols-outlined">logout</span>
+                <span>Sair</span>
+            </a>
+    </header>
+    <main>
+        <div class="voltar-idioma">
+                <a href="perfil_empresa.html" class="btn-voltar">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    <span>Voltar</span>
+                </a>
+
+        </div>
+        <div class="perfil-card">
+            <div class="perfil-topo"></div>
+            <div class="perfil-info">
+            <button class="avatar">
+                +
+            </button>
+
+            <div class="nome-editar">
+                <h2>Empresa</h2>
+                <button class="btn-editar">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+            </div>
+
+            <div class="nome-editar">
+                <span>CNPJ:</span>
+                <span id="cnpj"></span>
+                <button class="btn-editar">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+            </div>
+
+            <div class="info-linha">
+                <div class="info-item">
+                    <span class="material-symbols-outlined">mail</span>
+                    <span>aaa@gmail.com</span>
+                    <button class="btn-editar">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                </div>
+
+            <div class="info-item">
+                <span class="material-symbols-outlined">phone</span>
+                <span>(19)99999-9999</span>
+                <button class="btn-editar">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+            </div>
+
+            <div class="info-item">
+                <span class="material-symbols-outlined">location_on</span>
+                <span>Rua Exemplo, 123 - Centro</span>
+                <button class="btn-editar">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+            </div>
+
+        </div>
+
+    <form class="form-perfil">
+
+        <label>Descrição:</label>
+        <textarea rows="4"></textarea>
+        <button class="btn-concluir">Concluir</button>
+    </form>
+</div>
+
+</main>
+    <script src="/scripts/animations.js"></script>
+</body>
+</html>

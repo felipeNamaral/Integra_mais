@@ -24,23 +24,23 @@
                 <h1>Integra +</h1>
                 <h2>Entre na sua conta</h2>
 
-                <form>
+                <form id="loginForm">
                     <h5 class="txt">Email</h5>
-                    <input type="email" class="input-field" placeholder="Seu@email.com" required>
+                    <input id="email" type="email" class="input-field" placeholder="Seu@email.com" required>
 
                     <h5 class="txt">Senha</h5>
-                    <input type="password" class="input-field" placeholder="Digite sua senha" required>
-
+                    <input id="password" type="password" class="input-field" placeholder="Digite sua senha" required>
+                    <p id="error-message"></p>
                     <button type="submit" class="button-entrar">Entrar</button>
                 </form>
 
                 <hr class="linha">
-                <a class="button-rec-senha" href="">Esqueceu sua senha?</a>
+                <a class="button-rec-senha" href="recuperar.html">Esqueceu sua senha?</a>
 
                 <h2>Ainda não tem uma conta?</h2>
 
-                <button class="button-cadastro-ususario">Criar conta como Usuário</button>
-                <button class="button-cadastro-empresa">Criar conta como empresa</button>
+                <button class="button-cadastro-ususario" onclick="window.location.href='/pages/cadastroUSU.html'">Criar conta como Usuário</button>
+                <button class="button-cadastro-empresa" onclick="window.location.href='/pages/cadastroEMP.html'">Criar conta como empresa</button>
             </section>
             <button class="trocar-idioma">
                 Trocar idioma
@@ -53,6 +53,7 @@
     <script src="https://unpkg.com/swup@4"></script>
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script type="module" src="../scripts/animations.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 
 </html>

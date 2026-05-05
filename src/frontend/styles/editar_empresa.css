@@ -1,0 +1,236 @@
+:root {
+    --cor-fundo: rgba(217,217,217,1);
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    font-family: var(--fonte-principal);
+}
+
+.title {
+    font-family: var(--fonte-principal);
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.sair {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: black;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    background: white;
+    gap: 0.5rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.voltar-idioma {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-voltar {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+}
+
+.trocar-idioma {
+    width: auto;
+    background-color: gray;
+    color: white;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+
+.perfil-card {
+    background: #eeeeee;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    overflow: hidden;
+}
+
+.perfil-topo {
+    height: 90px;
+    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
+}
+
+.perfil-info {
+    padding: 1rem;
+    position: relative;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--cor-principal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+
+    position: absolute;
+    top: -60px;
+    left: 1rem;
+
+    border: none; 
+    outline: none;         
+    cursor: pointer;
+}
+
+.nome-editar {
+    margin-left: 90px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nome-editar h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.info-linha {
+    margin-left: 90px;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: #6B7280;
+}
+
+.form-perfil {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.form-perfil label {
+    font-size: 1rem;
+}
+
+.form-perfil input,
+.form-perfil textarea {
+    padding: 0.9rem;
+    border-radius: 0.7rem;
+    border: none;
+    background: #d9d9d9;
+    font-size: 1rem;
+}
+
+.form-perfil textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+.btn-concluir {
+    margin-top: 1rem;
+    align-self: flex-end;
+    background: var(--cor-principal);
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.7rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-editar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.btn-editar .material-symbols-outlined {
+    font-size: 1rem;
+    color: var(--cor-principal);
+}
+
+@media (min-width: 768px) {
+
+    .perfil-card {
+        max-width: 650px;
+        margin: 2rem auto;
+    }
+
+    .perfil-topo {
+        height: 110px;
+    }
+
+    .avatar {
+        width: 110px;
+        height: 110px;
+        top: -80px;
+    }
+
+    .nome-editar h2 {
+        font-size: 1.6rem;
+    }
+
+    .info-linha {
+        font-size: 1.1rem;
+    }
+
+    .form-perfil input,
+    .form-perfil textarea {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .perfil-card {
+        max-width: 750px;
+    }
+
+    .nome-editar h2 {
+        font-size: 1.8rem;
+    }
+}

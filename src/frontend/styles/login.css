@@ -101,7 +101,11 @@ form {
     align-self: center;
 }
 
-
+#error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
 
 @media (min-width: 600px) {
 

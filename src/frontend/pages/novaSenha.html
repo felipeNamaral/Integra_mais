@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/recuperar.css">
+    <title>Integra+ | Definir Nova Senha</title>
+</head>
+<body class="auth">
+    <main id="swup" class="transition-fade">
+        <section class="container-central">
+            <a href="recuperar.html" class="btn-voltar">
+                <span>&larr; Voltar</span>
+            </a>
+
+            <div class="card-branco">
+                <h1 class="logo-azul">Integra +</h1>
+                <p class="status-tela">Recuperar senha</p>
+
+                <form id="formNovaSenha">
+                    <div class="field-group">
+                        <label>Nova senha</label>
+                        <input type="password" class="input-gray" placeholder=".........." required>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Confirmar nova senha</label>
+                        <input type="password" class="input-gray" placeholder=".........." required>
+                    </div>
+
+                    <button type="submit" class="button-principal">Salvar</button>
+                </form>
+            </div>
+
+            <button class="idioma-fixo">
+                Trocar idioma <img src="../assets/img/bandeira.png" class="bandeira-pequena">
+            </button>
+        </section>
+    </main>
+    <script src="../scripts/novaSenha.js"></script>
+</body>
+</html>
