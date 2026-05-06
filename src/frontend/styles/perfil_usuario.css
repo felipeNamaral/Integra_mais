@@ -1,39 +1,3 @@
-:root {
-    --cor-fundo: rgba(217, 217, 217, 1);
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--cor-fundo);
-}
-
-.title {
-    font-family: var(--fonte-principal);
-    font-size: 1.8rem;
-    background: linear-gradient(90deg, var(--cor-principal), var(--cor-secundaria));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: none;
-}
-
-.perfil {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
-.sair {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    color: black;
-}
-
 .perfil-container {
     width: 90%;
     max-width: 56rem;
@@ -153,35 +117,6 @@ body {
     background: var(--cor-secundaria);
 }
 
-.voltar-idioma {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 0.5rem;
-}
-
-.btn-voltar {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-    color: var(--cor-principal);
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-.trocar-idioma {
-    width: auto;
-    background-color: gray;
-    color: white;
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-}
-
-
-
 
 @media (min-width: 768px) {
 
@@ -189,13 +124,6 @@ body {
         height: 9rem;
     }
 
-    .header {
-        padding: 2rem 3rem;
-    }
-
-    .title {
-        font-size: 3.5rem;
-    }
 
     .perfil-avatar {
         width: 6.5rem;

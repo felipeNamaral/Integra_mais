@@ -10,6 +10,7 @@ async function getUnidades(lat, lng) {
       longitude,
       nome_municipio,
       telefone,
+      endereco,
 
       (6371 *
         ACOS(
@@ -44,7 +45,8 @@ async function getUnidadesPorCidade(cidade) {
       latitude,
       longitude,
       nome_municipio,
-      telefone
+      telefone,
+      endereco
     FROM unidade_de_saude
 
     WHERE nome_municipio = ?

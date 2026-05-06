@@ -1,7 +1,3 @@
-:root {
-    --cor-fundo: rgba(217,217,217,1);
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -23,11 +19,6 @@ body {
 
 
 
-.voltar-idioma{
-    margin-top: 1rem;
-    margin-left:1rem ;
-    width: 90%;
-}
 
 .perfil-header {
     background: linear-gradient(
@@ -69,7 +60,7 @@ body {
     font-size: 2rem;
     margin-left: 3rem;
     color: #000;
-    
+
 }
 
 .perfil-conteudo {
@@ -106,32 +97,6 @@ body {
     background: var(--cor-secundaria);
 }
 
-.voltar-idioma {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 0.5rem;
-}
-
-.btn-voltar {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-    color: var(--cor-principal);
-    font-size: 0.9rem;
-    cursor: pointer;
-}
-
-.trocar-idioma {
-    width: auto;
-    background-color: gray;
-    color: white;
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-}
 
 @media (min-width: 768px) {
 
@@ -165,13 +130,5 @@ body {
         align-items: flex-start;
     }
 
-    .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem;
-    background-color: white;
-    height: 3rem;
-    }
+
 }

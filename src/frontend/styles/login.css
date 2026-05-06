@@ -9,22 +9,7 @@
     gap: 2rem;
 }
 
-.btn-voltar {
-    margin-top: 0.5rem;
-    width: 100%;
-    max-width: 38rem;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    align-self: flex-start;
-    text-decoration: none;
-    color: #fff;
-}
 
-.btn-voltar:hover {
-    color: rgba(217, 217, 217, 0.8);
-}
 
 .container-login {
     height: auto;
@@ -93,13 +78,6 @@ form {
     color: #ff0000cc;
 }
 
-.trocar-idioma {
-    width: auto;
-    max-width: 10rem;
-    height: 2.5rem;
-    font-size: 0.9rem;
-    align-self: center;
-}
 
 #error-message {
     color: red;
@@ -128,12 +106,5 @@ form {
         max-width: 28rem;
     }
 
-    .trocar-idioma {
-        align-self: flex-end;
-        margin-right: 1rem;
-        height: 3rem;
-        width: 100%;
-        max-width: 14rem;
-        font-size: 1rem;
-    }
+
 }

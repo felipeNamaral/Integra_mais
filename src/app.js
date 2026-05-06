@@ -13,9 +13,6 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'frontend')));
 
-// DB
-require('./backend/config/db');
-
 // ROTAS
 const authRoutes = require('./backend/routes/authRoutes');
 const healthRoutes = require('./backend/routes/healthRoutes');

@@ -48,14 +48,6 @@ headers.forEach(header => {
 
 
 
-
-
-
-
-
-
-
-
 //loq de sp
 const defaultLat = -23.5505;
 const defaultLng = -46.6333;
@@ -148,7 +140,7 @@ async function buscarUnidades(lat, lng, cidade) {
 
     unidades = await response.json();
     unidadesGlobais = unidades;
-
+   
     aplicarFiltro();
 
 
@@ -211,7 +203,7 @@ function renderizarUnidades(unidades) {
       badgeClass = "badge-ubs";
       badgeText = "UBS";
     }
-
+    
     const enderecoCompleto = `${u.endereco || ""}, ${u.nome_municipio || ""}`.trim();
 
     html += `
@@ -244,6 +236,7 @@ function renderizarUnidades(unidades) {
 
 
 function abrirRota(endereco) {
+  
   const url = `https://www.google.com/maps/dir/?api=1&destination=${endereco}`;
   window.open(url, "_blank");
 }

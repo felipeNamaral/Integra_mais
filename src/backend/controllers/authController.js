@@ -5,7 +5,13 @@ const bcrypt = require('bcrypt');
 exports.login = async (req, res) => {
     const { email, password } = req.body;
 
-    let user = await User.findByEmail(email);
+    let user;
+    try {
+        user = await User.findByEmail(email);
+    } catch (err) {
+        return res.status(500).json({ message: 'Erro interno do servidor' });
+    }
+
     let tipo = "usuario";
 
     if (!user) {
@@ -29,13 +35,13 @@ exports.login = async (req, res) => {
     if (tipo === 'usuario') {
         token = jwt.sign(
             { id: user.ID_usuario, email: user.email, nome: user.nome, tipo },
-            'segredo',
+            process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
     } else {
         token = jwt.sign(
             { id: user.ID_empresa, email: user.email, nome: user.nome, tipo },
-            'segredo',
+            process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
     }

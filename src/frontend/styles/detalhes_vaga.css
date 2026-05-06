@@ -8,15 +8,6 @@ body {
 }
 
 /* HEADER */
-.header {
-    background: white;
-    padding: 10px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 70px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
 
 .logo { font-size: 1.6rem; font-weight: bold; color: #2b63d9; text-decoration: none; }
 
@@ -24,19 +15,14 @@ body {
 
 .user-profile { display: flex; align-items: center; gap: 8px; font-weight: 600; }
 
-.btn-sair { 
-    display: flex; align-items: center; gap: 5px; 
-    text-decoration: none; color: #717684; 
+.btn-sair {
+    display: flex; align-items: center; gap: 5px;
+    text-decoration: none; color: #717684;
 }
 
 /* CONTAINER */
 .container { width: 90%; max-width: 800px; margin: 0 auto; }
 
-.btn-voltar {
-    display: flex; align-items: center; gap: 8px;
-    text-decoration: none; color: #2b63d9;
-    padding: 30px 0; font-weight: 500;
-}
 
 /* CARD VAGA */
 .card-vaga {
@@ -67,9 +53,9 @@ body {
 /* REQUISITOS */
 .lista-requisitos { list-style: none; }
 
-.lista-requisitos li { 
-    display: flex; align-items: center; gap: 10px; 
-    margin-bottom: 12px; color: #4b5563; 
+.lista-requisitos li {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px; color: #4b5563;
 }
 
 .lista-requisitos .material-symbols-outlined {
@@ -134,7 +120,7 @@ color: white; }
     left: 50%;
     top: 20px;
     transform: translateX(-50%) translateY(20px);
-    
+
     width: calc(100% - 32px);
     max-width: 400px;
 
@@ -182,7 +168,7 @@ color: white; }
 }
 
 .btn-favoritar.ativo:hover{
-   background: #f59f0bb8; 
+   background: #f59f0bb8;
 }
 
 .btn-enviar.ativo{
@@ -191,6 +177,5 @@ color: white; }
 }
 
 .btn-enviar.ativo:hover{
-   background: #2b62d9cc; 
+   background: #2b62d9cc;
 }
-

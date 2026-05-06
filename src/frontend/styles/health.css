@@ -1,9 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--cor-fundo);
-}
-
 .container {
     display: flex;
     justify-content: center;
@@ -14,31 +8,6 @@ body {
     box-sizing: border-box;
 }
 
-.voltar-idioma {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 0.5rem;
-}
-
-.btn-voltar {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-    color: var(--cor-principal);
-    font-size: 0.9rem;
-}
-
-.trocar-idioma {
-    width: auto;
-    background-color: gray;
-    color: white;
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-}
 
 .saude {
     display: flex;
@@ -48,6 +17,7 @@ body {
     padding: 1.2rem;
     width: 100%;
     max-width: 100%;
+  
     border-radius: 16px;
     background: linear-gradient(90deg,
             var(--cor-principal),
@@ -645,17 +615,6 @@ body {
         padding: 2rem;
     }
 
-    .header {
-        padding: 1.5rem 2rem;
-    }
-
-    .trocar-idioma {
-        width: 100%;
-    }
-
-    .title {
-        font-size: 3rem;
-    }
 
     .saude span {
         font-size: 6rem;
@@ -688,17 +647,6 @@ body {
         max-width: 1200px;
     }
 
-    .header {
-        padding: 2rem 3rem;
-    }
-
-    .trocar-idioma {
-        width: 100%;
-    }
-
-    .title {
-        font-size: 3.5rem;
-    }
 
     .saude {
         padding: 3rem;
