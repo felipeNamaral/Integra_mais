@@ -9,7 +9,9 @@
     gap: 2rem;
 }
 
-
+.trocar-idioma{
+    margin-top: 0.5rem;
+}
 
 .container-login {
     height: auto;

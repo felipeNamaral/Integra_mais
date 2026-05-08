@@ -6,6 +6,7 @@ const btnFavoritar = document.getElementById('btn-favoritar');
 const btnEnviar = document.getElementById('btn-enviar');
 let favoritada = false;
 let enviada = false;
+const avatarPadrao = "/assets/img/user.png";
 
 
 
@@ -30,6 +31,30 @@ async function carregar() {
     const data = await response.json();
 
     nome.textContent = `${data.nome}`;
+    await carregarAvatar();
+}
+
+async function carregarAvatar() {
+    try {
+        const response = await fetch('http://localhost:3000/api/avatar', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        const avatar = data.avatar || avatarPadrao;
+        const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+        imagensAvatar.forEach((imagem) => {
+            imagem.src = avatar;
+            imagem.onerror = () => {
+                imagem.src = avatarPadrao;
+            };
+        });
+    } catch (error) {
+        console.error('Erro ao carregar avatar:', error);
+    }
 }
 
 async function carregaVaga() {

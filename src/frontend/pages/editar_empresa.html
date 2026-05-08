@@ -15,84 +15,93 @@
 
 <body>
     <header class="header">
-            <a class="title" href="menu_empresa.html">Integra+</a>
+        <a class="title" href="menu_empresa.html">Integra+</a>
 
-            <a class="perfil" href="perfil_empresa.html">
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
-                <span id="nome"></span>
-            </a>
+        <a class="perfil" href="perfil_empresa.html">
+            <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
+            <span id="nome"></span>
+        </a>
 
-            <a class="sair" href="login.html">
-                <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
-            </a>
+        <a class="sair" href="login.html">
+            <span class="material-symbols-outlined">logout</span>
+            <span>Sair</span>
+        </a>
     </header>
     <main>
         <div class="voltar-idioma">
-                <a href="perfil_empresa.html" class="btn-voltar">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    <span>Voltar</span>
-                </a>
+            <a href="perfil_empresa.html" class="btn-voltar">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span>Voltar</span>
+            </a>
 
         </div>
         <div class="perfil-card">
             <div class="perfil-topo"></div>
             <div class="perfil-info">
-            <button class="avatar">
-                +
-            </button>
+                <div class="avatar-wrapper">
+                    <button class="avatar" id="avatar" type="button">+</button>
 
-            <div class="nome-editar">
-                <h2>Empresa</h2>
-                <button class="btn-editar">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-            </div>
+                    <button class="avatar-editar" id="btnEditarAvatar" type="button">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
 
-            <div class="nome-editar">
-                <span>CNPJ:</span>
-                <span id="cnpj"></span>
-                <button class="btn-editar">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-            </div>
+                    <input type="file" id="inputAvatar" accept="image/*" hidden>
+                </div>
 
-            <div class="info-linha">
-                <div class="info-item">
-                    <span class="material-symbols-outlined">mail</span>
-                    <span>aaa@gmail.com</span>
-                    <button class="btn-editar">
+                <div class="nome-editar">
+                    <h2 id="nomeEmpresaEditar">Empresa</h2>
+                    <button class="btn-editar" type="button" data-editar="nome">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
                 </div>
 
-            <div class="info-item">
-                <span class="material-symbols-outlined">phone</span>
-                <span>(19)99999-9999</span>
-                <button class="btn-editar">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-            </div>
+                <div class="nome-editar">
+                    <span>CNPJ:</span>
+                    <span id="cnpj"></span>
+                    <button class="btn-editar" type="button" data-editar="cnpj">
+                        <span class="material-symbols-outlined">edit</span>
+                    </button>
+                </div>
 
-            <div class="info-item">
-                <span class="material-symbols-outlined">location_on</span>
-                <span>Rua Exemplo, 123 - Centro</span>
-                <button class="btn-editar">
-                    <span class="material-symbols-outlined">edit</span>
-                </button>
-            </div>
+                <div class="info-linha">
+                    <div class="info-item">
+                        <span class="material-symbols-outlined">mail</span>
+                        <span id="emailEmpresaEditar">aaa@gmail.com</span>
+                        <button class="btn-editar" type="button" data-editar="email">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                    </div>
 
+                    <div class="info-item">
+                        <span class="material-symbols-outlined">phone</span>
+                        <span id="telefoneEmpresaEditar">(19)99999-9999</span>
+                        <button class="btn-editar" type="button" data-editar="telefone">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <span id="enderecoEmpresaEditar">Rua Exemplo, 123 - Centro</span>
+                        <button class="btn-editar" type="button" data-editar="endereco">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <form class="form-perfil" id="formEditarEmpresa">
+
+                    <label>Descrição:</label>
+                    <textarea rows="4" id="descricaoEmpresa"></textarea>
+                    <button class="btn-concluir">Concluir</button>
+                </form>
+            </div>
         </div>
 
-    <form class="form-perfil">
-
-        <label>Descrição:</label>
-        <textarea rows="4"></textarea>
-        <button class="btn-concluir">Concluir</button>
-    </form>
-</div>
-
-</main>
+    </main>
     <script src="/scripts/animations.js"></script>
+    <script src="/scripts/editarPerfilEmpresa.js"></script>
 </body>
+
 </html>

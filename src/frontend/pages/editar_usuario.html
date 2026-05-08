@@ -18,7 +18,7 @@
             <a class="title" href="" id="txt-editar-usuario-001">Integra+</a>
 
             <a class="perfil" href="">
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+                <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
                 <span id="nome"></span>
             </a>
 
@@ -29,7 +29,7 @@
     </header>
     <main>
         <div class="voltar-idioma">
-                <a href="" class="btn-voltar" id="txt-editar-usuario-015">
+                <a href="perfil_usuario.html" class="btn-voltar" id="txt-editar-usuario-015">
                     <span class="material-symbols-outlined">arrow_back</span>
                     <span id="txt-editar-usuario-003">Voltar</span>
                 </a>
@@ -41,13 +41,19 @@
         <div class="perfil-card">
             <div class="perfil-topo"></div>
             <div class="perfil-info">
-            <button class="avatar">
-                +
-            </button>
+            <div class="avatar-wrapper">
+                <button class="avatar" id="avatar" type="button">+</button>
+
+                <button class="avatar-editar" id="btnEditarAvatar" type="button">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+
+                <input type="file" id="inputAvatar" accept="image/*" hidden>
+            </div>
 
             <div class="nome-editar">
                 <h2 id="txt-editar-usuario-004">Nome</h2>
-                <button class="btn-editar">
+                <button class="btn-editar" type="button" data-editar="nome">
                     <span class="material-symbols-outlined">edit</span>
                 </button>
             </div>
@@ -56,15 +62,15 @@
                 <div class="info-item">
                     <span class="material-symbols-outlined">mail</span>
                     <span id="txt-editar-usuario-005">aaa@gmail.com</span>
-                    <button class="btn-editar">
+                    <button class="btn-editar" type="button" data-editar="email">
                         <span class="material-symbols-outlined">edit</span>
                     </button>
                 </div>
 
             <div class="info-item">
                 <span class="material-symbols-outlined">phone</span>
-                <span>(19)99999-9999</span>
-                <button class="btn-editar">
+                <span id="telefoneUsuarioEditar">(19)99999-9999</span>
+                <button class="btn-editar" type="button" data-editar="telefone">
                     <span class="material-symbols-outlined">edit</span>
                 </button>
             </div>
@@ -72,34 +78,36 @@
             <div class="info-item">
                 <span class="material-symbols-outlined">cake</span>
                 <span id="txt-editar-usuario-006">35 anos</span>
-                <button class="btn-editar">
+                <button class="btn-editar" type="button" data-editar="idade">
                     <span class="material-symbols-outlined">edit</span>
                 </button>
             </div>
 
         </div>
 
-    <form class="form-perfil">
+    <form class="form-perfil" id="formEditarUsuario">
 
         <label id="txt-editar-usuario-007">Nacionalidade:</label>
-        <input type="text">
+        <input type="text" id="nacionalidadeUsuario">
 
         <label id="txt-editar-usuario-008">Escolaridade:</label>
-        <input type="text">
+        <input type="text" id="escolaridadeUsuario">
 
         <label id="txt-editar-usuario-009">Formação:</label>
-        <input type="text">
+        <input type="text" id="formacaoUsuario">
 
         <label id="txt-editar-usuario-010">Idiomas:</label>
-        <input type="text">
+        <input type="text" id="idiomasUsuario">
 
         <label id="txt-editar-usuario-011">Sobre você:</label>
-        <textarea rows="4"></textarea>
+        <textarea rows="4" id="descricaoUsuario"></textarea>
         <button class="btn-concluir" id="txt-editar-usuario-012">Concluir</button>
     </form>
+</div>
 </div>
 
 </main>
     <script src="/scripts/animations.js"></script>
+    <script src="/scripts/editarPerfilUsuario.js"></script>
 </body>
 </html>

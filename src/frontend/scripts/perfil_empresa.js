@@ -1,5 +1,6 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
+const avatarPadrao = "/assets/img/user.png";
 
 
 async function init() {
@@ -17,15 +18,39 @@ async function carregar() {
                 Authorization: `Bearer ${token}`
             }
         });
- 
+
         const data = await response.json();
 
         nome.textContent = data.nome;
-        
-        
+        await carregarAvatar();
+
+
 
     } catch (error) {
         console.error('Erro ao carregar usuário:', error);
+    }
+}
+
+async function carregarAvatar() {
+    try {
+        const response = await fetch('http://localhost:3000/api/avatar', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        const avatar = data.avatar || avatarPadrao;
+        const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+        imagensAvatar.forEach((imagem) => {
+            imagem.src = avatar;
+            imagem.onerror = () => {
+                imagem.src = avatarPadrao;
+            };
+        });
+    } catch (error) {
+        console.error('Erro ao carregar avatar:', error);
     }
 }
 
@@ -61,15 +86,14 @@ function trocaDadosPerfilEmpresa(data) {
     let endereco = document.getElementById('enderecoEmpresa');
     let descricao = document.getElementById('descricao')
     nomeEmpresa.textContent = data.nome;
-    cnpj.textContent = data.cnpj;
-    email.textContent = data.email;
-    telefone.textContent = data.telefone;
+    cnpj.textContent = `CNPJ: ${data.cnpj}`;
+    email.textContent = `Email: ${data.email}`;
+    telefone.textContent = `Telefone: ${data.telefone}`;
 
-    if (!data.endereco) {
-        endereco.textContent = "Sem endereço";
-    } else {
-        endereco.textContent = data.endereco;
-    }
-
-    descricao.textContent = data.descricao;
+if (!data.endereco) {
+    endereco.textContent = "Endereço: Sem endereço";
+} else {
+    endereco.textContent = `Endereço: ${data.endereco}`;
+}
+    descricao.textContent = `Descrição: ${data.descricao}`;
 }
