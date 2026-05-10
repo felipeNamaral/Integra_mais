@@ -131,6 +131,8 @@ function carregarDetalhes(vaga) {
 
     // Descrição
     document.getElementById("descricao-vaga").textContent = vaga.descricao;
+    document.getElementById("email-empresa-vaga").textContent =
+        vaga.empresa_email ? ` ${vaga.empresa_email}` : "";
 
     // Requisitos
     const lista = document.getElementById("requisitos-vaga");

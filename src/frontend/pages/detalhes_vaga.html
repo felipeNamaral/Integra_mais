@@ -29,13 +29,19 @@
             <span>Sair</span>
         </a>
     </header>
-
+        <div class="voltar-idioma">
+            <a href="menu_usuario.html" class="btn-voltar" id="txt-health-106">
+                <span class="material-symbols-outlined">arrow_back</span>
+                <span id="txt-health-003">Voltar</span>
+            </a>
+            <button class="trocar-idioma" id="txt-health-102">
+                Trocar idioma
+                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+            </button>
+        </div>
 
     <main class="container">
-        <a href="vagas_usuario.html" class="btn-voltar">
-            <span class="material-symbols-outlined">arrow_back</span>
-            Voltar para vagas
-        </a>
+
 
         <div class="card-vaga">
 
@@ -62,6 +68,11 @@
                 <section class="secao">
                     <h3>Descrição da Vaga</h3>
                     <p id="descricao-vaga"></p>
+
+                </section>
+                <section class="secao">
+                    <h3>Mande seu currículo para:</h3>
+                    <p id="email-empresa-vaga"></p>
                 </section>
 
                 <section class="secao">
@@ -90,6 +101,8 @@
                     <span id="data-publicacao-vaga"></span>
                 </div>
 
+
+
                 <section class="acoes">
                     <h3>Ações</h3>
 
@@ -110,7 +123,7 @@
         </div>
     </main>
 
-    
+
     <div id="toast" class="toast"></div>
     <script src="../scripts/detalhes_vaga.js"></script>
 </body>
