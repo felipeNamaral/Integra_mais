@@ -121,7 +121,7 @@ async function buscarUnidades(lat, lng, cidade) {
 
     const response = await fetch(
 
-      `http://localhost:3000/api/unidades?lat=${lat}&lng=${lng}`
+      `/api/unidades?lat=${lat}&lng=${lng}`
     );
 
     if (!response.ok) throw new Error("Erro ao buscar unidades");
@@ -293,7 +293,7 @@ async function buscarCidade(nomeCidade) {
   try {
     const response = await fetch(
 
-      `http://localhost:3000/api/unidades?&cidade=${encodeURIComponent(nomeCidade)}`
+      `/api/unidades?&cidade=${encodeURIComponent(nomeCidade)}`
     );
 
     if (!response.ok) throw new Error("Erro ao buscar unidades ");

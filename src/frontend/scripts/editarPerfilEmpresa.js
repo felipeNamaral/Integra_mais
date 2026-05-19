@@ -15,7 +15,7 @@ const inputAvatar = document.getElementById('inputAvatar');
 let empresaAtual = {};
 
 async function carregarAutenticacao() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -28,7 +28,7 @@ async function carregarAutenticacao() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -82,7 +82,7 @@ function configurarUploadAvatar() {
 
         try {
             const imagem = await arquivoParaBase64(arquivo);
-            const response = await fetch('http://localhost:3000/api/avatar', {
+            const response = await fetch('/api/avatar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ function configurarUploadAvatar() {
 }
 
 async function carregarDadosEmpresa() {
-    const response = await fetch('http://localhost:3000/api/empresa', {
+    const response = await fetch('/api/empresa', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -209,7 +209,7 @@ async function salvarPerfilEmpresa(event) {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/perfil/empresa', {
+        const response = await fetch('/api/perfil/empresa', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

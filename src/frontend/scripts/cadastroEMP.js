@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const nomeEmpresa = document.getElementById("nomeEmpresa").value;
             const cnpj = document.getElementById("cnpj").value;
+            const cnpjLimpo = cnpj.replace(/\D/g, "");
             const emailCorporativo = document.getElementById("emailCorporativo").value;
             const endereco = document.getElementById("endereco").value;
             const senha = document.getElementById("senha").value;
@@ -27,13 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            if (cnpj.length < 14) {
-                alert("CNPJ inválido.");
+            if (cnpjLimpo.length !== 14) {
+                erroSenha.textContent = "CNPJ inválido!";
                 return;
             }
 
             try {
-                const response = await fetch("http://localhost:3000/api/cadastro/empresa", {
+                const response = await fetch("/api/cadastro/empresa", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

@@ -5,7 +5,7 @@ const nome = document.getElementById('nome');
 carregarUsuario()
 async function carregarUsuario() {
     try {
-        const response = await fetch('http://localhost:3000/api/protected', {
+        const response = await fetch('/api/protected', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -26,7 +26,7 @@ CarreagarVagas()
 async function CarreagarVagas() {
 
     try {
-        const response = await fetch('http://localhost:3000/api/Vagasempresa', {
+        const response = await fetch('/api/Vagasempresa', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -90,7 +90,7 @@ async function excluirVaga(id) {
     if (!confirmacao) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/vaga/${id}`, {
+        const response = await fetch(`/api/vaga/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

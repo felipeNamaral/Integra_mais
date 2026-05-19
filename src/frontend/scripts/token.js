@@ -7,7 +7,7 @@ const avatarPadrao = "/assets/img/user.png";
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -30,7 +30,7 @@ async function carregarAvatar() {
 
 async function carregarUsuario() {
     try {
-        const response = await fetch('http://localhost:3000/api/protected', {
+        const response = await fetch('/api/protected', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

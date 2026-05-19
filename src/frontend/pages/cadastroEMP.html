@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../styles/variables.css">
-   <link rel="stylesheet" href="../styles/main.css">
-   <link rel="stylesheet" href="../styles/components.css">
-   <link rel="stylesheet" href="../styles/cadastroEMP.css">
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/components.css">
+    <link rel="stylesheet" href="../styles/cadastroEMP.css">
     <title>Integra+ | Cadastro Empresa</title>
 </head>
 
@@ -30,12 +30,14 @@
 
                     <div class="input-group">
                         <h5 class="txt" id="txt-cadastroemp-005">CNPJ</h5>
-                        <input type="text" id="cnpj" class="input-field" placeholder="00.000.000/0000-00" required>
+                        <input type="txt" id="cnpj" class="input-field" placeholder="00000000000000"
+                            maxlength="14" pattern="\d{14}" inputmode="numeric" required>
                     </div>
 
                     <div class="input-group">
                         <h5 class="txt" id="txt-cadastroemp-006">Email corporativo</h5>
-                        <input type="email" id="emailCorporativo" class="input-field" placeholder="contato@empresa.com" required>
+                        <input type="email" id="emailCorporativo" class="input-field" placeholder="contato@empresa.com"
+                            required>
                         <p id="error-message"></p>
                     </div>
 
@@ -51,7 +53,8 @@
 
                     <div class="input-group">
                         <h5 class="txt" id="txt-cadastroemp-009">Confirmar Senha</h5>
-                        <input type="password" id="confirmarSenha" class="input-field" placeholder=".........." required>
+                        <input type="password" id="confirmarSenha" class="input-field" placeholder=".........."
+                            required>
                         <p id="error-message2"></p>
                     </div>
 
@@ -59,7 +62,7 @@
                 </form>
 
                 <hr class="linha">
-                
+
                 <h2 id="txt-cadastroemp-011">Já tem uma conta?</h2>
                 <a class="button-rec-senha" href="login.html" id="txt-cadastroemp-012">Fazer Login</a>
             </section>

@@ -6,7 +6,7 @@ CarreagarVagas()
 async function CarreagarVagas() {
 
     try {
-        const response = await fetch('http://localhost:3000/api/Vagasempresa', {
+        const response = await fetch('/api/Vagasempresa', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -37,7 +37,7 @@ botao.addEventListener("click", async () => {
             status: "Ativa"
         };
 
-        const response = await fetch("http://localhost:3000/api/vaga", {
+        const response = await fetch("/api/vaga", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -120,7 +120,7 @@ async function excluirVaga(id) {
     if (!confirmacao) return;
 
     try {
-        const response = await fetch(`http://localhost:3000/api/vaga/${id}`, {
+        const response = await fetch(`/api/vaga/${id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`

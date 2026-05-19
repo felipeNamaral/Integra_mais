@@ -13,7 +13,7 @@ init();
 
 async function carregar() {
     try {
-        const response = await fetch('http://localhost:3000/api/protected', {
+        const response = await fetch('/api/protected', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -33,7 +33,7 @@ async function carregar() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -60,7 +60,7 @@ async function carregaDados() {
 
 
         const response = await fetch(
-            `http://localhost:3000/api/empresa`, {
+            `/api/empresa`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

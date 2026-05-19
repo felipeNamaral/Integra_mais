@@ -2,6 +2,7 @@ const db = require("../config/db");
 
 const editarVaga = async ({
   idVaga,
+  idEmpresa,
   titulo,
   descricao,
   salario,
@@ -21,7 +22,7 @@ const editarVaga = async ({
          tipo_vaga = ?, 
          status = ?,
          cidade = ?
-     WHERE ID_vaga = ?`,
+     WHERE ID_vaga = ? AND ID_empresa = ?`,
     [
       titulo,
       descricao,
@@ -31,7 +32,8 @@ const editarVaga = async ({
       tipoVaga,
       status,
       cidade,
-      idVaga
+      idVaga,
+      idEmpresa
     ]
   );
 

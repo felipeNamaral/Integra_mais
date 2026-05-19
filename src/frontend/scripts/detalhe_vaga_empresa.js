@@ -16,7 +16,7 @@ inicio();
 
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -30,7 +30,7 @@ async function carregar() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -53,7 +53,7 @@ async function carregarAvatar() {
 
 async function carregaVaga() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagaById?id=${id}`);
+        const response = await fetch(`/api/vagaById?id=${id}`);
         const data = await response.json();
 
         carregarDetalhes(data);
@@ -65,7 +65,7 @@ async function carregaVaga() {
 
 async function carregaStatusVagas() {
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeFavorita?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeFavorita?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -85,7 +85,7 @@ async function carregaStatusVagas() {
 
 
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeEnviado?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeEnviado?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

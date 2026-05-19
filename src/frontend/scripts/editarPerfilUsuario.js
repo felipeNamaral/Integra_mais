@@ -18,7 +18,7 @@ const inputAvatar = document.getElementById('inputAvatar');
 let usuarioAtual = {};
 
 async function carregarAutenticacao() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -31,7 +31,7 @@ async function carregarAutenticacao() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -85,7 +85,7 @@ function configurarUploadAvatar() {
 
         try {
             const imagem = await arquivoParaBase64(arquivo);
-            const response = await fetch('http://localhost:3000/api/avatar', {
+            const response = await fetch('/api/avatar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ function configurarUploadAvatar() {
 }
 
 async function carregarDadosUsuario() {
-    const response = await fetch('http://localhost:3000/api/usuario', {
+    const response = await fetch('/api/usuario', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -217,7 +217,7 @@ async function salvarPerfilUsuario(event) {
     };
 
     try {
-        const response = await fetch('http://localhost:3000/api/perfil/usuario', {
+        const response = await fetch('/api/perfil/usuario', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

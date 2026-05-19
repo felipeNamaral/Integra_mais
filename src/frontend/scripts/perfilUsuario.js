@@ -15,7 +15,7 @@ init();
 
 async function carregar() {
 
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -28,7 +28,7 @@ async function carregar() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -53,7 +53,7 @@ async function carregaDados() {
     try {
         const response = await fetch(
 
-            `http://localhost:3000/api/usuario`, {
+            `/api/usuario`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -69,14 +69,14 @@ async function carregaDados() {
 
 async function favoritados() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagasFavoritadas`,{
+        const response = await fetch(`/api/vagasFavoritadas`,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
         const dataVagasFavoritadas = await response.json();
 
-        const response2 = await fetch(`http://localhost:3000/api/vagasEnviadas`,{
+        const response2 = await fetch(`/api/vagasEnviadas`,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -149,7 +149,7 @@ async function printaVagasFavoritadas(data) {
 
         //bucar todas as vagas de data 
         const responseVagas = await fetch(
-            `http://localhost:3000/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
+            `/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
         );
 
 
@@ -199,7 +199,7 @@ async function printaVagasEnviadas(data) {
 
         //bucar todas as vagas de data 
         const responseVagas = await fetch(
-            `http://localhost:3000/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
+            `/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
         );
 
 

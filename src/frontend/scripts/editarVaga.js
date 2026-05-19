@@ -7,7 +7,7 @@ const token = localStorage.getItem("token");
 carregar();
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -21,7 +21,7 @@ async function carregar() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -45,7 +45,7 @@ async function carregarAvatar() {
 
 async function carregarVaga() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagaById?id=${id}`, {
+        const response = await fetch(`/api/vagaById?id=${id}`, {
         });
 
         const data = await response.json();
@@ -87,7 +87,7 @@ enviar.addEventListener('click', async () => {
             status: "Ativa"
         };
 
-        const response = await fetch(`http://localhost:3000/api/vaga?ID_vaga=${id}`, {
+        const response = await fetch(`/api/vaga?ID_vaga=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

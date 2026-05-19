@@ -3,7 +3,7 @@ const nome = document.getElementById('nome');
 const avatarPadrao = "/assets/img/user.png";
 
 async function carregar() {
-  const response = await fetch('http://localhost:3000/api/protected', {
+  const response = await fetch('/api/protected', {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -19,7 +19,7 @@ carregar();
 
 async function carregarAvatar() {
   try {
-    const response = await fetch('http://localhost:3000/api/avatar', {
+    const response = await fetch('/api/avatar', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -51,7 +51,7 @@ carregaVagas();
 
 async function carregaVagas() {
     try {
-        const response = await fetch('http://localhost:3000/api/vagaAll');
+        const response = await fetch('/api/vagaAll');
         const data = await response.json();
 
         renderizarVagas(data);
@@ -105,7 +105,7 @@ input.addEventListener("keypress", (e) => {
 async function filtraVaga(input) {
     try {
         const response = await fetch(
-            `http://localhost:3000/api/vagaAll?busca=${encodeURIComponent(input)}`
+            `/api/vagaAll?busca=${encodeURIComponent(input)}`
         );
 
         const data = await response.json();

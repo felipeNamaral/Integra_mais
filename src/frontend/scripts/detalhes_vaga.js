@@ -22,7 +22,7 @@ inicio();
 
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -36,7 +36,7 @@ async function carregar() {
 
 async function carregarAvatar() {
     try {
-        const response = await fetch('http://localhost:3000/api/avatar', {
+        const response = await fetch('/api/avatar', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -59,7 +59,7 @@ async function carregarAvatar() {
 
 async function carregaVaga() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagaById?id=${id}`);
+        const response = await fetch(`/api/vagaById?id=${id}`);
         const data = await response.json();
 
         carregarDetalhes(data);
@@ -71,7 +71,7 @@ async function carregaVaga() {
 
 async function carregaStatusVagas() {
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeFavorita?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeFavorita?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -95,7 +95,7 @@ async function carregaStatusVagas() {
 
 
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeEnviado?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeEnviado?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -186,7 +186,7 @@ btnFavoritar.addEventListener('click', async () => {
         if (favoritada) {
             // Rota de remover favorito
 
-            await fetch("http://localhost:3000/api/favoritar", {
+            await fetch("/api/favoritar", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -205,7 +205,7 @@ btnFavoritar.addEventListener('click', async () => {
         } else {
             // Rota de ADD aos favoritos 
 
-            await fetch("http://localhost:3000/api/favoritar", {
+            await fetch("/api/favoritar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -236,7 +236,7 @@ btnEnviar.addEventListener('click', async () => {
         if (enviada) {
             // ❌ DESMARCAR
 
-            await fetch("http://localhost:3000/api/marcar", {
+            await fetch("/api/marcar", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -254,7 +254,7 @@ btnEnviar.addEventListener('click', async () => {
         } else {
             // 🟢 MARCAR
 
-            await fetch("http://localhost:3000/api/marcar", {
+            await fetch("/api/marcar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
