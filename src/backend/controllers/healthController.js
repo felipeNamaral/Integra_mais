@@ -6,7 +6,7 @@ const getUnidades = async (req, res) => {
 
     if( !cidade){
     const unidades = await healthModel.getUnidades(lat, lng);
-
+    
     res.json(unidades);
     
     } else {
@@ -17,6 +17,7 @@ const getUnidades = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Erro ao buscar unidades" });
+    
   }
 };
 

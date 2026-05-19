@@ -4,43 +4,6 @@ const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
 const avatarPadrao = "/assets/img/user.png";
 
-async function carregar() {
-  const response = await fetch('http://localhost:3000/api/protected', {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-
-  const data = await response.json();
-
-  nome.textContent = `${data.nome}`;
-  await carregarAvatar();
-}
-
-carregar();
-
-async function carregarAvatar() {
-  try {
-    const response = await fetch('http://localhost:3000/api/avatar', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    const data = await response.json();
-    const avatar = data.avatar || avatarPadrao;
-    const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
-
-    imagensAvatar.forEach((imagem) => {
-      imagem.src = avatar;
-      imagem.onerror = () => {
-        imagem.src = avatarPadrao;
-      };
-    });
-  } catch (error) {
-    console.error('Erro ao carregar avatar:', error);
-  }
-}
 
 
 
@@ -171,7 +134,7 @@ async function buscarUnidades(lat, lng, cidade) {
 
   } catch (err) {
     console.error(err);
-    alert("Erro ao carregar unidades");
+    alert(`Erro ao carregar unidades: ${err.message}`);
   }
 }
 
@@ -197,7 +160,7 @@ function adicionarMarcadores(unidades) {
         <b>${u.nome}</b><br>
         ${u.tipo}<br>
         ${u.telefone || "Sem telefone"}<br>
-        ${(u.distancia || 0).toFixed(1)} km
+        ${Number(u.distancia || 0).toFixed(1)} km
       `)
       .addTo(markersLayer);
   });
@@ -248,7 +211,7 @@ function renderizarUnidades(unidades) {
         <span class="badge ${badgeClass}">${badgeText}</span>
 
         <div class="info">
-          <p>📍 ${u.endereco || ""} • <strong>${(u.distancia || 0).toFixed(1)} km</strong></p>
+          <p>📍 ${u.endereco || ""} • <strong>${Number(u.distancia || 0).toFixed(1)} km</strong></p>
           <p>📞 ${u.telefone || "Não informado"}</p>
         </div>
 

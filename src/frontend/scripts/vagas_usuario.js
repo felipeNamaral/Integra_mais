@@ -1,19 +1,49 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
+const avatarPadrao = "/assets/img/user.png";
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    });
+  const response = await fetch('http://localhost:3000/api/protected', {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    nome.textContent = `${data.nome}`;
+  nome.textContent = `${data.nome}`;
+  await carregarAvatar();
 }
 
 carregar();
+
+async function carregarAvatar() {
+  try {
+    const response = await fetch('http://localhost:3000/api/avatar', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+    const avatar = data.avatar || avatarPadrao;
+    const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+    imagensAvatar.forEach((imagem) => {
+      imagem.src = avatar;
+      imagem.onerror = () => {
+        imagem.src = avatarPadrao;
+      };
+    });
+  } catch (error) {
+    console.error('Erro ao carregar avatar:', error);
+  }
+}
+
+
+
+
+
 carregaVagas();
 
 

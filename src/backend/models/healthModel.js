@@ -1,35 +1,12 @@
 const db = require("../config/db");
 
 async function getUnidades(lat, lng) {
-  const [rows] = await db.promise().query(`
-    SELECT
-      ID_Unidade,
-      tipo,
-      nome,
-      latitude,
-      longitude,
-      nome_municipio,
-      telefone,
-      endereco,
+const [result] = await db.promise().query(
+  `CALL buscar_unidades_proximas(?, ?, ?)`,
+  [lat, lng, 7]
+);
 
-      (6371 *
-        ACOS(
-          COS(RADIANS(?)) *
-          COS(RADIANS(latitude)) *
-          COS(RADIANS(longitude) - RADIANS(?)) +
-          SIN(RADIANS(?)) *
-          SIN(RADIANS(latitude))
-        )
-      ) AS distancia
-
-    FROM unidade_de_saude
-
-    HAVING distancia <= 7
-    ORDER BY distancia ASC
-    LIMIT 100;
-  `, [lat, lng, lat]);
-
-  return rows;
+return result[0];
 }
 
 
