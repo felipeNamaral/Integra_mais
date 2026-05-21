@@ -11,20 +11,20 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/components.css">
     <link rel="stylesheet" href="../styles/detalhes_vaga.css">
-    <title>Integra+ | Detalhes da Vaga</title>
+    <title id="txt-detalhes-vaga-001">Integra+ | Detalhes da Vaga</title>
 </head>
 
 <body>
 
     <header class="header">
-        <a class="title" href="menu_usuario.html">Integra+</a>
+        <a class="title" href="menu_usuario.html" id="txt-detalhes-vaga-002">Integra+</a>
 
         <a class="perfil" href="perfil_usuario.html">
             <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
             <span id="nome"></span>
         </a>
 
-        <a class="sair" href="login.html">
+        <a class="sair" href="login.html" id="txt-detalhes-vaga-003">
             <span class="material-symbols-outlined">logout</span>
             <span>Sair</span>
         </a>
@@ -66,17 +66,17 @@
             <div class="conteudo-vaga">
 
                 <section class="secao">
-                    <h3>Descrição da Vaga</h3>
+                    <h3 id="txt-detalhes-vaga-004">Descrição da Vaga</h3>
                     <p id="descricao-vaga"></p>
 
                 </section>
                 <section class="secao">
-                    <h3>Mande seu currículo para:</h3>
+                    <h3 id="txt-detalhes-vaga-005">Mande seu currículo para:</h3>
                     <p id="email-empresa-vaga"></p>
                 </section>
 
                 <section class="secao">
-                    <h3>Requisitos</h3>
+                    <h3 id="txt-detalhes-vaga-006">Requisitos</h3>
                     <ul class="lista-requisitos" id="requisitos-vaga">
 
                     </ul>
@@ -104,7 +104,7 @@
 
 
                 <section class="acoes">
-                    <h3>Ações</h3>
+                    <h3 id="txt-detalhes-vaga-007">Ações</h3>
 
                     <div class="botoes-grupo">
                         <button class="btn-favoritar" id="btn-favoritar">
@@ -126,6 +126,7 @@
 
     <div id="toast" class="toast"></div>
     <script src="../scripts/detalhes_vaga.js"></script>
+    <script src="../scripts/trocar_idioma.js"></script>
 </body>
 
 </html>

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-    <title>Integra+</title>
+    <title id="txt-health-145">Integra+</title>
 </head>
 
 <body>
@@ -269,16 +269,16 @@
                             <div class="card card-red">
                                 <span class="material-symbols-outlined">call</span>
                                 <div>
-                                    <h2>192</h2>
+                                    <h2 id="txt-health-146">192</h2>
                                     <h4 id="txt-health-072">SAMU</h4>
-                                    <p id="txt-health-073">Emergências médicas graves - ambulância</p>
+                                    <p id="txt-health-073">Emergências médicas graves - ambul�ncia</p>
                                 </div>
                             </div>
 
                             <div class="card card-orange">
                                 <span class="material-symbols-outlined">call</span>
                                 <div>
-                                    <h2>190</h2>
+                                    <h2 id="txt-health-147">190</h2>
                                     <h4 id="txt-health-074">Polícia Militar</h4>
                                     <p id="txt-health-075">Emergências policiais e segurança</p>
                                 </div>
@@ -287,7 +287,7 @@
                             <div class="card card-blue">
                                 <span class="material-symbols-outlined">call</span>
                                 <div>
-                                    <h2>188</h2>
+                                    <h2 id="txt-health-148">188</h2>
                                     <h4 id="txt-health-076">CVV</h4>
                                     <p id="txt-health-077">Apoio emocional e prevenção ao suicídio</p>
                                 </div>
@@ -296,7 +296,7 @@
                             <div class="card card-purple">
                                 <span class="material-symbols-outlined">call</span>
                                 <div>
-                                    <h2>180</h2>
+                                    <h2 id="txt-health-149">180</h2>
                                     <h4 id="txt-health-078">Mulher</h4>
                                     <p id="txt-health-079">Central de Atendimento à Mulher</p>
                                 </div>
@@ -345,7 +345,7 @@
                             onclick="document.getElementById('hospital').checked = true;aplicarFiltro()" id="txt-health-085">HOSPITAL</button>
 
                         <input type="radio" name="filtro" id="favoritos">
-                        <button class="botao" onclick="document.getElementById('favoritos').checked = true;aplicarFiltro()">Favoritos</button>
+                        <button class="botao" onclick="document.getElementById('favoritos').checked = true;aplicarFiltro()" id="txt-health-150">Favoritos</button>
 
                     </div>
                 </div>  
@@ -399,6 +399,7 @@
 
         <script src="/scripts/health.js"></script>
     </main>
+    <script src="../scripts/trocar_idioma.js"></script>
 </body>
 
 </html>

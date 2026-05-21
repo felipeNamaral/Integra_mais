@@ -2,6 +2,29 @@ const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
 const avatarPadrao = "/assets/img/user.png";
 
+function idiomaAtual() {
+    return localStorage.getItem('integraIdioma') || 'pt-BR';
+}
+
+function textoPerfil(chave) {
+    const textos = {
+        semDescricao: {
+            'pt-BR': 'Sem descrição',
+            es: 'Sin descripción'
+        },
+        semFavoritas: {
+            'pt-BR': 'Você ainda não favoritou nenhuma vaga.',
+            es: 'Todavía no has marcado ninguna vacante como favorita.'
+        },
+        semEnviadas: {
+            'pt-BR': 'Você ainda não enviou currículo para nenhuma vaga.',
+            es: 'Todavía no has enviado currículo a ninguna vacante.'
+        }
+    };
+
+    return textos[chave][idiomaAtual()] || textos[chave]['pt-BR'];
+}
+
 
 
 async function init() {
@@ -103,13 +126,12 @@ function trocaDadosPerfil(data) {
     let idade = document.getElementById('idadeUsuario');
 
     nome.textContent = `${data.nome}`;
-    email.textContent ='📧​ ' +`${data.email}`;
-    telefone.textContent ="📞 " + `${data.telefone}`;
-
-    idade.textContent ='​🎂 '+ `${data.idade}`;
+    email.textContent = '📧 ' + data.email;
+    telefone.textContent = '📞 ' + data.telefone;
+    idade.textContent = '🎂 ' + data.idade;
 
     if (!data.descricao) {
-        descricao.textContent = `Sem descrição`;
+        descricao.textContent = textoPerfil('semDescricao');
     } else {
         descricao.textContent = `${data.descricao}`;
     }
@@ -121,7 +143,7 @@ function trocaDadosPerfil(data) {
 function trocaVagasFavoritadas(data) {
     if (data.length === 0) {
         document.getElementById('statsFavoritadas').textContent = `0`;
-        document.getElementById('vagasFavoritadas').textContent = `Você ainda não favoritou nenhuma vaga.`;
+        document.getElementById('vagasFavoritadas').textContent = textoPerfil('semFavoritas');
     } else {
         document.getElementById('statsFavoritadas').textContent = `${data.length}`;
 
@@ -134,7 +156,7 @@ function trocaVagasFavoritadas(data) {
 function trocaVagasEnviadas(data) {
     if (data.length === 0) {
         document.getElementById('statsEnviadas').textContent = `0`;
-        document.getElementById('vagasEnviadas').textContent = `Você ainda não enviou currículo para nenhuma vaga.`;
+        document.getElementById('vagasEnviadas').textContent = textoPerfil('semEnviadas');
     } else {
         document.getElementById('statsEnviadas').textContent = `${data.length}`;
         printaVagasEnviadas(data);

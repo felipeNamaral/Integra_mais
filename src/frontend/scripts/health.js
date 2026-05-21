@@ -2,6 +2,69 @@ const token = localStorage.getItem("token");
 const nome = document.getElementById("nome");
 const avatarPadrao = "/assets/img/user.png";
 
+function idiomaAtual() {
+  return localStorage.getItem("integraIdioma") || "pt-BR";
+}
+
+function textoSaude(chave, valores = {}) {
+  const textos = {
+    atribuicaoMapa: {
+      "pt-BR": "© OpenStreetMap",
+      es: "© OpenStreetMap"
+    },
+    voceEstaAqui: {
+      "pt-BR": "Você está aqui",
+      es: "Estás aquí"
+    },
+    semTelefone: {
+      "pt-BR": "Sem telefone",
+      es: "Sin teléfono"
+    },
+    unidadesEncontradas: {
+      "pt-BR": `${valores.total} unidades encontradas`,
+      es: `${valores.total} unidades encontradas`
+    },
+    comoChegar: {
+      "pt-BR": "Como Chegar",
+      es: "Cómo llegar"
+    },
+    favoritado: {
+      "pt-BR": "Favoritado",
+      es: "Favorito"
+    },
+    favoritar: {
+      "pt-BR": "Favoritar",
+      es: "Agregar a favoritos"
+    },
+    naoInformado: {
+      "pt-BR": "Não informado",
+      es: "No informado"
+    },
+    loginFavoritar: {
+      "pt-BR": "Faça login para favoritar unidades.",
+      es: "Inicia sesión para favoritar unidades."
+    },
+    cidadeNaoEncontrada: {
+      "pt-BR": "Cidade não encontrada",
+      es: "Ciudad no encontrada"
+    },
+    erroBuscarUnidades: {
+      "pt-BR": "Erro ao buscar unidades",
+      es: "Error al buscar unidades"
+    },
+    erroCarregarUnidades: {
+      "pt-BR": `Erro ao carregar unidades: ${valores.mensagem || ""}`,
+      es: `Error al cargar unidades: ${valores.mensagem || ""}`
+    },
+    erroAtualizarFavorito: {
+      "pt-BR": "Erro ao atualizar favorito",
+      es: "Error al actualizar favorito"
+    }
+  };
+
+  return textos[chave][idiomaAtual()] || textos[chave]["pt-BR"];
+}
+
 const headers = document.querySelectorAll(".accordion-header");
 
 headers.forEach(header => {
@@ -85,14 +148,14 @@ function criarMapa(lat, lng) {
   map = L.map("map").setView([lat, lng], 15);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap"
+    attribution: textoSaude("atribuicaoMapa")
   }).addTo(map);
 
   markersLayer = L.layerGroup().addTo(map);
 
   L.marker([lat, lng])
     .addTo(map)
-    .bindPopup("Voce esta aqui");
+    .bindPopup(textoSaude("voceEstaAqui"));
 }
 
 function getAuthHeaders() {
@@ -129,7 +192,7 @@ async function buscarUnidades(lat, lng) {
   try {
     const response = await fetch(`/api/unidades?lat=${lat}&lng=${lng}`);
 
-    if (!response.ok) throw new Error("Erro ao buscar unidades");
+    if (!response.ok) throw new Error(textoSaude("erroBuscarUnidades"));
 
     unidades = await response.json();
     unidadesGlobais = unidades;
@@ -138,7 +201,7 @@ async function buscarUnidades(lat, lng) {
     aplicarFiltro();
   } catch (err) {
     console.error(err);
-    alert(`Erro ao carregar unidades: ${err.message}`);
+    alert(textoSaude("erroCarregarUnidades", { mensagem: err.message }));
   }
 }
 
@@ -161,7 +224,7 @@ function adicionarMarcadores(unidadesParaExibir) {
       .bindPopup(`
         <b>${u.nome}</b><br>
         ${u.tipo}<br>
-        ${u.telefone || "Sem telefone"}<br>
+        ${u.telefone || textoSaude("semTelefone")}<br>
         ${Number(u.distancia || 0).toFixed(1)} km
       `)
       .addTo(markersLayer);
@@ -170,7 +233,7 @@ function adicionarMarcadores(unidadesParaExibir) {
 
 function renderizarUnidades(unidadesParaExibir) {
   const container = document.getElementById("lista-unidades");
-  let html = `<h3>${unidadesParaExibir.length} unidades encontradas</h3>`;
+  let html = `<h3>${textoSaude("unidadesEncontradas", { total: unidadesParaExibir.length })}</h3>`;
 
   unidadesParaExibir.forEach(u => {
     const tipo = (u.tipo || "").toLowerCase().trim();
@@ -202,11 +265,11 @@ function renderizarUnidades(unidadesParaExibir) {
 
           <div class="card-actions">
             <button class="btn-rota" data-endereco="${encodeURIComponent(enderecoCompleto)}">
-              Como Chegar
+              ${textoSaude("comoChegar")}
             </button>
             <button class="btn-favoritar-unidade ${favoritada ? "ativo" : ""}" data-id="${u.ID_Unidade}">
               <span class="material-symbols-outlined">star</span>
-              <span>${favoritada ? "Favoritado" : "Favoritar"}</span>
+              <span>${favoritada ? textoSaude("favoritado") : textoSaude("favoritar")}</span>
             </button>
           </div>
         </div>
@@ -215,7 +278,7 @@ function renderizarUnidades(unidadesParaExibir) {
 
         <div class="info">
           <p>📍 ${u.endereco || ""} • <strong>${Number(u.distancia || 0).toFixed(1)} km</strong></p>
-          <p>☎ ${u.telefone || "Nao informado"}</p>
+          <p>☎ ${u.telefone || textoSaude("naoInformado")}</p>
         </div>
       </div>
     `;
@@ -271,7 +334,7 @@ function aplicarFiltro() {
 
 async function alternarFavoritoUnidade(botao) {
   if (!token) {
-    alert("Faca login para favoritar unidades.");
+    alert(textoSaude("loginFavoritar"));
     return;
   }
 
@@ -285,7 +348,7 @@ async function alternarFavoritoUnidade(botao) {
       body: JSON.stringify({ idUnidade })
     });
 
-    if (!response.ok) throw new Error("Erro ao atualizar favorito");
+    if (!response.ok) throw new Error(textoSaude("erroAtualizarFavorito"));
 
     await carregarUnidadesFavoritas();
     aplicarFiltro();
@@ -311,7 +374,7 @@ async function buscarCidade(nomeCidade) {
   const data = await res.json();
 
   if (data.length === 0) {
-    alert("Cidade nao encontrada");
+    alert(textoSaude("cidadeNaoEncontrada"));
     return;
   }
 
@@ -325,7 +388,7 @@ async function buscarCidade(nomeCidade) {
       `/api/unidades?&cidade=${encodeURIComponent(nomeCidade)}`
     );
 
-    if (!response.ok) throw new Error("Erro ao buscar unidades");
+    if (!response.ok) throw new Error(textoSaude("erroBuscarUnidades"));
 
     unidades = await response.json();
     unidadesGlobais = unidades;
@@ -334,6 +397,16 @@ async function buscarCidade(nomeCidade) {
     aplicarFiltro();
   } catch (err) {
     console.error(err);
-    alert(`Erro ao carregar unidades: ${err.message}`);
+    alert(textoSaude("erroCarregarUnidades", { mensagem: err.message }));
   }
 }
+
+document.querySelectorAll(".trocar-idioma, .idioma-fixo").forEach(botao => {
+  botao.addEventListener("click", () => {
+    setTimeout(() => {
+      if (unidadesGlobais.length > 0 || unidadesFavoritas.length > 0) {
+        aplicarFiltro();
+      }
+    }, 0);
+  });
+});
