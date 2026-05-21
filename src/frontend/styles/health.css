@@ -384,7 +384,8 @@
 #todos:checked~.botao:nth-of-type(1),
 #ubs:checked~.botao:nth-of-type(2),
 #upa:checked~.botao:nth-of-type(3),
-#hospital:checked~.botao:nth-of-type(4) {
+#hospital:checked~.botao:nth-of-type(4),
+#favoritos:checked~.botao:nth-of-type(5) {
     background: var(--cor-principal);
     color: white;
     border-color: var(--cor-principal);
@@ -546,6 +547,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
 }
 
 .title-area {
@@ -564,6 +566,14 @@
 }
 
 /* BOTÃO */
+.card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+    flex-shrink: 0;
+}
+
 .btn-rota {
     background: #2563eb;
     color: white;
@@ -571,6 +581,34 @@
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.btn-favoritar-unidade {
+    background: white;
+    color: #f59e0b;
+    border: 2px solid #f59e0b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-favoritar-unidade .material-symbols-outlined {
+    font-size: 18px;
+}
+
+.btn-favoritar-unidade:hover {
+    background: #fffbeb;
+}
+
+.btn-favoritar-unidade.ativo {
+    background: #f59e0b;
+    color: white;
 }
 
 /* BADGES */
