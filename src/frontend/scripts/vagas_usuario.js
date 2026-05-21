@@ -1,6 +1,30 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
 const avatarPadrao = "/assets/img/user.png";
+let vagasAtuais = [];
+
+function idiomaAtual() {
+    return localStorage.getItem("integraIdioma") || "pt-BR";
+}
+
+function textoVagas(chave, valores = {}) {
+    const textos = {
+        verDetalhes: {
+            "pt-BR": "Ver detalhes",
+            es: "Ver detalles"
+        },
+        vagasEncontradas: {
+            "pt-BR": `${valores.total} vagas encontradas`,
+            es: `${valores.total} vacantes encontradas`
+        },
+        erroCarregarVagas: {
+            "pt-BR": "Erro ao carregar vagas:",
+            es: "Error al cargar vacantes:"
+        }
+    };
+
+    return textos[chave][idiomaAtual()] || textos[chave]["pt-BR"];
+}
 
 async function carregar() {
   const response = await fetch('/api/protected', {
@@ -57,7 +81,7 @@ async function carregaVagas() {
         renderizarVagas(data);
     }
     catch (error) {
-        console.error("Erro ao carregar vagas:", error);
+        console.error(textoVagas("erroCarregarVagas"), error);
     }
 }
 
@@ -66,6 +90,7 @@ const container = document.getElementById("lista-vagas");
 const contador = document.getElementById("contador");
 
 function renderizarVagas(vagas) {
+    vagasAtuais = vagas;
 
     container.innerHTML = "";
 
@@ -79,14 +104,14 @@ function renderizarVagas(vagas) {
             <p>📍 ${vaga.cidade}</p>
             <p>${vaga.descricao}</p>
             <button class="btn-detalhes" onclick="verDetalhes(${vaga.ID_vaga})">
-    Ver detalhes
+    ${textoVagas("verDetalhes")}
 </button>
         `;
 
         container.appendChild(card);
     });
 
-    contador.textContent = `${vagas.length} vagas encontradas`;
+    contador.textContent = textoVagas("vagasEncontradas", { total: vagas.length });
 }
 
 
@@ -112,7 +137,7 @@ async function filtraVaga(input) {
         renderizarVagas(data);
 
     } catch (error) {
-        console.error("Erro ao carregar vagas:", error);
+        console.error(textoVagas("erroCarregarVagas"), error);
     }
 }
 
@@ -121,3 +146,11 @@ function verDetalhes(id) {
     window.location.href = `/pages/detalhes_vaga.html?id=${id}`;
     
 }
+
+document.querySelectorAll(".trocar-idioma, .idioma-fixo").forEach(botao => {
+    botao.addEventListener("click", () => {
+        setTimeout(() => {
+            renderizarVagas(vagasAtuais);
+        }, 0);
+    });
+});

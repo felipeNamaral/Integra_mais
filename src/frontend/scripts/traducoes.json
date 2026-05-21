@@ -242,6 +242,21 @@
                                                              "A\u00e7\u00f5es"
                                                          ]
                                             },
+                  "txt-detalhes-vaga-008":  {
+                                                "text":  [
+                                                             "Favoritar vaga"
+                                                         ]
+                                            },
+                  "txt-detalhes-vaga-009":  {
+                                                "text":  [
+                                                             "Marcar como enviado"
+                                                         ]
+                                            },
+                  "txt-detalhes-vaga-010":  {
+                                                "text":  [
+                                                             "Sair"
+                                                         ]
+                                            },
                   "txt-health-003":  {
                                          "text":  [
                                                       "Voltar"
@@ -1826,6 +1841,14 @@
                                                              "Encontre a oportunidade perfeita para voc\u00ea"
                                                          ]
                                             },
+                  "buscaVaga":  {
+                                    "placeholder":  "Busque por empresa, t\u00edtulo ou cidade"
+                                },
+                  "contador":  {
+                                  "text":  [
+                                               "0 vagas encontradas"
+                                           ]
+                              },
                   "txt-vagas-usuario-002":  {
                                                 "text":  [
                                                              "Sair"
@@ -2077,7 +2100,7 @@
                                   },
                "txt-detalhes-vaga-001":  {
                                              "text":  [
-                                                          "Integra+ | Detalhes da Vaga"
+                                                          "Integra+ | Detalles de la vacante"
                                                       ]
                                          },
                "txt-detalhes-vaga-002":  {
@@ -2092,12 +2115,12 @@
                                   },
                "txt-detalhes-vaga-004":  {
                                              "text":  [
-                                                          "Descri\u00e7\u00e3o da Vaga"
+                                                          "Descripci\u00f3n de la vacante"
                                                       ]
                                          },
                "txt-detalhes-vaga-005":  {
                                              "text":  [
-                                                          "Mande seu curr\u00edculo para:"
+                                                          "Env\u00eda tu curr\u00edculo a:"
                                                       ]
                                          },
                "txt-detalhes-vaga-006":  {
@@ -2107,7 +2130,22 @@
                                          },
                "txt-detalhes-vaga-007":  {
                                              "text":  [
-                                                          "A\u00e7\u00f5es"
+                                                          "Acciones"
+                                                      ]
+                                         },
+               "txt-detalhes-vaga-008":  {
+                                             "text":  [
+                                                          "Guardar vacante"
+                                                      ]
+                                         },
+               "txt-detalhes-vaga-009":  {
+                                             "text":  [
+                                                          "Marcar como enviado"
+                                                      ]
+                                         },
+               "txt-detalhes-vaga-010":  {
+                                             "text":  [
+                                                          "Salir"
                                                       ]
                                          },
                "txt-health-003":  {
@@ -3525,7 +3563,7 @@
                                         },
                "txt-menu-usuario-010":  {
                                             "text":  [
-                                                         "Bem-Vindo,",
+                                                         "Bienvenido,",
                                                          "!"
                                                      ]
                                         },
@@ -3546,22 +3584,22 @@
                                         },
                "txt-menu-usuario-003":  {
                                             "text":  [
-                                                         "O que voc\u00ea gostaria de acessar hoje?"
+                                                         "\u00bfA qu\u00e9 te gustar\u00eda acceder hoy?"
                                                      ]
                                         },
                "txt-menu-usuario-005":  {
                                             "text":  [
-                                                         "Encontre oportunidade de emprego"
+                                                         "Encuentra oportunidades de empleo"
                                                      ]
                                         },
                "txt-menu-usuario-007":  {
                                             "text":  [
-                                                         "Informa\u00e7\u00e3o sobre documentos importantes"
+                                                         "Informaci\u00f3n sobre documentos importantes"
                                                      ]
                                         },
                "txt-menu-usuario-009":  {
                                             "text":  [
-                                                         "Acesse informa\u00e7\u00f5es sobre sa\u00fade p\u00fablica"
+                                                         "Accede a informaci\u00f3n sobre salud p\u00fablica"
                                                      ]
                                         },
                "txt-menu-usuario-002":  {
@@ -3694,6 +3732,14 @@
                                                           "Encuentra la oportunidad perfecta para ti"
                                                       ]
                                          },
+               "buscaVaga":  {
+                                 "placeholder":  "Busca por empresa, t\u00edtulo o ciudad"
+                                         },
+               "contador":  {
+                               "text":  [
+                                            "0 vacantes encontradas"
+                                        ]
+                           },
                "txt-vagas-usuario-002":  {
                                              "text":  [
                                                           "Salir"
