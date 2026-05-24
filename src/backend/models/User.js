@@ -28,4 +28,29 @@ exports.findByEmailEmpresa = (email) => {
   });
 };
 
+exports.updateSenhaUsuario = (email, senha) => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      'UPDATE usuario SET senha = ? WHERE email = ?',
+      [senha, email],
+      (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      }
+    );
+  });
+};
+
+exports.updateSenhaEmpresa = (email, senha) => {
+  return new Promise((resolve, reject) => {
+    connection.query(
+      'UPDATE empresa SET senha = ? WHERE email = ?',
+      [senha, email],
+      (err, results) => {
+        if (err) return reject(err);
+        resolve(results);
+      }
+    );
+  });
+};
 

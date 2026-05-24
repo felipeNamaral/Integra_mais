@@ -149,6 +149,69 @@ test('cadastroController valida campos, duplicidade e cria usuario/empresa', asy
   assert.equal(resSenha.statusCode, 400);
 });
 
+test('senhaController recupera email e redefine senha de usuario ou empresa', async (t) => {
+  const chamadas = [];
+  const restoreUser = mockModule('src/backend/models/User.js', {
+    findByEmail: async (email) => email === 'usuario@teste.com'
+      ? { ID_usuario: 1, email }
+      : undefined,
+    findByEmailEmpresa: async (email) => email === 'empresa@teste.com'
+      ? { ID_empresa: 2, email }
+      : undefined,
+    updateSenhaUsuario: async (...args) => chamadas.push(['usuario', ...args]),
+    updateSenhaEmpresa: async (...args) => chamadas.push(['empresa', ...args])
+  });
+  const hashOriginal = bcrypt.hash;
+
+  t.after(() => {
+    restoreUser();
+    bcrypt.hash = hashOriginal;
+  });
+
+  bcrypt.hash = async (senha) => `hash-${senha}`;
+  const controller = freshController('src/backend/controllers/senhaController.js');
+
+  const resRecuperar = criarRes();
+  await controller.recuperarSenha({ body: { email: 'usuario@teste.com' } }, resRecuperar);
+  assert.equal(resRecuperar.statusCode, 200);
+
+  const resEmailInvalido = criarRes();
+  await controller.recuperarSenha({ body: { email: 'nada@teste.com' } }, resEmailInvalido);
+  assert.equal(resEmailInvalido.statusCode, 404);
+
+  const resUsuario = criarRes();
+  await controller.redefinirSenha({
+    body: {
+      email: 'usuario@teste.com',
+      novaSenha: '123456',
+      confirmarSenha: '123456'
+    }
+  }, resUsuario);
+  assert.equal(resUsuario.statusCode, 200);
+  assert.deepEqual(chamadas[0], ['usuario', 'usuario@teste.com', 'hash-123456']);
+
+  const resEmpresa = criarRes();
+  await controller.redefinirSenha({
+    body: {
+      email: 'empresa@teste.com',
+      novaSenha: 'abcdef',
+      confirmarSenha: 'abcdef'
+    }
+  }, resEmpresa);
+  assert.equal(resEmpresa.statusCode, 200);
+  assert.deepEqual(chamadas[1], ['empresa', 'empresa@teste.com', 'hash-abcdef']);
+
+  const resSenhaDiferente = criarRes();
+  await controller.redefinirSenha({
+    body: {
+      email: 'usuario@teste.com',
+      novaSenha: '123456',
+      confirmarSenha: '654321'
+    }
+  }, resSenhaDiferente);
+  assert.equal(resSenhaDiferente.statusCode, 400);
+});
+
 test('controllers de pagina e listagem consultam os models com os parametros esperados', async (t) => {
   const restauradores = [
     mockModule('src/backend/models/empresaPageModel.js', { getEmpresa: async (id) => ({ id, tipo: 'empresa' }) }),

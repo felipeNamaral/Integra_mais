@@ -198,7 +198,7 @@ test('models de status e listas de vagas retornam booleanos/listas esperados', a
   }
 });
 
-test('User model busca usuario e empresa por email', async (t) => {
+test('User model busca usuario e empresa por email e atualiza senha', async (t) => {
   const chamadas = [];
   const { model: User, limpar } = carregarModel(
     'src/backend/models/User.js',
@@ -214,6 +214,13 @@ test('User model busca usuario e empresa por email', async (t) => {
 
   assert.deepEqual(await User.findByEmail('u@teste.com'), { email: 'u@teste.com' });
   assert.deepEqual(await User.findByEmailEmpresa('e@teste.com'), { email: 'e@teste.com' });
+  await User.updateSenhaUsuario('u@teste.com', 'hash-u');
+  await User.updateSenhaEmpresa('e@teste.com', 'hash-e');
+
   assert.match(chamadas[0][0], /FROM usuario WHERE email = \?/);
   assert.match(chamadas[1][0], /FROM empresa WHERE email = \?/);
+  assert.match(chamadas[2][0], /UPDATE usuario SET senha = \? WHERE email = \?/);
+  assert.deepEqual(chamadas[2][1], ['hash-u', 'u@teste.com']);
+  assert.match(chamadas[3][0], /UPDATE empresa SET senha = \? WHERE email = \?/);
+  assert.deepEqual(chamadas[3][1], ['hash-e', 'e@teste.com']);
 });
