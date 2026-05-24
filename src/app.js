@@ -6,6 +6,7 @@ const vagaRoutes = require('./backend/routes/vagaRoutes');
 const cadastroRoutes = require('./backend/routes/cadastroRoutes');
 const perfilRoutes = require('./backend/routes/perfilRoutes');
 const avatarRoutes = require('./backend/routes/avatarRoutes');
+const senhaRoutes = require('./backend/routes/senhaRoutes');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use('/api', verificaSeEnviado);
 app.use('/api', cadastroRoutes);
 app.use('/api', perfilRoutes);
 app.use('/api', avatarRoutes);
+app.use('/api', senhaRoutes);
 app.use('/api', vagaRoutes);
 app.use('/api', buscaVagaEmpresa);
 app.use('/api', favoritarMarcar);
