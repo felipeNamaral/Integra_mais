@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formNovaSenha");
-    const email = sessionStorage.getItem("emailRecuperacaoSenha");
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token") || sessionStorage.getItem("tokenRecuperacaoSenha");
 
     if (form) {
         form.addEventListener("submit", async (e) => {
@@ -10,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const novaSenha = inputs[0].value;
             const confirmarSenha = inputs[1].value;
 
-            if (!email) {
-                alert("Informe seu email para recuperar a senha.");
+            if (!token) {
+                alert("Solicite a recuperacao de senha novamente.");
                 window.location.href = "recuperar.html";
                 return;
             }
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        email,
+                        token,
                         novaSenha,
                         confirmarSenha
                     })
@@ -41,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                sessionStorage.removeItem("emailRecuperacaoSenha");
+                sessionStorage.removeItem("tokenRecuperacaoSenha");
                 alert(data.mensagem || "Senha alterada com sucesso!");
                 window.location.href = "login.html";
             } catch (error) {

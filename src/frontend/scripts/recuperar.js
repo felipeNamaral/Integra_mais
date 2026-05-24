@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                sessionStorage.setItem("emailRecuperacaoSenha", email);
+                sessionStorage.setItem("tokenRecuperacaoSenha", data.token);
                 alert(data.mensagem || "Informe a nova senha.");
-                window.location.href = "novaSenha.html";
+                window.location.href = `novaSenha.html?token=${data.token}`;
             } catch (error) {
                 console.error(error);
                 alert("Erro ao conectar com o servidor");

@@ -1,5 +1,6 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 
 const recuperarSenha = async (req, res) => {
   try {
@@ -13,18 +14,24 @@ const recuperarSenha = async (req, res) => {
     }
 
     const usuario = await User.findByEmail(email)
-    const empresa = usuario ? null : await User.findByEmailEmpresa(email)
 
-    if (!usuario && !empresa) {
+    if (!usuario) {
       return res.status(404).json({
         sucesso: false,
         mensagem: 'Email nao cadastrado.'
       })
     }
 
+    const token = crypto.randomBytes(32).toString('hex')
+    const expira = new Date(Date.now() + 60 * 60 * 1000)
+
+    await User.salvarResetTokenUsuario(email, token, expira)
+
     return res.status(200).json({
       sucesso: true,
-      mensagem: 'Email encontrado. Informe a nova senha para continuar.'
+      mensagem: 'Solicitacao de recuperacao de senha enviada com sucesso.',
+      token,
+      link: `/pages/novaSenha.html?token=${token}`
     })
   } catch (error) {
     return res.status(500).json({
@@ -37,12 +44,12 @@ const recuperarSenha = async (req, res) => {
 
 const redefinirSenha = async (req, res) => {
   try {
-    const { email, novaSenha, confirmarSenha } = req.body
+    const { token, novaSenha, confirmarSenha } = req.body
 
-    if (!email || !novaSenha || !confirmarSenha) {
+    if (!token || !novaSenha || !confirmarSenha) {
       return res.status(400).json({
         sucesso: false,
-        mensagem: 'Email, nova senha e confirmacao de senha sao obrigatorios.'
+        mensagem: 'Token, nova senha e confirmacao de senha sao obrigatorios.'
       })
     }
 
@@ -53,23 +60,17 @@ const redefinirSenha = async (req, res) => {
       })
     }
 
-    const usuario = await User.findByEmail(email)
-    const empresa = usuario ? null : await User.findByEmailEmpresa(email)
+    const usuario = await User.findByResetToken(token)
 
-    if (!usuario && !empresa) {
-      return res.status(404).json({
+    if (!usuario) {
+      return res.status(400).json({
         sucesso: false,
-        mensagem: 'Email nao cadastrado.'
+        mensagem: 'Token invalido ou expirado.'
       })
     }
 
     const senhaHash = await bcrypt.hash(novaSenha, 10)
-
-    if (usuario) {
-      await User.updateSenhaUsuario(email, senhaHash)
-    } else {
-      await User.updateSenhaEmpresa(email, senhaHash)
-    }
+    await User.updateSenhaUsuario(usuario.email, senhaHash)
 
     return res.status(200).json({
       sucesso: true,
