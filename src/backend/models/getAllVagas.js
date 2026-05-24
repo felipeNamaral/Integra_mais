@@ -3,7 +3,7 @@ const db = require('../config/db');
 const getVaga = async () => {
   try {
     const [rows] = await db.promise().query(
-      `SELECT v.*, e.nome AS empresa
+      `SELECT v.*, e.nome AS empresa, e.email AS empresa_email
        FROM vaga v
        JOIN empresa e ON v.ID_empresa = e.ID_empresa`
     );
@@ -18,7 +18,7 @@ const getVaga = async () => {
 const getVagaFiltro = async (busca) => {
   try {
     const [rows] = await db.promise().query(
-      `SELECT v.*, e.nome AS empresa
+      `SELECT v.*, e.nome AS empresa, e.email AS empresa_email
        FROM vaga v
        JOIN empresa e ON v.ID_empresa = e.ID_empresa
        WHERE v.titulo LIKE ?

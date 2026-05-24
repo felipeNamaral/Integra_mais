@@ -1,42 +1,8 @@
-:root {
-    --cor-fundo: rgba(217,217,217,1);
-}
-
-body {
-    margin: 0;
-    background-color: var(--cor-fundo);
-    font-family: var(--fonte-principal);
-}
-
-
-
 img {
     max-width: 100%;
     height: auto;
 }
 
-.voltar-idioma {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 100%;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.btn-voltar {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-    color: var(--cor-principal);
-    font-size: 0.9rem;
-}
-
-.trocar-idioma {
-    background-color: gray;
-}
 
 .titulo {
     font-size: 1.8rem;
@@ -118,12 +84,6 @@ img {
     .titulo {
         font-size: 2rem;
     }
-            .header {
-        padding: 2rem 3rem;
-    }
-        .title {
-        font-size: 3.5rem;
-    }
 
     .lista-vagas {
         grid-template-columns: repeat(2, 1fr);
@@ -132,17 +92,8 @@ img {
 
 @media (min-width: 1024px) {
 
-    .voltar-idioma {
-        padding: 0rem 0rem;
-    }
 
 
-        .header {
-        padding: 2rem 3rem;
-    }
-        .title {
-        font-size: 3.5rem;
-    }
 
     .filtro-vagas {
         margin: 0 2rem;

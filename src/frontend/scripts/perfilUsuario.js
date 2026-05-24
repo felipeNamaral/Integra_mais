@@ -1,5 +1,29 @@
 const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
+const avatarPadrao = "/assets/img/user.png";
+
+function idiomaAtual() {
+    return localStorage.getItem('integraIdioma') || 'pt-BR';
+}
+
+function textoPerfil(chave) {
+    const textos = {
+        semDescricao: {
+            'pt-BR': 'Sem descrição',
+            es: 'Sin descripción'
+        },
+        semFavoritas: {
+            'pt-BR': 'Você ainda não favoritou nenhuma vaga.',
+            es: 'Todavía no has marcado ninguna vacante como favorita.'
+        },
+        semEnviadas: {
+            'pt-BR': 'Você ainda não enviou currículo para nenhuma vaga.',
+            es: 'Todavía no has enviado currículo a ninguna vacante.'
+        }
+    };
+
+    return textos[chave][idiomaAtual()] || textos[chave]['pt-BR'];
+}
 
 
 
@@ -14,7 +38,7 @@ init();
 
 async function carregar() {
 
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -22,13 +46,37 @@ async function carregar() {
 
     const data = await response.json();
     nome.textContent = `${data.nome}`;
+    await carregarAvatar();
 };
+
+async function carregarAvatar() {
+    try {
+        const response = await fetch('/api/avatar', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        const avatar = data.avatar || avatarPadrao;
+        const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+        imagensAvatar.forEach((imagem) => {
+            imagem.src = avatar;
+            imagem.onerror = () => {
+                imagem.src = avatarPadrao;
+            };
+        });
+    } catch (error) {
+        console.error('Erro ao carregar avatar:', error);
+    }
+}
 
 async function carregaDados() {
     try {
         const response = await fetch(
 
-            `http://localhost:3000/api/usuario`, {
+            `/api/usuario`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -44,14 +92,14 @@ async function carregaDados() {
 
 async function favoritados() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagasFavoritadas`,{
+        const response = await fetch(`/api/vagasFavoritadas`,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
         const dataVagasFavoritadas = await response.json();
 
-        const response2 = await fetch(`http://localhost:3000/api/vagasEnviadas`,{
+        const response2 = await fetch(`/api/vagasEnviadas`,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -78,13 +126,12 @@ function trocaDadosPerfil(data) {
     let idade = document.getElementById('idadeUsuario');
 
     nome.textContent = `${data.nome}`;
-    email.textContent ='📧​ ' +`${data.email}`;
-    telefone.textContent ="📞 " + `${data.telefone}`;
-
-    idade.textContent ='​🎂 '+ `${data.idade}`;
+    email.textContent = '📧 ' + data.email;
+    telefone.textContent = '📞 ' + data.telefone;
+    idade.textContent = '🎂 ' + data.idade;
 
     if (!data.descricao) {
-        descricao.textContent = `Sem descrição`;
+        descricao.textContent = textoPerfil('semDescricao');
     } else {
         descricao.textContent = `${data.descricao}`;
     }
@@ -96,7 +143,7 @@ function trocaDadosPerfil(data) {
 function trocaVagasFavoritadas(data) {
     if (data.length === 0) {
         document.getElementById('statsFavoritadas').textContent = `0`;
-        document.getElementById('vagasFavoritadas').textContent = `Você ainda não favoritou nenhuma vaga.`;
+        document.getElementById('vagasFavoritadas').textContent = textoPerfil('semFavoritas');
     } else {
         document.getElementById('statsFavoritadas').textContent = `${data.length}`;
 
@@ -109,7 +156,7 @@ function trocaVagasFavoritadas(data) {
 function trocaVagasEnviadas(data) {
     if (data.length === 0) {
         document.getElementById('statsEnviadas').textContent = `0`;
-        document.getElementById('vagasEnviadas').textContent = `Você ainda não enviou currículo para nenhuma vaga.`;
+        document.getElementById('vagasEnviadas').textContent = textoPerfil('semEnviadas');
     } else {
         document.getElementById('statsEnviadas').textContent = `${data.length}`;
         printaVagasEnviadas(data);
@@ -124,7 +171,7 @@ async function printaVagasFavoritadas(data) {
 
         //bucar todas as vagas de data 
         const responseVagas = await fetch(
-            `http://localhost:3000/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
+            `/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
         );
 
 
@@ -174,7 +221,7 @@ async function printaVagasEnviadas(data) {
 
         //bucar todas as vagas de data 
         const responseVagas = await fetch(
-            `http://localhost:3000/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
+            `/api/vaga?id=${data.map(v => v.ID_vaga).join(',')}`
         );
 
 

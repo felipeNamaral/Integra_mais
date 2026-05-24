@@ -15,32 +15,33 @@
 
 <body>
     <header class="header">
-            <a class="title" href="/pages/menu_usuario.html">Integra+</a>
+            <a class="title" href="/pages/menu_usuario.html" id="txt-vagas-usuario-001">Integra+</a>
 
-            <a class="perfil" href="">
-                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+            <a class="perfil" href="perfil_usuario.html">
+                <img class="bandeira-idioma" src="/assets/img/user.png" alt="">
                 <span id="nome"></span>
             </a>
 
-            <a class="sair" href="login.html">
+
+            <a class="sair" href="login.html" id="txt-vagas-usuario-007">
                 <span class="material-symbols-outlined">logout</span>
-                <span>Sair</span>
+                <span id="txt-vagas-usuario-002">Sair</span>
             </a>
     </header>
     <main>
         <div class="voltar-idioma">
-                <a href="menu_usuario.html" class="btn-voltar">
+                <a href="menu_usuario.html" class="btn-voltar" id="txt-vagas-usuario-008">
                     <span class="material-symbols-outlined">arrow_back</span>
-                    <span>Voltar</span>
+                    <span id="txt-vagas-usuario-003">Voltar</span>
                 </a>
-                <button class="trocar-idioma">
+                <button class="trocar-idioma" id="txt-vagas-usuario-006">
                     Trocar idioma
-                    <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
+                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
                 </button>
         </div>
         
-    <h1 class="titulo">Vagas de Emprego</h1>
-    <p class="subtitulo">Encontre a oportunidade perfeita para você</p>
+    <h1 class="titulo" id="txt-vagas-usuario-004">Vagas de Emprego</h1>
+    <p class="subtitulo" id="txt-vagas-usuario-005">Encontre a oportunidade perfeita para você</p>
 
     <div class="filtro-vagas">
         <input type="text" placeholder="Busque por empresa, título ,cidade" id="buscaVaga">
@@ -53,8 +54,9 @@
 <div id="lista-vagas" class="lista-vagas"></div>
 
 </main>
-<script src="/scripts/animations.js"></script>
+
 <script src="/scripts/vagas_usuario.js"></script>
 <script src="/scripts/token.js"></script>
+    <script src="../scripts/trocar_idioma.js"></script>
 </body>
 </html>

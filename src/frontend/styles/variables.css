@@ -4,6 +4,11 @@
   --cor-principal: #2563EB;
   --cor-secundaria: #153885;
   --cor-fundo: rgba(217, 217, 217, 1);
+  --cor-superficie: #ffffff;
+  --cor-texto: #111827;
+  --cor-texto-suave: #6B7280;
+  --sombra-suave: 0 0.5rem 2rem rgba(17, 24, 39, 0.08);
+  --raio-padrao: 2.5rem;
   --fonte-principal: 'Abel', sans-serif;
   --espacamento-padrao: 16px;
 }

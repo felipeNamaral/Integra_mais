@@ -10,39 +10,39 @@
     <link rel="stylesheet" href="/styles/login.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back" />
-    <title>Integra+</title>
+    <title id="txt-login-013">Integra+</title>
 </head>
 
 <body class="auth">
     <main id="swup" class="transition-fade">
         <section class="container">
-            <a href="../index.html" class="btn-voltar">
+            <a href="../index.html" class="btn-voltar" id="txt-login-012">
                 <span class="material-symbols-outlined">arrow_back</span>
-                <span>Voltar</span>
+                <span id="txt-login-001">Voltar</span>
             </a>
             <section class="container-login">
-                <h1>Integra +</h1>
-                <h2>Entre na sua conta</h2>
+                <h1 id="txt-login-002">Integra +</h1>
+                <h2 id="txt-login-003">Entre na sua conta</h2>
 
                 <form id="loginForm">
-                    <h5 class="txt">Email</h5>
+                    <h5 class="txt" id="txt-login-004">Email</h5>
                     <input id="email" type="email" class="input-field" placeholder="Seu@email.com" required>
 
-                    <h5 class="txt">Senha</h5>
+                    <h5 class="txt" id="txt-login-005">Senha</h5>
                     <input id="password" type="password" class="input-field" placeholder="Digite sua senha" required>
                     <p id="error-message"></p>
-                    <button type="submit" class="button-entrar">Entrar</button>
+                    <button type="submit" class="button-entrar" id="txt-login-006">Entrar</button>
                 </form>
 
                 <hr class="linha">
-                <a class="button-rec-senha" href="recuperar.html">Esqueceu sua senha?</a>
+                <a class="button-rec-senha" href="recuperar.html" id="txt-login-007" data-no-swup>Esqueceu sua senha?</a>
 
-                <h2>Ainda não tem uma conta?</h2>
+                <h2 id="txt-login-008">Ainda não tem uma conta?</h2>
 
-                <button class="button-cadastro-ususario" onclick="window.location.href='/pages/cadastroUSU.html'">Criar conta como Usuário</button>
-                <button class="button-cadastro-empresa" onclick="window.location.href='/pages/cadastroEMP.html'">Criar conta como empresa</button>
+                <button class="button-cadastro-ususario" onclick="window.location.href='/pages/cadastroUSU.html'" id="txt-login-009">Criar conta como Usuário</button>
+                <button class="button-cadastro-empresa" onclick="window.location.href='/pages/cadastroEMP.html'" id="txt-login-010">Criar conta como empresa</button>
             </section>
-            <button class="trocar-idioma">
+            <button class="trocar-idioma" id="txt-login-011">
                 Trocar idioma
                 <img class="bandeira-idioma" src="../assets/img/bandeira.png" alt="">
             </button>
@@ -54,6 +54,7 @@
     <script src="https://unpkg.com/@swup/head-plugin@2"></script>
     <script type="module" src="../scripts/animations.js"></script>
     <script src="../scripts/login.js"></script>
+    <script src="../scripts/trocar_idioma.js"></script>
 </body>
 
 </html>

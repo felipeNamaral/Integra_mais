@@ -1,12 +1,13 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const nome = document.getElementById('nome');
+const avatarPadrao = "/assets/img/user.png";
 
 const token = localStorage.getItem("token");
 carregar();
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -15,12 +16,36 @@ async function carregar() {
     const data = await response.json();
 
     nome.textContent = `${data.nome}`;
+    await carregarAvatar();
+}
+
+async function carregarAvatar() {
+    try {
+        const response = await fetch('/api/avatar', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        const avatar = data.avatar || avatarPadrao;
+        const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+        imagensAvatar.forEach((imagem) => {
+            imagem.src = avatar;
+            imagem.onerror = () => {
+                imagem.src = avatarPadrao;
+            };
+        });
+    } catch (error) {
+        console.error('Erro ao carregar avatar:', error);
+    }
 }
 
 
 async function carregarVaga() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagaById?id=${id}`, {
+        const response = await fetch(`/api/vagaById?id=${id}`, {
         });
 
         const data = await response.json();
@@ -62,7 +87,7 @@ enviar.addEventListener('click', async () => {
             status: "Ativa"
         };
 
-        const response = await fetch(`http://localhost:3000/api/vaga?ID_vaga=${id}`, {
+        const response = await fetch(`/api/vaga?ID_vaga=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

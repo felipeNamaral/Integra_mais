@@ -6,8 +6,59 @@ const btnFavoritar = document.getElementById('btn-favoritar');
 const btnEnviar = document.getElementById('btn-enviar');
 let favoritada = false;
 let enviada = false;
+const avatarPadrao = "/assets/img/user.png";
+let vagaAtual = null;
 
+function idiomaAtual() {
+    return localStorage.getItem("integraIdioma") || "pt-BR";
+}
 
+function textoDetalhes(chave, valores = {}) {
+    const textos = {
+        aCombinar: {
+            "pt-BR": "A combinar",
+            es: "A convenir"
+        },
+        naoInformado: {
+            "pt-BR": "Não informado",
+            es: "No informado"
+        },
+        semData: {
+            "pt-BR": "Sem data",
+            es: "Sin fecha"
+        },
+        erroVerificarFavorito: {
+            "pt-BR": "Erro ao verificar favorito.",
+            es: "Error al verificar favorito."
+        },
+        erroVerificarEnviado: {
+            "pt-BR": "Erro ao verificar envio.",
+            es: "Error al verificar envio."
+        },
+        removidoFavoritos: {
+            "pt-BR": "Removido dos favoritos ❌",
+            es: "Eliminado de favoritos ❌"
+        },
+        adicionadoFavoritos: {
+            "pt-BR": "Adicionado aos favoritos ⭐",
+            es: "Agregado a favoritos ⭐"
+        },
+        desmarcado: {
+            "pt-BR": "Desmarcado ❌",
+            es: "Desmarcado ❌"
+        },
+        marcadoSucesso: {
+            "pt-BR": "Marcado com sucesso 📌",
+            es: "Marcado con exito 📌"
+        },
+        erroCarregarVagas: {
+            "pt-BR": "Erro ao carregar vagas:",
+            es: "Error al cargar vacantes:"
+        }
+    };
+
+    return textos[chave][idiomaAtual()] || textos[chave]["pt-BR"];
+}
 
 
 async function inicio() {
@@ -21,7 +72,7 @@ inicio();
 
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -30,23 +81,47 @@ async function carregar() {
     const data = await response.json();
 
     nome.textContent = `${data.nome}`;
+    await carregarAvatar();
+}
+
+async function carregarAvatar() {
+    try {
+        const response = await fetch('/api/avatar', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        const avatar = data.avatar || avatarPadrao;
+        const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+        imagensAvatar.forEach((imagem) => {
+            imagem.src = avatar;
+            imagem.onerror = () => {
+                imagem.src = avatarPadrao;
+            };
+        });
+    } catch (error) {
+        console.error('Erro ao carregar avatar:', error);
+    }
 }
 
 async function carregaVaga() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagaById?id=${id}`);
+        const response = await fetch(`/api/vagaById?id=${id}`);
         const data = await response.json();
 
         carregarDetalhes(data);
     }
     catch (error) {
-        console.error("Erro ao carregar vagas:", error);
+        console.error(textoDetalhes("erroCarregarVagas"), error);
     }
 }
 
 async function carregaStatusVagas() {
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeFavorita?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeFavorita?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -61,8 +136,8 @@ async function carregaStatusVagas() {
 
 
     } catch (error) {
-        alert("erro err " + error);
-        console.error("Erro ao verificar favorito:", error);
+        alert(textoDetalhes("erroVerificarFavorito"));
+        console.error(textoDetalhes("erroVerificarFavorito"), error);
     }
 
 
@@ -70,7 +145,7 @@ async function carregaStatusVagas() {
 
 
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeEnviado?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeEnviado?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -85,8 +160,8 @@ async function carregaStatusVagas() {
         }
 
     } catch (error) {
-        alert("ero ero");
-        console.error("Erro ao verificar favorito:", error);
+        alert(textoDetalhes("erroVerificarEnviado"));
+        console.error(textoDetalhes("erroVerificarEnviado"), error);
     }
 
 }
@@ -98,6 +173,7 @@ async function carregaStatusVagas() {
 
 function carregarDetalhes(vaga) {
     if (!vaga) return;
+    vagaAtual = vaga;
 
     // Header da vaga
     document.getElementById("titulo-vaga").textContent = vaga.titulo;
@@ -106,21 +182,23 @@ function carregarDetalhes(vaga) {
 
     // Novos campos
     document.getElementById("salario-vaga").textContent =
-        vaga.salario ? `R$ ${Number(vaga.salario).toFixed(2)}` : "A combinar";
+        vaga.salario ? `R$ ${Number(vaga.salario).toFixed(2)}` : textoDetalhes("aCombinar");
 
     document.getElementById("carga-horaria-vaga").textContent =
-        vaga.carga_horaria ? `${vaga.carga_horaria}h/semana` : "Não informado";
+        vaga.carga_horaria ? `${vaga.carga_horaria}h/semana` : textoDetalhes("naoInformado");
 
     document.getElementById("tipo-vaga").textContent =
-        vaga.tipo_vaga || "Não informado";
+        vaga.tipo_vaga || textoDetalhes("naoInformado");
 
     document.getElementById("data-publicacao-vaga").textContent =
         vaga.data_publicacao
-            ? new Date(vaga.data_publicacao).toLocaleDateString("pt-BR")
-            : "Sem data";
+            ? new Date(vaga.data_publicacao).toLocaleDateString(idiomaAtual())
+            : textoDetalhes("semData");
 
     // Descrição
     document.getElementById("descricao-vaga").textContent = vaga.descricao;
+    document.getElementById("email-empresa-vaga").textContent =
+        vaga.empresa_email ? ` ${vaga.empresa_email}` : "";
 
     // Requisitos
     const lista = document.getElementById("requisitos-vaga");
@@ -159,7 +237,7 @@ btnFavoritar.addEventListener('click', async () => {
         if (favoritada) {
             // Rota de remover favorito
 
-            await fetch("http://localhost:3000/api/favoritar", {
+            await fetch("/api/favoritar", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -173,12 +251,12 @@ btnFavoritar.addEventListener('click', async () => {
 
             favoritada = false;
             btnFavoritar.classList.remove('ativo');
-            showToast("Removido dos favoritos ❌", "error");
+            showToast(textoDetalhes("removidoFavoritos"), "error");
 
         } else {
             // Rota de ADD aos favoritos 
 
-            await fetch("http://localhost:3000/api/favoritar", {
+            await fetch("/api/favoritar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -192,7 +270,7 @@ btnFavoritar.addEventListener('click', async () => {
 
             favoritada = true;
             btnFavoritar.classList.add('ativo');
-            showToast("Adicionado aos favoritos ⭐");
+            showToast(textoDetalhes("adicionadoFavoritos"));
         }
 
     } catch (error) {
@@ -209,7 +287,7 @@ btnEnviar.addEventListener('click', async () => {
         if (enviada) {
             // ❌ DESMARCAR
 
-            await fetch("http://localhost:3000/api/marcar", {
+            await fetch("/api/marcar", {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -222,12 +300,12 @@ btnEnviar.addEventListener('click', async () => {
 
             enviada = false;
             btnEnviar.classList.remove('ativo');
-            showToast("Desmarcado ❌", "error");
+            showToast(textoDetalhes("desmarcado"), "error");
 
         } else {
             // 🟢 MARCAR
 
-            await fetch("http://localhost:3000/api/marcar", {
+            await fetch("/api/marcar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -240,7 +318,7 @@ btnEnviar.addEventListener('click', async () => {
 
             enviada = true;
             btnEnviar.classList.add('ativo');
-            showToast("Marcado com sucesso 📌");
+            showToast(textoDetalhes("marcadoSucesso"));
         }
 
     } catch (error) {
@@ -264,6 +342,16 @@ function showToast(message, type = "success") {
         toast.classList.remove("show");
     }, 2500);
 }
+
+document.querySelectorAll(".trocar-idioma, .idioma-fixo").forEach(botao => {
+    botao.addEventListener("click", () => {
+        setTimeout(() => {
+            if (vagaAtual) {
+                carregarDetalhes(vagaAtual);
+            }
+        }, 0);
+    });
+});
 
 
 

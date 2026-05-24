@@ -2,6 +2,7 @@ const token = localStorage.getItem('token');
 const nome = document.getElementById('nome');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
+const avatarPadrao = "/assets/img/user.png";
 
 
 async function inicio() {
@@ -15,7 +16,7 @@ inicio();
 
 
 async function carregar() {
-    const response = await fetch('http://localhost:3000/api/protected', {
+    const response = await fetch('/api/protected', {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -24,11 +25,35 @@ async function carregar() {
     const data = await response.json();
 
     nome.textContent = `${data.nome}`;
+    await carregarAvatar();
+}
+
+async function carregarAvatar() {
+    try {
+        const response = await fetch('/api/avatar', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        const avatar = data.avatar || avatarPadrao;
+        const imagensAvatar = document.querySelectorAll('img[src="/assets/img/user.png"], img#avatar');
+
+        imagensAvatar.forEach((imagem) => {
+            imagem.src = avatar;
+            imagem.onerror = () => {
+                imagem.src = avatarPadrao;
+            };
+        });
+    } catch (error) {
+        console.error('Erro ao carregar avatar:', error);
+    }
 }
 
 async function carregaVaga() {
     try {
-        const response = await fetch(`http://localhost:3000/api/vagaById?id=${id}`);
+        const response = await fetch(`/api/vagaById?id=${id}`);
         const data = await response.json();
 
         carregarDetalhes(data);
@@ -40,7 +65,7 @@ async function carregaVaga() {
 
 async function carregaStatusVagas() {
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeFavorita?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeFavorita?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -60,7 +85,7 @@ async function carregaStatusVagas() {
 
 
     try {
-        const response = await fetch(`http://localhost:3000/api/verificaSeEnviado?ID_vaga=${id}`, {
+        const response = await fetch(`/api/verificaSeEnviado?ID_vaga=${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -106,6 +131,8 @@ function carregarDetalhes(vaga) {
 
     // Descrição
     document.getElementById("descricao-vaga").textContent = vaga.descricao;
+    document.getElementById("email-empresa-vaga").textContent =
+        vaga.empresa_email ? ` ${vaga.empresa_email}` : "";
 
     // Requisitos
     const lista = document.getElementById("requisitos-vaga");

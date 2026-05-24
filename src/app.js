@@ -5,16 +5,16 @@ const path = require('path');
 const vagaRoutes = require('./backend/routes/vagaRoutes');
 const cadastroRoutes = require('./backend/routes/cadastroRoutes');
 const perfilRoutes = require('./backend/routes/perfilRoutes');
+const avatarRoutes = require('./backend/routes/avatarRoutes');
+const senhaRoutes = require('./backend/routes/senhaRoutes');
 
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 app.use(express.static(path.join(__dirname, 'frontend')));
-
-// DB
-require('./backend/config/db');
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 // ROTAS
 const authRoutes = require('./backend/routes/authRoutes');
@@ -45,6 +45,8 @@ app.use('/api', verificaSeVFavorita);
 app.use('/api', verificaSeEnviado); 
 app.use('/api', cadastroRoutes);
 app.use('/api', perfilRoutes);
+app.use('/api', avatarRoutes);
+app.use('/api', senhaRoutes);
 app.use('/api', vagaRoutes);
 app.use('/api', buscaVagaEmpresa);
 app.use('/api', favoritarMarcar);

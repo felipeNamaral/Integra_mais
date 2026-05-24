@@ -14,7 +14,6 @@ const cadastrarVaga = async (req, res) => {
       status,
       cidade
     } = req.body;
-
     const idEmpresa = req.user.id; 
 
     if (!titulo || !descricao) {
@@ -63,6 +62,7 @@ const editarVaga = async (req, res) => {
       status,
       cidade
     } = req.body;
+    const idEmpresa = req.user.id;
 
 
     if (!idVaga || !titulo || !descricao) {
@@ -75,6 +75,7 @@ const editarVaga = async (req, res) => {
 
     const result = await vagaModel.editarVaga({
       idVaga,
+      idEmpresa,
       titulo,
       descricao,
       salario,
@@ -89,7 +90,7 @@ const editarVaga = async (req, res) => {
     if (result.affectedRows === 0) {
       return res.status(404).json({
         sucesso: false,
-        mensagem: 'Vaga não encontrada.'
+        mensagem: 'Vaga não encontrada ou não pertence à empresa.'
       });
     }
 

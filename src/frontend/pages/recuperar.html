@@ -3,38 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/variables.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/components.css">
-    <link rel="stylesheet" href="../styles/recuperar.css">
-    <title>Integra+ | Recuperar Senha</title>
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/recuperar.css">
+    <title id="txt-recuperar-008">Integra+ | Recuperar Senha</title>
 </head>
 <body class="auth">
-    <main id="swup" class="transition-fade">
+    <main>
         <section class="container-central">
-            <a href="login.html" class="btn-voltar">
-                <span>&larr; Voltar</span>
+            <a href="login.html" class="btn-voltar" id="txt-recuperar-007">
+                <span id="txt-recuperar-001">&larr; Voltar</span>
             </a>
 
             <div class="card-branco">
-                <h1 class="logo-azul">Integra +</h1>
-                <p class="status-tela">Recuperar senha</p>
+                <h1 class="logo-azul" id="txt-recuperar-002">Integra +</h1>
+                <p class="status-tela" id="txt-recuperar-003">Recuperar senha</p>
 
                 <form id="formRecuperar">
                     <div class="field-group">
-                        <label>Email</label>
-                        <input type="email" class="input-gray" placeholder="Seu@email.com" required>
+                        <label id="txt-recuperar-004">Email</label>
+                        <input type="email" id="emailRecuperar" class="input-gray" placeholder="Seu@email.com" required>
+                        <p id="error-message"></p>
                     </div>
 
-                    <button type="submit" class="button-principal">Recuperar</button>
+                    <button type="submit" class="button-principal" id="txt-recuperar-005">Recuperar</button>
                 </form>
+
+                <div id="mensagemVerifiqueEmail" class="mensagem-email" hidden>
+                    <h2 id="txt-recuperar-009">Verifique seu email</h2>
+                    <p id="txt-recuperar-010">Enviamos um link de recuperacao de senha. Abra sua caixa de entrada para continuar.</p>
+                    <a href="login.html" class="button-link" id="txt-recuperar-011">Voltar ao login</a>
+                </div>
             </div>
 
-            <button class="idioma-fixo">
-                Trocar idioma <img src="../assets/img/bandeira.png" class="bandeira-pequena">
+            <button class="trocar-idioma" id="txt-recuperar-006">
+                Trocar idioma
+                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
             </button>
         </section>
     </main>
-    <script src="../scripts/recuperar.js"></script>
+    <script src="/scripts/recuperar.js"></script>
+    <script src="/scripts/trocar_idioma.js"></script>
 </body>
 </html>
