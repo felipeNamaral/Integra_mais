@@ -7,183 +7,171 @@
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Aiven](https://img.shields.io/badge/Aiven-FF4A00?style=for-the-badge&logo=aiven&logoColor=white)
-![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000)
 
-**Plataforma web para apoiar a integração social, profissional e informacional de imigrantes no Brasil.**
+**Plataforma web para apoiar a integracao social, profissional e informacional de imigrantes no Brasil.**
 
 </div>
 
 ---
 
-## 📌 Sobre
+## Sobre
 
-O **Integra+** é uma aplicação web desenvolvida para centralizar informações e serviços essenciais para imigrantes sul-americanos em situação de vulnerabilidade social no Brasil.
+O **Integra+** e uma aplicacao web desenvolvida para centralizar informacoes e servicos essenciais para imigrantes sul-americanos em situacao de vulnerabilidade social no Brasil.
 
-A plataforma conecta usuários a **oportunidades de trabalho**, **empresas cadastradas**, **informações de regularização documental** e **unidades de saúde**, reduzindo barreiras de acesso à informação e apoiando a inclusão social.
+A plataforma conecta usuarios a oportunidades de trabalho, empresas cadastradas, informacoes de regularizacao documental e unidades de saude, reduzindo barreiras de acesso a informacao e apoiando a inclusao social.
 
-O projeto foi concebido como um MVP acadêmico com foco em impacto social, acessibilidade e organização de dados relevantes para o público imigrante.
+O projeto foi concebido como um MVP academico com foco em impacto social, acessibilidade e organizacao de dados relevantes para o publico imigrante.
 
 ---
 
-## 🎯 ODS da ONU atendidas
+## ODS da ONU atendidas
 
-De acordo com a proposta inicial do projeto, o Integra+ está alinhado aos seguintes **Objetivos de Desenvolvimento Sustentável da ONU**:
-
-| ODS | Nome | Relação com o projeto |
+| ODS | Nome | Relacao com o projeto |
 | --- | --- | --- |
-| **ODS 3** | Saúde e Bem-estar | Facilita o acesso a informações sobre unidades de saúde e serviços públicos de atendimento. |
-| **ODS 8** | Trabalho Decente e Crescimento Econômico | Aproxima imigrantes de oportunidades de emprego e empresas que divulgam vagas. |
-| **ODS 10** | Redução das Desigualdades | Apoia a inclusão social de imigrantes por meio de informação acessível e organizada. |
+| ODS 3 | Saude e Bem-estar | Facilita o acesso a informacoes sobre unidades de saude e servicos publicos de atendimento. |
+| ODS 8 | Trabalho Decente e Crescimento Economico | Aproxima imigrantes de oportunidades de emprego e empresas que divulgam vagas. |
+| ODS 10 | Reducao das Desigualdades | Apoia a inclusao social de imigrantes por meio de informacao acessivel e organizada. |
 
 ---
 
-## ✨ Funcionalidades principais
+## Funcionalidades principais
 
-- Cadastro e autenticação de usuários.
-- Cadastro e autenticação de empresas.
-- Publicação, edição e exclusão de vagas por empresas.
-- Listagem e busca de vagas disponíveis.
-- Visualização detalhada de vagas.
+- Cadastro e autenticacao de usuarios.
+- Cadastro e autenticacao de empresas.
+- Recuperacao de senha para usuarios e empresas por link enviado por e-mail.
+- Tokens de recuperacao com expiracao de 15 minutos gerada pelo MySQL.
+- Tela de recuperacao com validacao de e-mail e confirmacao "Verifique seu email".
+- Publicacao, edicao e exclusao de vagas por empresas.
+- Listagem, busca e visualizacao detalhada de vagas.
 - Favoritar vagas.
 - Marcar vagas como enviadas/candidatadas.
-- Perfil do usuário com dados pessoais e profissionais.
+- Perfil do usuario com dados pessoais e profissionais.
 - Perfil da empresa com dados institucionais.
-- Upload e exibição de avatar.
-- Busca de unidades de saúde por localização ou cidade.
-- Controle de acesso por tipo de usuário: `usuario` e `empresa`.
-- Consumo de API própria via rotas `/api`.
+- Upload e exibicao de avatar.
+- Busca de unidades de saude por localizacao ou cidade.
+- Controle de acesso por tipo de usuario: `usuario` e `empresa`.
+- Troca de idioma em telas principais, incluindo login e recuperacao de senha.
+- Consumo de API propria via rotas `/api`.
 
 ---
 
-## 🧰 Tecnologias utilizadas
+## Tecnologias utilizadas
 
 | Camada | Tecnologias |
 | --- | --- |
 | Frontend | HTML5, CSS3, JavaScript |
 | Backend | Node.js, Express.js |
 | Banco de dados | MySQL |
-| Autenticação | JWT, bcrypt |
-| Deploy frontend e backend | Netlify |
+| Autenticacao | JWT, bcrypt |
+| E-mail | Nodemailer, SMTP Gmail |
 | Banco em nuvem | Aiven for MySQL |
 | Testes | Node Test Runner (`node:test`) |
 | Versionamento | Git e GitHub |
 
 ---
 
-## 🗂️ Estrutura de pastas
+## Estrutura de pastas
 
 ```text
 Integra+
-├── database/
-│   └── backup/
-│       └── Dump20260504.sql
-├── docs/
-│   ├── Proposta Inicial  - 1º Entrega.pdf
-│   ├── 2° entrega Integra+.pdf
-│   └── Modelo ENTIDADE-RELACIONAMENTO Integra+ .pdf
-├── src/
-│   ├── app.js
-│   ├── backend/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   ├── middlewares/
-│   │   ├── models/
-│   │   └── routes/
-│   └── frontend/
-│       ├── assets/
-│       ├── pages/
-│       ├── scripts/
-│       ├── styles/
-│       └── index.html
-├── tests/
-├── uploads/
-├── package.json
-├── package-lock.json
-├── server.js
-└── README.md
+|-- database/
+|   `-- backup/
+|-- docs/
+|-- src/
+|   |-- app.js
+|   |-- backend/
+|   |   |-- config/
+|   |   |-- controllers/
+|   |   |-- middlewares/
+|   |   |-- models/
+|   |   |-- routes/
+|   |   `-- services/
+|   `-- frontend/
+|       |-- assets/
+|       |-- pages/
+|       |-- scripts/
+|       `-- styles/
+|-- tests/
+|-- uploads/
+|-- package.json
+|-- package-lock.json
+|-- server.js
+`-- README.md
 ```
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
-O Integra+ segue uma arquitetura web tradicional em camadas, separando responsabilidades entre interface, API, regras de negócio e persistência de dados.
+O Integra+ segue uma arquitetura web em camadas, separando interface, API, regras de entrada e persistencia de dados.
 
 ```text
-Usuário / Empresa
-      │
-      ▼
-Frontend estático
+Usuario / Empresa
+      |
+      v
+Frontend estatico
 HTML + CSS + JavaScript
-      │
-      ▼
+      |
+      v
 API REST
 Node.js + Express
-      │
-      ▼
+      |
+      v
 Controllers
-Regras de entrada, validação e resposta HTTP
-      │
-      ▼
-Models
-Consultas SQL e acesso aos dados
-      │
-      ▼
-MySQL
-Banco gerenciado na Aiven
+Validacao e resposta HTTP
+      |
+      v
+Models e Services
+SQL, banco de dados e envio de e-mail
+      |
+      v
+MySQL / SMTP
 ```
-
-### Camadas do backend
 
 | Camada | Responsabilidade |
 | --- | --- |
-| `routes` | Define os endpoints da API e aplica middlewares. |
-| `middlewares` | Valida autenticação JWT e permissões por tipo de usuário. |
-| `controllers` | Processa requisições, valida dados e define respostas. |
+| `routes` | Define endpoints da API e aplica middlewares. |
+| `middlewares` | Valida autenticacao JWT e permissoes por tipo de usuario. |
+| `controllers` | Processa requisicoes, valida dados e define respostas. |
 | `models` | Executa consultas SQL e comunica com o MySQL. |
-| `config` | Centraliza a configuração de conexão com banco de dados. |
+| `services` | Centraliza servicos externos, como envio de e-mail. |
+| `config` | Centraliza configuracoes de conexao com banco. |
 
 ---
 
-## 🚀 Como rodar localmente
+## Como rodar localmente
 
-### Pré-requisitos
+### Pre-requisitos
 
 - Node.js instalado.
 - npm instalado.
 - Banco MySQL configurado localmente ou na Aiven.
 - Arquivo `.env` criado na raiz do projeto.
+- Conta Gmail com senha de app para envio de e-mails de recuperacao.
 
 ### Passo a passo
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/seu-repositorio.git
-
-# Acesse a pasta do projeto
-cd Integra+
-
-# Instale as dependências
+# Instale as dependencias
 npm install
 
-# Configure as variáveis de ambiente
+# Configure as variaveis de ambiente
 cp .env.example .env
 
-# Inicie a aplicação
+# Inicie a aplicacao
 npm start
 ```
 
-Após iniciar o servidor, acesse:
+Acesse:
 
 ```text
 http://localhost:3000
 ```
 
-Para ambiente de desenvolvimento com reinício automático:
+Para desenvolvimento com reinicio automatico:
 
 ```bash
 npm run dev
@@ -197,15 +185,14 @@ npm test
 
 ---
 
-## 🔐 Configuração do `.env`
+## Configuracao do `.env`
 
-Crie um arquivo chamado `.env` na raiz do projeto com as configurações do servidor, autenticação e banco de dados.
-
-### `.env.example`
+Crie um arquivo chamado `.env` na raiz do projeto com as configuracoes do servidor, banco, JWT e envio de e-mail.
 
 ```env
 # Servidor
 PORT=3000
+APP_URL=http://localhost:3000
 
 # Autenticacao
 JWT_SECRET=sua_chave_secreta_jwt
@@ -216,84 +203,74 @@ DB_PORT=00000
 DB_USER=avnadmin
 DB_PASSWORD=sua_senha_do_banco
 DB_NAME=integraplus
+
+# E-mail de recuperacao de senha
+EMAIL_USER=seu_email@gmail.com
+EMAIL_PASS=sua_senha_de_app_gmail
 ```
 
-> Nunca envie o arquivo `.env` real para o GitHub. Publique apenas o `.env.example`.
+> Nunca envie o arquivo `.env` real para o GitHub. Publique apenas um `.env.example`.
 
----
+### Variaveis de ambiente
 
-## 🌱 Variáveis de ambiente
-
-| Variável | Obrigatória | Descrição | Exemplo |
+| Variavel | Obrigatoria | Descricao | Exemplo |
 | --- | --- | --- | --- |
-| `PORT` | Não | Porta local da aplicação. | `3000` |
+| `PORT` | Nao | Porta local da aplicacao. | `3000` |
+| `APP_URL` | Sim | URL base usada para montar o link de redefinicao de senha. | `http://localhost:3000` |
 | `JWT_SECRET` | Sim | Chave usada para assinar e validar tokens JWT. | `minha_chave_segura` |
 | `DB_HOST` | Sim | Host do banco MySQL. | `mysql-aiven.aivencloud.com` |
 | `DB_PORT` | Sim | Porta do banco MySQL. | `25060` |
-| `DB_USER` | Sim | Usuário do banco de dados. | `avnadmin` |
+| `DB_USER` | Sim | Usuario do banco de dados. | `avnadmin` |
 | `DB_PASSWORD` | Sim | Senha do banco de dados. | `********` |
-| `DB_NAME` | Sim | Nome do banco utilizado pela aplicação. | `integraplus` |
+| `DB_NAME` | Sim | Nome do banco utilizado pela aplicacao. | `integraplus` |
+| `EMAIL_USER` | Sim | Conta usada para enviar e-mails de recuperacao. | `integramais.app@gmail.com` |
+| `EMAIL_PASS` | Sim | Senha de app do Gmail usada pelo Nodemailer. | `********` |
+
+> Para Gmail, use uma senha de app. A senha normal da conta nao deve ser usada no projeto.
 
 ---
 
-## ☁️ Deploy
 
-### Frontend e backend na Netlify
+## Endpoints principais da API
 
-O **frontend** e o **backend/API** do Integra+ podem ser hospedados na **Netlify**, uma plataforma moderna de deploy, hospedagem e entrega de aplicações web.
+### Autenticacao
 
-No projeto, a Netlify fica responsável por disponibilizar a interface web e expor as rotas da aplicação para consumo pelo frontend. Como o backend é desenvolvido em Node.js/Express, a publicação em produção deve considerar uma configuração compatível com ambiente serverless ou funções da Netlify, mantendo a API acessível pelas rotas `/api`.
-
-Configuração sugerida:
-
-| Campo | Valor |
-| --- | --- |
-| Build command | vazio ou não configurado |
-| Publish directory | `src/frontend` |
-| Production branch | `main` |
-
-Como os scripts do frontend utilizam rotas relativas, como `/api/login`, frontend e backend podem operar no mesmo domínio publicado pela Netlify.
-
-Exemplo conceitual de roteamento para manter a API sob `/api`:
-
-```text
-/api/* /.netlify/functions/api/:splat 200
-```
-
-> A configuração exata pode variar conforme a estratégia escolhida para adaptar o Express à Netlify Functions.
-
-### Banco MySQL na Aiven
-
-O banco de dados é hospedado na **Aiven**, uma plataforma de banco de dados em nuvem gerenciado.
-
-Neste projeto, a Aiven fornece um serviço **MySQL gerenciado**, cuidando de infraestrutura, disponibilidade, conexão segura e gerenciamento do banco. A aplicação backend se conecta ao banco usando as variáveis `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD` e `DB_NAME`.
-
----
-
-## 🔌 Endpoints principais da API
-
-### Autenticação
-
-| Método | Endpoint | Acesso | Descrição |
+| Metodo | Endpoint | Acesso | Descricao |
 | --- | --- | --- | --- |
-| `POST` | `/api/login` | Público | Realiza login de usuário ou empresa. |
-| `GET` | `/api/protected` | Autenticado | Retorna dados do usuário autenticado pelo token. |
+| `POST` | `/api/login` | Publico | Realiza login de usuario ou empresa. |
+| `GET` | `/api/protected` | Autenticado | Retorna dados do usuario autenticado pelo token. |
+
+### Recuperacao de senha
+
+| Metodo | Endpoint | Acesso | Descricao |
+| --- | --- | --- | --- |
+| `POST` | `/api/recuperar-senha` | Publico | Gera token e envia link por e-mail para usuario ou empresa. |
+| `PUT` | `/api/redefinir-senha` | Publico | Valida token e redefine a senha com hash bcrypt. |
+
+Fluxo atual:
+
+1. Usuario informa o e-mail em `recuperar.html`.
+2. Backend procura o e-mail em `usuario` e `empresa`.
+3. Se existir, grava `reset_token` e `reset_token_expira`.
+4. Backend envia link para `novaSenha.html?token=...`.
+5. Nova senha e salva com `bcrypt`.
+6. Token e expiracao sao limpos apos o uso.
 
 ### Cadastro
 
-| Método | Endpoint | Acesso | Descrição |
+| Metodo | Endpoint | Acesso | Descricao |
 | --- | --- | --- | --- |
-| `POST` | `/api/cadastro/usuario` | Público | Cadastra um novo usuário. |
-| `POST` | `/api/cadastro/empresa` | Público | Cadastra uma nova empresa. |
+| `POST` | `/api/cadastro/usuario` | Publico | Cadastra um novo usuario. |
+| `POST` | `/api/cadastro/empresa` | Publico | Cadastra uma nova empresa. |
 
 ### Vagas
 
-| Método | Endpoint | Acesso | Descrição |
+| Metodo | Endpoint | Acesso | Descricao |
 | --- | --- | --- | --- |
-| `GET` | `/api/vagaAll` | Público | Lista todas as vagas. |
-| `GET` | `/api/vagaAll?busca=termo` | Público | Busca vagas por termo. |
-| `GET` | `/api/vagaById?id=1` | Público | Retorna os detalhes de uma vaga. |
-| `GET` | `/api/vaga?id=1,2,3` | Público | Busca vagas por lista de IDs. |
+| `GET` | `/api/vagaAll` | Publico | Lista todas as vagas. |
+| `GET` | `/api/vagaAll?busca=termo` | Publico | Busca vagas por termo. |
+| `GET` | `/api/vagaById?id=1` | Publico | Retorna os detalhes de uma vaga. |
+| `GET` | `/api/vaga?id=1,2,3` | Publico | Busca vagas por lista de IDs. |
 | `GET` | `/api/Vagasempresa` | Empresa | Lista vagas cadastradas pela empresa autenticada. |
 | `POST` | `/api/vaga` | Empresa | Cria uma nova vaga. |
 | `PUT` | `/api/vaga` | Empresa | Edita uma vaga da empresa autenticada. |
@@ -301,52 +278,42 @@ Neste projeto, a Aiven fornece um serviço **MySQL gerenciado**, cuidando de inf
 
 ### Perfil e avatar
 
-| Método | Endpoint | Acesso | Descrição |
+| Metodo | Endpoint | Acesso | Descricao |
 | --- | --- | --- | --- |
-| `GET` | `/api/usuario` | Usuário | Retorna dados do perfil do usuário. |
+| `GET` | `/api/usuario` | Usuario | Retorna dados do perfil do usuario. |
 | `GET` | `/api/empresa` | Empresa | Retorna dados do perfil da empresa. |
-| `PUT` | `/api/perfil/usuario` | Usuário | Atualiza o perfil do usuário. |
+| `PUT` | `/api/perfil/usuario` | Usuario | Atualiza o perfil do usuario. |
 | `PUT` | `/api/perfil/empresa` | Empresa | Atualiza o perfil da empresa. |
-| `GET` | `/api/avatar` | Autenticado | Retorna avatar do usuário ou empresa. |
+| `GET` | `/api/avatar` | Autenticado | Retorna avatar do usuario ou empresa. |
 | `POST` | `/api/avatar` | Autenticado | Atualiza avatar em Base64. |
 
 ### Favoritos e candidaturas
 
-| Método | Endpoint | Acesso | Descrição |
+| Metodo | Endpoint | Acesso | Descricao |
 | --- | --- | --- | --- |
-| `POST` | `/api/favoritar` | Usuário | Favorita uma vaga. |
-| `DELETE` | `/api/favoritar` | Usuário | Remove uma vaga dos favoritos. |
-| `POST` | `/api/marcar` | Usuário | Marca uma vaga como enviada. |
-| `DELETE` | `/api/marcar` | Usuário | Remove marcação de vaga enviada. |
-| `GET` | `/api/vagasFavoritadas` | Usuário | Lista IDs das vagas favoritadas. |
-| `GET` | `/api/vagasEnviadas` | Usuário | Lista IDs das vagas enviadas. |
-| `GET` | `/api/verificaSeFavorita?ID_vaga=1` | Usuário | Verifica se uma vaga está favoritada. |
-| `GET` | `/api/verificaSeEnviado?ID_vaga=1` | Usuário | Verifica se uma vaga foi marcada como enviada. |
+| `POST` | `/api/favoritar` | Usuario | Favorita uma vaga. |
+| `DELETE` | `/api/favoritar` | Usuario | Remove uma vaga dos favoritos. |
+| `POST` | `/api/marcar` | Usuario | Marca uma vaga como enviada. |
+| `DELETE` | `/api/marcar` | Usuario | Remove marcacao de vaga enviada. |
+| `GET` | `/api/vagasFavoritadas` | Usuario | Lista IDs das vagas favoritadas. |
+| `GET` | `/api/vagasEnviadas` | Usuario | Lista IDs das vagas enviadas. |
+| `GET` | `/api/verificaSeFavorita?ID_vaga=1` | Usuario | Verifica se uma vaga esta favoritada. |
+| `GET` | `/api/verificaSeEnviado?ID_vaga=1` | Usuario | Verifica se uma vaga foi marcada como enviada. |
 
-### Saúde
+### Saude
 
-| Método | Endpoint | Acesso | Descrição |
+| Metodo | Endpoint | Acesso | Descricao |
 | --- | --- | --- | --- |
-| `GET` | `/api/unidades?lat=-23&lng=-46` | Público | Busca unidades de saúde próximas. |
-| `GET` | `/api/unidades?cidade=Sao%20Paulo` | Público | Busca unidades de saúde por cidade. |
+| `GET` | `/api/unidades?lat=-23&lng=-46` | Publico | Busca unidades de saude proximas. |
+| `GET` | `/api/unidades?cidade=Sao%20Paulo` | Publico | Busca unidades de saude por cidade. |
+| `GET` | `/api/unidades/favoritas` | Usuario | Lista unidades de saude favoritadas. |
+| `GET` | `/api/unidades/favorita` | Usuario | Verifica se uma unidade esta favoritada. |
+| `POST` | `/api/unidades/favorita` | Usuario | Favorita uma unidade de saude. |
+| `DELETE` | `/api/unidades/favorita` | Usuario | Remove unidade dos favoritos. |
 
 ---
 
-## 🖼️ Screenshots
-
-> Substitua os placeholders abaixo por imagens reais da aplicação quando disponíveis.
-
-| Tela | Preview |
-| --- | --- |
-| Página inicial | ![Página inicial](docs/screenshots/home.png) |
-| Login | ![Login](docs/screenshots/login.png) |
-| Listagem de vagas | ![Vagas](docs/screenshots/vagas.png) |
-| Perfil do usuário | ![Perfil do usuário](docs/screenshots/perfil-usuario.png) |
-| Painel da empresa | ![Painel da empresa](docs/screenshots/painel-empresa.png) |
-
----
-
-## 🧪 Testes
+## Testes
 
 O projeto possui testes automatizados com o runner nativo do Node.js.
 
@@ -354,45 +321,62 @@ O projeto possui testes automatizados com o runner nativo do Node.js.
 npm test
 ```
 
-A suíte cobre autenticação, middlewares, controllers, models, contratos de rotas, URLs do frontend e validações estruturais de páginas e scripts.
+A suite cobre autenticacao, recuperacao de senha, envio de e-mail mockado, middlewares, controllers, models, contratos de rotas, URLs do frontend e validacoes estruturais de paginas e scripts.
+
+Status atual verificado: `30/30` testes passando.
 
 ---
 
-## 🛣️ Melhorias futuras
+## Deploy
 
-- Internacionalização completa da interface para espanhol.
-- Fluxo real de candidatura com histórico e status.
-- Notificações para usuários e empresas.
-- Painel administrativo para moderação de vagas.
+O projeto usa rotas relativas no frontend, como `/api/login`, para permitir que frontend e API operem sob o mesmo dominio.
+
+Em producao, configure:
+
+- variaveis de ambiente do banco Aiven;
+- `JWT_SECRET` seguro;
+- `APP_URL` apontando para a URL publica;
+- `EMAIL_USER` e `EMAIL_PASS` para envio de recuperacao de senha;
+- adaptacao do Express para a plataforma de deploy escolhida, se necessario.
+
+---
+
+## Melhorias futuras
+
+- Ampliar a internacionalizacao completa da interface para espanhol.
+- Melhorar entregabilidade dos e-mails com dominio proprio e SPF/DKIM/DMARC.
+- Fluxo real de candidatura com historico e status.
+- Notificacoes para usuarios e empresas.
+- Painel administrativo para moderacao de vagas.
 - Testes end-to-end com navegador.
-- Pipeline CI/CD com execução automática dos testes.
-- Dashboard de métricas de vagas, acessos e candidaturas.
+- Pipeline CI/CD com execucao automatica dos testes.
+- Dashboard de metricas de vagas, acessos e candidaturas.
 - Melhorias de acessibilidade seguindo WCAG.
-- Integração com serviços oficiais de documentação migratória.
+- Integracao com servicos oficiais de documentacao migratoria.
 
 ---
 
-## 👥 Equipe
+## Equipe
 
 | Integrante | RA |
 | --- | --- |
 | Felipe Natali Amaral | 24792566 |
-| José Ricardo Padovan Ferreira | 24010692 |
+| Jose Ricardo Padovan Ferreira | 24010692 |
 | Pedro Pimentel Rodrigues | 24023362 |
-| Pedro Guimarães Peruchi | 24019888 |
-| Thiago Aureliano Lança Rodriguez | 25004196 |
+| Pedro Guimaraes Peruchi | 24019888 |
+| Thiago Aureliano Lanca Rodriguez | 25004196 |
 
 ---
 
-## 📄 Licença
+## Licenca
 
-Este projeto foi desenvolvido para fins acadêmicos na disciplina **Projeto e Implementação de Aplicativos**.
+Este projeto foi desenvolvido para fins academicos na disciplina **Projeto e Implementacao de Aplicativos**.
 
 ---
 
 <div align="center">
 
 **Integra+**  
-Tecnologia como ponte para inclusão, trabalho digno e acesso à informação.
+Tecnologia como ponte para inclusao, trabalho digno e acesso a informacao.
 
 </div>

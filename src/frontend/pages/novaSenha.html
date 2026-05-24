@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/variables.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/components.css">
-    <link rel="stylesheet" href="../styles/recuperar.css">
+    <link rel="stylesheet" href="/styles/variables.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/components.css">
+    <link rel="stylesheet" href="/styles/recuperar.css">
     <title id="txt-novasenha-009">Integra+ | Definir Nova Senha</title>
 </head>
 <body class="auth">
-    <main id="swup" class="transition-fade">
+    <main>
         <section class="container-central">
             <a href="recuperar.html" class="btn-voltar" id="txt-novasenha-008">
                 <span id="txt-novasenha-001">&larr; Voltar</span>
@@ -23,26 +23,26 @@
                 <form id="formNovaSenha">
                     <div class="field-group">
                         <label id="txt-novasenha-004">Nova senha</label>
-                        <input type="password" class="input-gray" placeholder=".........." required>
+                        <input type="password" id="novaSenha" class="input-gray" placeholder=".........." required>
                     </div>
 
                     <div class="field-group">
                         <label id="txt-novasenha-005">Confirmar nova senha</label>
-                        <input type="password" class="input-gray" placeholder=".........." required>
+                        <input type="password" id="confirmarNovaSenha" class="input-gray" placeholder=".........." required>
                     </div>
 
                     <button type="submit" class="button-principal" id="txt-novasenha-006">Salvar</button>
                 </form>
             </div>
 
-            <button class="idioma-fixo" id="txt-novasenha-007">
+            <button class="trocar-idioma" id="txt-novasenha-007">
                 Trocar idioma
-                <img src="../assets/img/bandeira.png" class="bandeira-pequena">
+                <img class="bandeira-idioma" src="/assets/img/bandeira.png" alt="">
             </button>
         </section>
     </main>
     
-    <script src="../scripts/novaSenha.js"></script>
-    <script src="../scripts/trocar_idioma.js"></script>
+    <script src="/scripts/novaSenha.js"></script>
+    <script src="/scripts/trocar_idioma.js"></script>
 </body>
 </html>

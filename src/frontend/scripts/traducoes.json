@@ -202,11 +202,20 @@
                                "placeholder":  "Seu nome completo"
                            },
                   "email":  {
-                                "placeholder":  "Seu@email.com"
-                            },
+                                 "placeholder":  "Seu@email.com"
+                             },
+                  "emailRecuperar":  {
+                                          "placeholder":  "Seu@email.com"
+                                      },
+                  "novaSenha":  {
+                                    "placeholder":  "Digite sua nova senha"
+                                },
+                  "confirmarNovaSenha":  {
+                                             "placeholder":  "Confirme sua nova senha"
+                                         },
                   "dataNascimento":  {
-                                         "placeholder":  "dd/mm/aaaa"
-                                     },
+                                          "placeholder":  "dd/mm/aaaa"
+                                      },
                   "txt-detalhes-vaga-001":  {
                                                 "text":  [
                                                              "Integra+ | Detalhes da Vaga"
@@ -1752,10 +1761,10 @@
                                                      ]
                                         },
                   "txt-novasenha-005":  {
-                                            "text":  [
-                                                         "Confirmar nova senha"
-                                                     ]
-                                        },
+                                             "text":  [
+                                                          "Confirmar nova senha"
+                                                      ]
+                                         },
                   "txt-perfil-usuario-012":  {
                                                  "text":  [
                                                               "Perfil do Usu\u00e1rio"
@@ -1817,13 +1826,28 @@
                                                      ]
                                         },
                   "txt-recuperar-004":  {
-                                            "text":  [
-                                                         "Email"
-                                                     ]
-                                        },
+                                             "text":  [
+                                                          "Email"
+                                                      ]
+                                         },
+                  "txt-recuperar-009":  {
+                                             "text":  [
+                                                          "Verifique seu email"
+                                                      ]
+                                         },
+                  "txt-recuperar-010":  {
+                                             "text":  [
+                                                          "Enviamos um link de recuperacao de senha. Abra sua caixa de entrada para continuar."
+                                                      ]
+                                         },
+                  "txt-recuperar-011":  {
+                                             "text":  [
+                                                          "Voltar ao login"
+                                                      ]
+                                         },
                   "txt-vagas-usuario-001":  {
-                                                "text":  [
-                                                             "Integra+"
+                                                 "text":  [
+                                                              "Integra+"
                                                          ]
                                             },
                   "txt-vagas-usuario-006":  {
@@ -2092,12 +2116,21 @@
                "nome":  {
                             "placeholder":  "Tu nombre completo"
                         },
-               "email":  {
-                             "placeholder":  "Seu@email.com"
-                         },
-               "dataNascimento":  {
-                                      "placeholder":  "dd/mm/aaaa"
-                                  },
+                "email":  {
+                              "placeholder":  "Seu@email.com"
+                          },
+                "emailRecuperar":  {
+                                       "placeholder":  "Tu@email.com"
+                                   },
+                "novaSenha":  {
+                                 "placeholder":  "Escribe tu nueva contrasena"
+                             },
+                "confirmarNovaSenha":  {
+                                          "placeholder":  "Confirma tu nueva contrasena"
+                                      },
+                "dataNascimento":  {
+                                       "placeholder":  "dd/mm/aaaa"
+                                   },
                "txt-detalhes-vaga-001":  {
                                              "text":  [
                                                           "Integra+ | Detalles de la vacante"
@@ -3607,11 +3640,11 @@
                                                          "Salir"
                                                      ]
                                         },
-               "txt-novasenha-009":  {
-                                         "text":  [
-                                                      "Integra+ | Definir Nova Senha"
-                                                  ]
-                                     },
+                "txt-novasenha-009":  {
+                                          "text":  [
+                                                       "Integra+ | Definir nueva contrasena"
+                                                   ]
+                                      },
                "txt-novasenha-006":  {
                                          "text":  [
                                                       "Guardar"
@@ -3627,26 +3660,26 @@
                                                       "Integra +"
                                                   ]
                                      },
-               "txt-novasenha-003":  {
-                                         "text":  [
-                                                      "Recuperar senha"
-                                                  ]
-                                     },
-               "txt-novasenha-001":  {
-                                         "text":  [
-                                                      "\u2190 Voltar"
-                                                  ]
-                                     },
-               "txt-novasenha-004":  {
-                                         "text":  [
-                                                      "Nova senha"
-                                                  ]
-                                     },
-               "txt-novasenha-005":  {
-                                         "text":  [
-                                                      "Confirmar nova senha"
-                                                  ]
-                                     },
+                "txt-novasenha-003":  {
+                                          "text":  [
+                                                       "Recuperar contrasena"
+                                                   ]
+                                      },
+                "txt-novasenha-001":  {
+                                          "text":  [
+                                                       "\u2190 Volver"
+                                                   ]
+                                      },
+                "txt-novasenha-004":  {
+                                          "text":  [
+                                                       "Nueva contrasena"
+                                                   ]
+                                      },
+                "txt-novasenha-005":  {
+                                          "text":  [
+                                                       "Confirmar nueva contrasena"
+                                                   ]
+                                      },
                "txt-perfil-usuario-012":  {
                                               "text":  [
                                                            "Perfil del usuario"
@@ -3677,11 +3710,11 @@
                                                            "Volver"
                                                        ]
                                           },
-               "txt-recuperar-008":  {
-                                         "text":  [
-                                                      "Integra+ | Recuperar Senha"
-                                                  ]
-                                     },
+                "txt-recuperar-008":  {
+                                          "text":  [
+                                                       "Integra+ | Recuperar contrasena"
+                                                   ]
+                                      },
                "txt-recuperar-005":  {
                                          "text":  [
                                                       "Recuperar"
@@ -3697,23 +3730,38 @@
                                                       "Integra +"
                                                   ]
                                      },
-               "txt-recuperar-003":  {
-                                         "text":  [
-                                                      "Recuperar senha"
-                                                  ]
-                                     },
-               "txt-recuperar-001":  {
-                                         "text":  [
-                                                      "\u2190 Voltar"
-                                                  ]
-                                     },
-               "txt-recuperar-004":  {
-                                         "text":  [
-                                                      "Correo electr\u00f3nico"
-                                                  ]
-                                     },
-               "txt-vagas-usuario-001":  {
-                                             "text":  [
+                "txt-recuperar-003":  {
+                                          "text":  [
+                                                       "Recuperar contrasena"
+                                                   ]
+                                      },
+                "txt-recuperar-001":  {
+                                          "text":  [
+                                                       "\u2190 Volver"
+                                                   ]
+                                      },
+                "txt-recuperar-004":  {
+                                          "text":  [
+                                                       "Correo electr\u00f3nico"
+                                                   ]
+                                      },
+                "txt-recuperar-009":  {
+                                          "text":  [
+                                                       "Revisa tu correo"
+                                                   ]
+                                      },
+                "txt-recuperar-010":  {
+                                          "text":  [
+                                                       "Enviamos un enlace de recuperacion de contrasena. Abre tu bandeja de entrada para continuar."
+                                                   ]
+                                      },
+                "txt-recuperar-011":  {
+                                          "text":  [
+                                                       "Volver al inicio de sesion"
+                                                   ]
+                                      },
+                "txt-vagas-usuario-001":  {
+                                              "text":  [
                                                           "Integra+"
                                                       ]
                                          },

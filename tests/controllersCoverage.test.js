@@ -149,26 +149,38 @@ test('cadastroController valida campos, duplicidade e cria usuario/empresa', asy
   assert.equal(resSenha.statusCode, 400);
 });
 
-test('senhaController gera token e redefine senha de usuario', async (t) => {
+test('senhaController envia email e redefine senha de usuario e empresa', async (t) => {
   const chamadas = [];
   let tokenGerado;
   const restoreUser = mockModule('src/backend/models/User.js', {
     findByEmail: async (email) => email === 'usuario@teste.com'
       ? { ID_usuario: 1, email }
       : undefined,
+    findByEmailEmpresa: async (email) => email === 'empresa@teste.com'
+      ? { ID_empresa: 2, email }
+      : undefined,
     salvarResetTokenUsuario: async (...args) => {
       tokenGerado = args[1];
       chamadas.push(['token', ...args]);
     },
+    salvarResetTokenEmpresa: async (...args) => {
+      tokenGerado = args[1];
+      chamadas.push(['tokenEmpresa', ...args]);
+    },
     findByResetToken: async (token) => token === tokenGerado
-      ? { ID_usuario: 1, email: 'usuario@teste.com' }
+      ? { email: 'usuario@teste.com', tipo: 'usuario' }
       : undefined,
     updateSenhaUsuario: async (...args) => chamadas.push(['usuario', ...args]),
+    updateSenhaEmpresa: async (...args) => chamadas.push(['empresa', ...args]),
+  });
+  const restoreEmail = mockModule('src/backend/services/emailService.js', {
+    enviarEmailRecuperacaoSenha: async (...args) => chamadas.push(['email', ...args])
   });
   const hashOriginal = bcrypt.hash;
 
   t.after(() => {
     restoreUser();
+    restoreEmail();
     bcrypt.hash = hashOriginal;
   });
 
@@ -176,16 +188,27 @@ test('senhaController gera token e redefine senha de usuario', async (t) => {
   const controller = freshController('src/backend/controllers/senhaController.js');
 
   const resRecuperar = criarRes();
-  await controller.recuperarSenha({ body: { email: 'usuario@teste.com' } }, resRecuperar);
+  await controller.recuperarSenha({
+    body: { email: 'usuario@teste.com' },
+    protocol: 'http',
+    get: () => 'localhost:3000'
+  }, resRecuperar);
   assert.equal(resRecuperar.statusCode, 200);
-  assert.equal(typeof resRecuperar.body.token, 'string');
-  assert.match(resRecuperar.body.link, /novaSenha\.html\?token=/);
+  assert.equal(resRecuperar.body.token, undefined);
+  assert.equal(resRecuperar.body.link, undefined);
   assert.equal(chamadas[0][0], 'token');
   assert.equal(chamadas[0][1], 'usuario@teste.com');
+  assert.equal(chamadas[1][0], 'email');
+  assert.equal(chamadas[1][1], 'usuario@teste.com');
+  assert.match(chamadas[1][2], /novaSenha\.html\?token=/);
 
   const resEmailInvalido = criarRes();
-  await controller.recuperarSenha({ body: { email: 'nada@teste.com' } }, resEmailInvalido);
-  assert.equal(resEmailInvalido.statusCode, 404);
+  await controller.recuperarSenha({
+    body: { email: 'nada@teste.com' },
+    protocol: 'http',
+    get: () => 'localhost:3000'
+  }, resEmailInvalido);
+  assert.equal(resEmailInvalido.statusCode, 200);
 
   const resUsuario = criarRes();
   await controller.redefinirSenha({
@@ -196,7 +219,32 @@ test('senhaController gera token e redefine senha de usuario', async (t) => {
     }
   }, resUsuario);
   assert.equal(resUsuario.statusCode, 200);
-  assert.deepEqual(chamadas[1], ['usuario', 'usuario@teste.com', 'hash-123456']);
+  assert.deepEqual(chamadas[2], ['usuario', 'usuario@teste.com', 'hash-123456']);
+
+  await controller.recuperarSenha({
+    body: { email: 'empresa@teste.com' },
+    protocol: 'http',
+    get: () => 'localhost:3000'
+  }, criarRes());
+  assert.equal(chamadas[3][0], 'tokenEmpresa');
+
+  restoreUser();
+  const restoreEmpresa = mockModule('src/backend/models/User.js', {
+    findByResetToken: async () => ({ email: 'empresa@teste.com', tipo: 'empresa' }),
+    updateSenhaEmpresa: async (...args) => chamadas.push(['empresa', ...args])
+  });
+  t.after(restoreEmpresa);
+  const controllerEmpresa = freshController('src/backend/controllers/senhaController.js');
+  const resEmpresa = criarRes();
+  await controllerEmpresa.redefinirSenha({
+    body: {
+      token: tokenGerado,
+      novaSenha: 'abcdef',
+      confirmarSenha: 'abcdef'
+    }
+  }, resEmpresa);
+  assert.equal(resEmpresa.statusCode, 200);
+  assert.deepEqual(chamadas.at(-1), ['empresa', 'empresa@teste.com', 'hash-abcdef']);
 
   const resTokenInvalido = criarRes();
   await controller.redefinirSenha({

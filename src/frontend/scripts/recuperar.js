@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("formRecuperar");
+    const mensagem = document.getElementById("mensagemVerifiqueEmail");
+    const errorMessage = document.getElementById("error-message");
 
     if (form) {
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             const email = document.querySelector('input[type="email"]').value;
+            errorMessage.textContent = "";
 
             try {
                 const response = await fetch("/api/recuperar-senha", {
@@ -18,14 +21,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const data = await response.json();
 
-                if (!response.ok) {
-                    alert(data.mensagem || "Erro ao recuperar senha.");
+                if (data.sucesso === false) {
+                    errorMessage.textContent = data.mensagem || "Email nao encontrado.";
                     return;
                 }
 
-                sessionStorage.setItem("tokenRecuperacaoSenha", data.token);
-                alert(data.mensagem || "Informe a nova senha.");
-                window.location.href = `novaSenha.html?token=${data.token}`;
+                if (!response.ok) {
+                    errorMessage.textContent = data.mensagem || "Erro ao recuperar senha.";
+                    return;
+                }
+
+                form.hidden = true;
+                if (mensagem) {
+                    mensagem.hidden = false;
+                } else {
+                    alert(data.mensagem || "Verifique seu email.");
+                }
             } catch (error) {
                 console.error(error);
                 alert("Erro ao conectar com o servidor");

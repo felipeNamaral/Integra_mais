@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 sessionStorage.removeItem("tokenRecuperacaoSenha");
-                alert(data.mensagem || "Senha alterada com sucesso!");
                 window.location.href = "login.html";
             } catch (error) {
                 console.error(error);
