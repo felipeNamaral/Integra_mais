@@ -428,21 +428,22 @@ test('avatarController busca avatar padrao e salva imagem por tipo de usuario', 
     atualizarAvatarUsuario: async (...args) => chamadas.push(['usuario', ...args]),
     atualizarAvatarEmpresa: async (...args) => chamadas.push(['empresa', ...args])
   });
-  const fs = require('node:fs');
-  const existsOriginal = fs.existsSync;
-  const mkdirOriginal = fs.mkdirSync;
-  const writeOriginal = fs.writeFileSync;
+  const restoreCloudinary = mockModule('node_modules/cloudinary/lib/cloudinary.js', {
+    v2: {
+      config: (...args) => chamadas.push(['config', ...args]),
+      uploader: {
+        upload: async (_imagem, opcoes) => {
+          chamadas.push(['upload', opcoes]);
+          return { secure_url: `https://res.cloudinary.com/demo/${opcoes.public_id}.png` };
+        }
+      }
+    }
+  });
 
   t.after(() => {
     restoreAvatar();
-    fs.existsSync = existsOriginal;
-    fs.mkdirSync = mkdirOriginal;
-    fs.writeFileSync = writeOriginal;
+    restoreCloudinary();
   });
-
-  fs.existsSync = () => true;
-  fs.mkdirSync = () => undefined;
-  fs.writeFileSync = (...args) => chamadas.push(['write', ...args]);
 
   const controller = freshController('src/backend/controllers/avatarController.js');
 
@@ -453,11 +454,17 @@ test('avatarController busca avatar padrao e salva imagem por tipo de usuario', 
   const imagem = `data:image/png;base64,${Buffer.from('img').toString('base64')}`;
   const resUsuario = criarRes();
   await controller.uploadAvatar({ user: { id: 1, tipo: 'usuario' }, body: { imagem } }, resUsuario);
-  assert.deepEqual(resUsuario.body, { sucesso: true, avatar: '/uploads/avatarUsuario1.png' });
+  assert.deepEqual(resUsuario.body, {
+    sucesso: true,
+    avatar: 'https://res.cloudinary.com/demo/avatarUsuario1.png'
+  });
 
   const resEmpresa = criarRes();
   await controller.uploadAvatar({ user: { id: 2, tipo: 'empresa' }, body: { imagem } }, resEmpresa);
-  assert.deepEqual(resEmpresa.body, { sucesso: true, avatar: '/uploads/avatar12345678000199.png' });
+  assert.deepEqual(resEmpresa.body, {
+    sucesso: true,
+    avatar: 'https://res.cloudinary.com/demo/avatar12345678000199.png'
+  });
 
   const resInvalido = criarRes();
   await controller.uploadAvatar({ user: { id: 1, tipo: 'usuario' }, body: { imagem: 'texto' } }, resInvalido);

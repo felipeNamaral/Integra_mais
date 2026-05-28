@@ -2,11 +2,13 @@
 
 <div align="center">
 
-![Status](https://img.shields.io/badge/status-em%20desenvolvimento-2ea44f?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-deploy%20ativo-2ea44f?style=for-the-badge)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Aiven](https://img.shields.io/badge/Aiven-FF4A00?style=for-the-badge&logo=aiven&logoColor=white)
+![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=000)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000)
@@ -24,6 +26,8 @@ O **Integra+** e uma aplicacao web desenvolvida para centralizar informacoes e s
 A plataforma conecta usuarios a oportunidades de trabalho, empresas cadastradas, informacoes de regularizacao documental e unidades de saude, reduzindo barreiras de acesso a informacao e apoiando a inclusao social.
 
 O projeto foi concebido como um MVP academico com foco em impacto social, acessibilidade e organizacao de dados relevantes para o publico imigrante.
+
+Aplicacao em producao: https://integra-mais-kjge.onrender.com
 
 ---
 
@@ -68,6 +72,8 @@ O projeto foi concebido como um MVP academico com foco em impacto social, acessi
 | Autenticacao | JWT, bcrypt |
 | E-mail | Nodemailer, SMTP Gmail |
 | Banco em nuvem | Aiven for MySQL |
+| Hospedagem | Render |
+| Armazenamento de imagens | Cloudinary |
 | Testes | Node Test Runner (`node:test`) |
 | Versionamento | Git e GitHub |
 
@@ -207,6 +213,11 @@ DB_NAME=integraplus
 # E-mail de recuperacao de senha
 EMAIL_USER=seu_email@gmail.com
 EMAIL_PASS=sua_senha_de_app_gmail
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=seu_cloud_name
+CLOUDINARY_API_KEY=sua_api_key
+CLOUDINARY_API_SECRET=seu_api_secret
 ```
 
 > Nunca envie o arquivo `.env` real para o GitHub. Publique apenas um `.env.example`.
@@ -225,6 +236,9 @@ EMAIL_PASS=sua_senha_de_app_gmail
 | `DB_NAME` | Sim | Nome do banco utilizado pela aplicacao. | `integraplus` |
 | `EMAIL_USER` | Sim | Conta usada para enviar e-mails de recuperacao. | `integramais.app@gmail.com` |
 | `EMAIL_PASS` | Sim | Senha de app do Gmail usada pelo Nodemailer. | `********` |
+| `CLOUDINARY_CLOUD_NAME` | Sim | Nome da cloud usada para armazenar imagens. | `integra-mais` |
+| `CLOUDINARY_API_KEY` | Sim | Chave da API do Cloudinary. | `123456789000000` |
+| `CLOUDINARY_API_SECRET` | Sim | Segredo da API do Cloudinary. | `********` |
 
 > Para Gmail, use uma senha de app. A senha normal da conta nao deve ser usada no projeto.
 
@@ -329,15 +343,32 @@ Status atual verificado: `30/30` testes passando.
 
 ## Deploy
 
-O projeto usa rotas relativas no frontend, como `/api/login`, para permitir que frontend e API operem sob o mesmo dominio.
+O deploy final do projeto foi realizado no Render, com frontend e backend publicados juntos na mesma aplicacao web.
 
-Em producao, configure:
+URL de producao:
 
-- variaveis de ambiente do banco Aiven;
+```text
+https://integra-mais-kjge.onrender.com
+```
+
+O frontend consome a API por rotas relativas, como `/api/login`, permitindo que interface e backend funcionem sob o mesmo dominio em producao.
+
+Servicos utilizados no deploy:
+
+| Servico | Uso no projeto |
+| --- | --- |
+| Render | Hospedagem do frontend estatico e da API Node.js/Express. |
+| Aiven for MySQL | Banco de dados MySQL em nuvem. |
+| Cloudinary | Armazenamento e entrega das imagens de avatar dos usuarios e empresas. |
+| Gmail SMTP | Envio dos e-mails de recuperacao de senha. |
+
+Variaveis principais configuradas em producao:
+
+- `APP_URL=https://integra-mais-kjge.onrender.com`
+- credenciais do banco Aiven;
 - `JWT_SECRET` seguro;
-- `APP_URL` apontando para a URL publica;
-- `EMAIL_USER` e `EMAIL_PASS` para envio de recuperacao de senha;
-- adaptacao do Express para a plataforma de deploy escolhida, se necessario.
+- `EMAIL_USER` e `EMAIL_PASS` para recuperacao de senha;
+- `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY` e `CLOUDINARY_API_SECRET` para upload das imagens.
 
 ---
 

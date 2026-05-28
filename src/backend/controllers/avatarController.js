@@ -1,16 +1,13 @@
 const avatarModel = require("../models/avatarModel");
-const fs = require("fs");
-const path = require("path");
+const { v2: cloudinary } = require("cloudinary");
 
 const avatarPadrao = "/assets/img/user.png";
-const uploadDir = path.join(__dirname, "..", "..", "..", "uploads");
 
-const extensoesPorMime = {
-    "image/png": "png",
-    "image/jpeg": "jpg",
-    "image/webp": "webp",
-    "image/gif": "gif"
-};
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 const getAvatar = async (req, res) => {
     try {
@@ -40,40 +37,34 @@ const uploadAvatar = async (req, res) => {
             return res.status(400).json({ message: "Formato de imagem invalido" });
         }
 
-        const mimeType = match[1];
-        const base64 = match[2];
-        const extensao = extensoesPorMime[mimeType];
-        const buffer = Buffer.from(base64, "base64");
-
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
-        }
-
-        let nomeArquivo;
+        let publicId;
 
         if (req.user.tipo === "empresa") {
             const empresa = await avatarModel.getAvatarEmpresa(req.user.id);
             const cnpjOrigem = cnpjBody || (empresa && empresa.cnpj) || req.user.id;
             const cnpj = String(cnpjOrigem).replace(/\D/g, "") || req.user.id;
-            nomeArquivo = `avatar${cnpj}.${extensao}`;
+            publicId = `avatar${cnpj}`;
         } else {
-            nomeArquivo = `avatarUsuario${req.user.id}.${extensao}`;
+            publicId = `avatarUsuario${req.user.id}`;
         }
 
-        const caminhoArquivo = path.join(uploadDir, nomeArquivo);
-        const caminhoBanco = `/uploads/${nomeArquivo}`;
-
-        fs.writeFileSync(caminhoArquivo, buffer);
+        const resultado = await cloudinary.uploader.upload(imagem, {
+            folder: "integra/avatar",
+            public_id: publicId,
+            overwrite: true,
+            resource_type: "image"
+        });
+        const avatar = resultado.secure_url;
 
         if (req.user.tipo === "empresa") {
-            await avatarModel.atualizarAvatarEmpresa(req.user.id, caminhoBanco);
+            await avatarModel.atualizarAvatarEmpresa(req.user.id, avatar);
         } else {
-            await avatarModel.atualizarAvatarUsuario(req.user.id, caminhoBanco);
+            await avatarModel.atualizarAvatarUsuario(req.user.id, avatar);
         }
 
         return res.json({
             sucesso: true,
-            avatar: caminhoBanco
+            avatar
         });
     } catch (err) {
         console.error(err);
