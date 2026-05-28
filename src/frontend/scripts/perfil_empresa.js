@@ -72,7 +72,7 @@ async function carregaDados() {
         trocaDadosPerfilEmpresa(data);
 
     } catch (error) {
-        alert('Erro ao carregar dados da empresa. Tente novamente.\n' + error);
+        mostrarPopup('Erro ao carregar dados da empresa. Tente novamente.\n' + error.message, "error");
         console.error('Erro:', error);
     }
 }

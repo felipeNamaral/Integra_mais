@@ -2,10 +2,10 @@ const token = localStorage.getItem('token');
 const avatarPadrao = "/assets/img/user.png";
 
 const nomeHeader = document.getElementById('nome');
-const nomeUsuario = document.getElementById('txt-editar-usuario-004');
-const emailUsuario = document.getElementById('txt-editar-usuario-005');
+const nomeUsuario = document.getElementById('nomeUsuarioEditar');
+const emailUsuario = document.getElementById('emailUsuarioEditar');
 const telefoneUsuario = document.getElementById('telefoneUsuarioEditar');
-const idadeUsuario = document.getElementById('txt-editar-usuario-006');
+const dataNascimentoUsuario = document.getElementById('dataNascimentoUsuarioEditar');
 const nacionalidadeUsuario = document.getElementById('nacionalidadeUsuario');
 const escolaridadeUsuario = document.getElementById('escolaridadeUsuario');
 const formacaoUsuario = document.getElementById('formacaoUsuario');
@@ -16,6 +16,17 @@ const btnEditarAvatar = document.getElementById('btnEditarAvatar');
 const inputAvatar = document.getElementById('inputAvatar');
 
 let usuarioAtual = {};
+
+const limitesCamposUsuario = {
+    nome: 100,
+    email: 100,
+    telefone: 15,
+    nacionalidade: 50,
+    escolaridade: 50,
+    formacao: 100,
+    idiomas: 50,
+    descricao: 500
+};
 
 async function carregarAutenticacao() {
     const response = await fetch('/api/protected', {
@@ -97,7 +108,7 @@ function configurarUploadAvatar() {
             const data = await response.json();
 
             if (!response.ok) {
-                alert(data.message || "Erro ao enviar avatar.");
+                mostrarPopup(data.message || "Erro ao enviar avatar.", "error");
                 return;
             }
 
@@ -105,7 +116,7 @@ function configurarUploadAvatar() {
             usuarioAtual.avatar = data.avatar;
         } catch (error) {
             console.error('Erro ao enviar avatar:', error);
-            alert("Erro ao enviar avatar.");
+            mostrarPopup("Erro ao enviar avatar.", "error");
         } finally {
             inputAvatar.value = "";
         }
@@ -124,7 +135,7 @@ async function carregarDadosUsuario() {
     nomeUsuario.textContent = usuarioAtual.nome || "";
     emailUsuario.textContent = usuarioAtual.email || "";
     telefoneUsuario.textContent = usuarioAtual.telefone || "";
-    idadeUsuario.textContent = usuarioAtual.idade ? `${usuarioAtual.idade} anos` : "";
+    dataNascimentoUsuario.textContent = formatarDataNascimento(usuarioAtual.data_nascimento) || "";
     nacionalidadeUsuario.value = usuarioAtual.nacionalidade || "";
     escolaridadeUsuario.value = usuarioAtual.escolaridade || "";
     formacaoUsuario.value = usuarioAtual.formacao || "";
@@ -132,30 +143,53 @@ async function carregarDadosUsuario() {
     descricaoUsuario.value = usuarioAtual.descricao || "";
 }
 
+function normalizarDataInput(data) {
+    if (!data) return "";
+    return String(data).split("T")[0];
+}
+
+function formatarDataNascimento(data) {
+    const dataNormalizada = normalizarDataInput(data);
+
+    if (!dataNormalizada) {
+        return usuarioAtual.idade ? `${usuarioAtual.idade} anos` : "";
+    }
+
+    const [ano, mes, dia] = dataNormalizada.split("-");
+    if (!ano || !mes || !dia) return dataNormalizada;
+
+    return `${dia}/${mes}/${ano}`;
+}
+
+function limitarTexto(valor, limite) {
+    return String(valor || "").trim().slice(0, limite);
+}
+
+function limitarNumeros(valor, limite) {
+    return String(valor || "").replace(/\D/g, "").slice(0, limite);
+}
+
 function configurarEdicaoRapida() {
     document.querySelectorAll('[data-editar]').forEach((botao) => {
         botao.addEventListener('click', () => {
             const campo = botao.dataset.editar;
 
-            if (campo === "idade") {
-                return;
-            }
-
             const alvos = {
                 nome: nomeUsuario,
                 email: emailUsuario,
-                telefone: telefoneUsuario
+                telefone: telefoneUsuario,
+                idade: dataNascimentoUsuario
             };
 
             const alvo = alvos[campo];
             if (!alvo) return;
 
-            transformarEmInput(alvo);
+            transformarEmInput(alvo, campo);
         });
     });
 }
 
-function transformarEmInput(elemento) {
+function transformarEmInput(elemento, campo) {
     const inputExistente = elemento.querySelector('.campo-edicao-inline');
 
     if (inputExistente) {
@@ -163,12 +197,31 @@ function transformarEmInput(elemento) {
         return;
     }
 
-    const valorAtual = getValorCampoInline(elemento);
+    const valorAtual = campo === "idade"
+        ? normalizarDataInput(usuarioAtual.data_nascimento)
+        : getValorCampoInline(elemento);
     const input = document.createElement('input');
 
-    input.type = 'text';
+    input.type = campo === "idade" ? 'date' : 'text';
     input.className = 'campo-edicao-inline';
     input.value = valorAtual;
+
+    if (campo !== "idade" && limitesCamposUsuario[campo]) {
+        input.maxLength = limitesCamposUsuario[campo];
+    }
+
+    if (campo === "idade") {
+        input.max = new Date().toISOString().split("T")[0];
+    }
+
+    if (campo === "telefone") {
+        input.inputMode = "numeric";
+        input.pattern = "\\d*";
+        input.value = limitarNumeros(valorAtual, limitesCamposUsuario.telefone);
+        input.addEventListener("input", () => {
+            input.value = limitarNumeros(input.value, limitesCamposUsuario.telefone);
+        });
+    }
 
     elemento.textContent = '';
     elemento.appendChild(input);
@@ -178,23 +231,35 @@ function transformarEmInput(elemento) {
     input.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
-            confirmarInputInline(elemento, input);
+            confirmarInputInline(elemento, input, campo);
         }
 
         if (event.key === 'Escape') {
-            elemento.textContent = valorAtual;
+            elemento.textContent = campo === "idade" ? formatarDataNascimento(valorAtual) : valorAtual;
         }
     });
 
     input.addEventListener('blur', () => {
-        confirmarInputInline(elemento, input);
+        confirmarInputInline(elemento, input, campo);
     });
 }
 
-function confirmarInputInline(elemento, input) {
+function confirmarInputInline(elemento, input, campo) {
     if (!elemento.contains(input)) return;
 
-    elemento.textContent = input.value.trim();
+    if (campo === "idade") {
+        usuarioAtual.data_nascimento = input.value;
+        elemento.textContent = formatarDataNascimento(input.value);
+        return;
+    }
+
+    if (campo === "telefone") {
+        elemento.textContent = limitarNumeros(input.value, limitesCamposUsuario.telefone);
+        return;
+    }
+
+    const limite = limitesCamposUsuario[campo];
+    elemento.textContent = limite ? limitarTexto(input.value, limite) : input.value.trim();
 }
 
 function getValorCampoInline(elemento) {
@@ -206,14 +271,15 @@ async function salvarPerfilUsuario(event) {
     event.preventDefault();
 
     const dados = {
-        nome: getValorCampoInline(nomeUsuario),
-        email: getValorCampoInline(emailUsuario),
-        telefone: getValorCampoInline(telefoneUsuario),
-        nacionalidade: nacionalidadeUsuario.value.trim(),
-        escolaridade: escolaridadeUsuario.value.trim(),
-        formacao: formacaoUsuario.value.trim(),
-        idiomas: idiomasUsuario.value.trim(),
-        descricao: descricaoUsuario.value.trim()
+        nome: limitarTexto(getValorCampoInline(nomeUsuario), limitesCamposUsuario.nome),
+        email: limitarTexto(getValorCampoInline(emailUsuario), limitesCamposUsuario.email),
+        telefone: limitarNumeros(getValorCampoInline(telefoneUsuario), limitesCamposUsuario.telefone),
+        dataNascimento: normalizarDataInput(usuarioAtual.data_nascimento),
+        nacionalidade: limitarTexto(nacionalidadeUsuario.value, limitesCamposUsuario.nacionalidade),
+        escolaridade: limitarTexto(escolaridadeUsuario.value, limitesCamposUsuario.escolaridade),
+        formacao: limitarTexto(formacaoUsuario.value, limitesCamposUsuario.formacao),
+        idiomas: limitarTexto(idiomasUsuario.value, limitesCamposUsuario.idiomas),
+        descricao: limitarTexto(descricaoUsuario.value, limitesCamposUsuario.descricao)
     };
 
     try {
@@ -229,15 +295,17 @@ async function salvarPerfilUsuario(event) {
         const data = await response.json();
 
         if (!response.ok) {
-            alert(data.mensagem || "Erro ao atualizar perfil.");
+            mostrarPopup(data.mensagem || "Erro ao atualizar perfil.", "error");
             return;
         }
 
-        alert(data.mensagem || "Perfil atualizado com sucesso.");
-        window.location.href = "/pages/perfil_usuario.html";
+        mostrarPopup(data.mensagem || "Perfil atualizado com sucesso.", "success");
+        setTimeout(() => {
+            window.location.href = "/pages/perfil_usuario.html";
+        }, 2000);
     } catch (error) {
         console.error('Erro ao salvar perfil:', error);
-        alert("Erro ao salvar perfil.");
+        mostrarPopup("Erro ao salvar perfil.", "error");
     }
 }
 
@@ -250,7 +318,7 @@ async function initEditarUsuario() {
         formEditarUsuario.addEventListener('submit', salvarPerfilUsuario);
     } catch (error) {
         console.error('Erro ao carregar perfil:', error);
-        alert("Erro ao carregar perfil.");
+        mostrarPopup("Erro ao carregar perfil.", "error");
     }
 }
 

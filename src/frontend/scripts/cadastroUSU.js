@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (data.mensagem === "Email já cadastrado.") {
                         txtEmail.textContent = data.mensagem;
                     } else {
-                        alert(data.mensagem || "Erro ao cadastrar");
+                        mostrarPopup(data.mensagem || "Erro ao cadastrar", "error");
                     }
                     return;
                 }
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             } catch (error) {
                 console.error(error);
-                alert("Erro ao conectar com o servidor");
+                mostrarPopup("Erro ao conectar com o servidor", "error");
             }
         });
     }

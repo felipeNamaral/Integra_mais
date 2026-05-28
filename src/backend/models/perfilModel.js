@@ -3,13 +3,14 @@ const db = require("../config/db");
 const atualizarUsuario = async (id, dados) => {
     const [result] = await db.promise().query(
         `UPDATE usuario
-         SET nome = ?, email = ?, telefone = ?, nacionalidade = ?,
+         SET nome = ?, email = ?, telefone = ?, data_nascimento = ?, nacionalidade = ?,
              escolaridade = ?, formacao = ?, idioma = ?, descricao = ?
          WHERE ID_usuario = ?`,
         [
             dados.nome,
             dados.email,
             dados.telefone,
+            dados.dataNascimento,
             dados.nacionalidade,
             dados.escolaridade,
             dados.formacao,

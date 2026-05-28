@@ -136,7 +136,7 @@ async function carregaStatusVagas() {
 
 
     } catch (error) {
-        alert(textoDetalhes("erroVerificarFavorito"));
+        mostrarPopup(textoDetalhes("erroVerificarFavorito"), "error");
         console.error(textoDetalhes("erroVerificarFavorito"), error);
     }
 
@@ -160,7 +160,7 @@ async function carregaStatusVagas() {
         }
 
     } catch (error) {
-        alert(textoDetalhes("erroVerificarEnviado"));
+        mostrarPopup(textoDetalhes("erroVerificarEnviado"), "error");
         console.error(textoDetalhes("erroVerificarEnviado"), error);
     }
 
@@ -251,7 +251,7 @@ btnFavoritar.addEventListener('click', async () => {
 
             favoritada = false;
             btnFavoritar.classList.remove('ativo');
-            showToast(textoDetalhes("removidoFavoritos"), "error");
+            mostrarPopup(textoDetalhes("removidoFavoritos"), "error");
 
         } else {
             // Rota de ADD aos favoritos 
@@ -270,11 +270,11 @@ btnFavoritar.addEventListener('click', async () => {
 
             favoritada = true;
             btnFavoritar.classList.add('ativo');
-            showToast(textoDetalhes("adicionadoFavoritos"));
+            mostrarPopup(textoDetalhes("adicionadoFavoritos"), "success");
         }
 
     } catch (error) {
-        alert(error);
+        mostrarPopup(error.message || error, "error");
         console.error(error);
     }
 
@@ -300,7 +300,7 @@ btnEnviar.addEventListener('click', async () => {
 
             enviada = false;
             btnEnviar.classList.remove('ativo');
-            showToast(textoDetalhes("desmarcado"), "error");
+            mostrarPopup(textoDetalhes("desmarcado"), "error");
 
         } else {
             // 🟢 MARCAR
@@ -318,11 +318,11 @@ btnEnviar.addEventListener('click', async () => {
 
             enviada = true;
             btnEnviar.classList.add('ativo');
-            showToast(textoDetalhes("marcadoSucesso"));
+            mostrarPopup(textoDetalhes("marcadoSucesso"), "success");
         }
 
     } catch (error) {
-        alert(error);
+        mostrarPopup(error.message || error, "error");
         console.error(error);
     }
 });
@@ -331,17 +331,6 @@ btnEnviar.addEventListener('click', async () => {
 
 
 
-
-function showToast(message, type = "success") {
-    const toast = document.getElementById("toast");
-
-    toast.textContent = message;
-    toast.className = `toast show ${type}`;
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
-}
 
 document.querySelectorAll(".trocar-idioma, .idioma-fixo").forEach(botao => {
     botao.addEventListener("click", () => {

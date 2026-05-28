@@ -76,7 +76,7 @@ async function carregaStatusVagas() {
 
 
     } catch (error) {
-        alert("erro err " + error);
+        mostrarPopup("Erro ao verificar favorito: " + error.message, "error");
         console.error("Erro ao verificar favorito:", error);
     }
 
@@ -95,7 +95,7 @@ async function carregaStatusVagas() {
 
 
     } catch (error) {
-        alert("ero ero");
+        mostrarPopup("Erro ao verificar envio.", "error");
         console.error("Erro ao verificar favorito:", error);
     }
 

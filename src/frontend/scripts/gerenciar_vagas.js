@@ -38,7 +38,7 @@ async function CarreagarVagas() {
         
     }
     catch (error) {
-        alert('erro' + error);
+        mostrarPopup('Erro ao carregar vagas: ' + error.message, "error");
     }
 
 }
@@ -85,7 +85,10 @@ function editarVaga(id) {
 }
 
 async function excluirVaga(id) {
-    const confirmacao = confirm("Deseja excluir essa vaga?");
+    const confirmacao = await confirmarPopup("Deseja excluir essa vaga?", {
+        confirmar: "Excluir",
+        cancelar: "Cancelar"
+    });
 
     if (!confirmacao) return;
 
@@ -103,13 +106,13 @@ async function excluirVaga(id) {
             throw new Error(data.mensagem || "Erro ao excluir");
         }
 
-        alert("Vaga excluída com sucesso! 🗑️");
+        mostrarPopup("Vaga excluida com sucesso!", "success");
 
         
         CarreagarVagas();
 
     } catch (error) {
-        alert("Erro ao excluir vaga:\n" + error.message);
+        mostrarPopup("Erro ao excluir vaga:\n" + error.message, "error");
     }
 }
 

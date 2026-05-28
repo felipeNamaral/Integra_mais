@@ -244,7 +244,7 @@ async function buscarUnidades(lat, lng) {
     aplicarFiltro();
   } catch (err) {
     console.error(err);
-    alert(textoSaude("erroCarregarUnidades", { mensagem: err.message }));
+    mostrarPopup(textoSaude("erroCarregarUnidades", { mensagem: err.message }), "error");
   }
 }
 
@@ -377,7 +377,7 @@ function aplicarFiltro() {
 
 async function alternarFavoritoUnidade(botao) {
   if (!token) {
-    alert(textoSaude("loginFavoritar"));
+    mostrarPopup(textoSaude("loginFavoritar"), "warning");
     return;
   }
 
@@ -397,7 +397,7 @@ async function alternarFavoritoUnidade(botao) {
     aplicarFiltro();
   } catch (err) {
     console.error(err);
-    alert(err.message);
+    mostrarPopup(err.message, "error");
   }
 }
 
@@ -417,7 +417,7 @@ async function buscarCidade(nomeCidade) {
   const data = await res.json();
 
   if (data.length === 0) {
-    alert(textoSaude("cidadeNaoEncontrada"));
+    mostrarPopup(textoSaude("cidadeNaoEncontrada"), "warning");
     return;
   }
 
@@ -440,7 +440,7 @@ async function buscarCidade(nomeCidade) {
     aplicarFiltro();
   } catch (err) {
     console.error(err);
-    alert(textoSaude("erroCarregarUnidades", { mensagem: err.message }));
+    mostrarPopup(textoSaude("erroCarregarUnidades", { mensagem: err.message }), "error");
   }
 }
 

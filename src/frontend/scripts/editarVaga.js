@@ -53,7 +53,7 @@ async function carregarVaga() {
         preencherFormulario(data);
 
     } catch (error) {
-        alert("Erro ao carregar vaga");
+        mostrarPopup("Erro ao carregar vaga", "error");
     }
 }
 
@@ -102,12 +102,12 @@ enviar.addEventListener('click', async () => {
             throw new Error(res.mensagem || "Erro ao editar");
         }
 
-        alert("Vaga atualizada com sucesso!");
+        mostrarPopup("Vaga atualizada com sucesso!", "success");
 
         
         window.location.href = "gerenciar_vagas.html";
 
     } catch (error) {
-        alert("Erro ao editar vaga:\n" + error.message);
+        mostrarPopup("Erro ao editar vaga:\n" + error.message, "error");
     }
 });

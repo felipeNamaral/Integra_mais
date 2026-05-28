@@ -12,13 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const confirmarSenha = inputs[1].value;
 
             if (!token) {
-                alert("Solicite a recuperacao de senha novamente.");
+                mostrarPopup("Solicite a recuperacao de senha novamente.", "warning");
                 window.location.href = "recuperar.html";
                 return;
             }
 
             if (novaSenha !== confirmarSenha) {
-                alert("As senhas nao coincidem! Verifique e tente novamente.");
+                mostrarPopup("As senhas nao coincidem! Verifique e tente novamente.", "warning");
                 return;
             }
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const data = await response.json();
 
                 if (!response.ok) {
-                    alert(data.mensagem || "Erro ao redefinir senha.");
+                    mostrarPopup(data.mensagem || "Erro ao redefinir senha.", "error");
                     return;
                 }
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "login.html";
             } catch (error) {
                 console.error(error);
-                alert("Erro ao conectar com o servidor");
+                mostrarPopup("Erro ao conectar com o servidor", "error");
             }
         });
     }

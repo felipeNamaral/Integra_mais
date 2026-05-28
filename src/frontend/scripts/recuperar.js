@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (mensagem) {
                     mensagem.hidden = false;
                 } else {
-                    alert(data.mensagem || "Verifique seu email.");
+                    mostrarPopup(data.mensagem || "Verifique seu email.", "success");
                 }
             } catch (error) {
                 console.error(error);
-                alert("Erro ao conectar com o servidor");
+                mostrarPopup("Erro ao conectar com o servidor", "error");
             }
         });
     }

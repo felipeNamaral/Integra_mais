@@ -14,6 +14,19 @@ const inputAvatar = document.getElementById('inputAvatar');
 
 let empresaAtual = {};
 
+const limitesCamposEmpresa = {
+    nome: 100,
+    cnpj: 14,
+    email: 100,
+    telefone: 15,
+    endereco: 150,
+    descricao: 500
+};
+
+function limitarNumeros(valor, limite) {
+    return String(valor || "").replace(/\D/g, "").slice(0, limite);
+}
+
 async function carregarAutenticacao() {
     const response = await fetch('/api/protected', {
         headers: {
@@ -97,7 +110,7 @@ function configurarUploadAvatar() {
             const data = await response.json();
 
             if (!response.ok) {
-                alert(data.message || "Erro ao enviar avatar.");
+                mostrarPopup(data.message || "Erro ao enviar avatar.", "error");
                 return;
             }
 
@@ -105,7 +118,7 @@ function configurarUploadAvatar() {
             empresaAtual.avatar = data.avatar;
         } catch (error) {
             console.error('Erro ao enviar avatar:', error);
-            alert("Erro ao enviar avatar.");
+            mostrarPopup("Erro ao enviar avatar.", "error");
         } finally {
             inputAvatar.value = "";
         }
@@ -158,11 +171,31 @@ function transformarEmInput(elemento) {
     }
 
     const valorAtual = getValorCampoInline(elemento);
+    const campo = Object.entries({
+        nome: nomeEmpresa,
+        cnpj: cnpjEmpresa,
+        email: emailEmpresa,
+        telefone: telefoneEmpresa,
+        endereco: enderecoEmpresa
+    }).find(([, alvo]) => alvo === elemento)?.[0];
     const input = document.createElement('input');
 
     input.type = 'text';
     input.className = 'campo-edicao-inline';
     input.value = valorAtual;
+
+    if (campo && limitesCamposEmpresa[campo]) {
+        input.maxLength = limitesCamposEmpresa[campo];
+    }
+
+    if (campo === "telefone") {
+        input.inputMode = "numeric";
+        input.pattern = "\\d*";
+        input.value = limitarNumeros(valorAtual, limitesCamposEmpresa.telefone);
+        input.addEventListener("input", () => {
+            input.value = limitarNumeros(input.value, limitesCamposEmpresa.telefone);
+        });
+    }
 
     elemento.textContent = '';
     elemento.appendChild(input);
@@ -188,7 +221,23 @@ function transformarEmInput(elemento) {
 function confirmarInputInline(elemento, input) {
     if (!elemento.contains(input)) return;
 
-    elemento.textContent = input.value.trim();
+    const campo = Object.entries({
+        nome: nomeEmpresa,
+        cnpj: cnpjEmpresa,
+        email: emailEmpresa,
+        telefone: telefoneEmpresa,
+        endereco: enderecoEmpresa
+    }).find(([, alvo]) => alvo === elemento)?.[0];
+    const limite = campo ? limitesCamposEmpresa[campo] : null;
+
+    if (campo === "telefone") {
+        elemento.textContent = limitarNumeros(input.value, limitesCamposEmpresa.telefone);
+        return;
+    }
+
+    elemento.textContent = limite
+        ? input.value.trim().slice(0, limite)
+        : input.value.trim();
 }
 
 function getValorCampoInline(elemento) {
@@ -200,12 +249,12 @@ async function salvarPerfilEmpresa(event) {
     event.preventDefault();
 
     const dados = {
-        nomeEmpresa: getValorCampoInline(nomeEmpresa),
-        cnpj: getValorCampoInline(cnpjEmpresa),
-        email: getValorCampoInline(emailEmpresa),
-        telefone: getValorCampoInline(telefoneEmpresa),
-        endereco: getValorCampoInline(enderecoEmpresa),
-        descricao: descricaoEmpresa.value.trim()
+        nomeEmpresa: getValorCampoInline(nomeEmpresa).slice(0, limitesCamposEmpresa.nome),
+        cnpj: getValorCampoInline(cnpjEmpresa).slice(0, limitesCamposEmpresa.cnpj),
+        email: getValorCampoInline(emailEmpresa).slice(0, limitesCamposEmpresa.email),
+        telefone: limitarNumeros(getValorCampoInline(telefoneEmpresa), limitesCamposEmpresa.telefone),
+        endereco: getValorCampoInline(enderecoEmpresa).slice(0, limitesCamposEmpresa.endereco),
+        descricao: descricaoEmpresa.value.trim().slice(0, limitesCamposEmpresa.descricao)
     };
 
     try {
@@ -221,15 +270,17 @@ async function salvarPerfilEmpresa(event) {
         const data = await response.json();
 
         if (!response.ok) {
-            alert(data.mensagem || "Erro ao atualizar perfil.");
+            mostrarPopup(data.mensagem || "Erro ao atualizar perfil.", "error");
             return;
         }
 
-        alert(data.mensagem || "Perfil atualizado com sucesso.");
-        window.location.href = "/pages/perfil_empresa.html";
+        mostrarPopup(data.mensagem || "Perfil atualizado com sucesso.", "success");
+        setTimeout(() => {
+            window.location.href = "/pages/perfil_empresa.html";
+        }, 2000);
     } catch (error) {
         console.error('Erro ao salvar perfil:', error);
-        alert("Erro ao salvar perfil.");
+        mostrarPopup("Erro ao salvar perfil.", "error");
     }
 }
 
@@ -242,7 +293,7 @@ async function initEditarEmpresa() {
         formEditarEmpresa.addEventListener('submit', salvarPerfilEmpresa);
     } catch (error) {
         console.error('Erro ao carregar perfil:', error);
-        alert("Erro ao carregar perfil.");
+        mostrarPopup("Erro ao carregar perfil.", "error");
     }
 }
 

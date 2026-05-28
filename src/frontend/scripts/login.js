@@ -30,7 +30,7 @@ form.addEventListener('submit', async (event) => {
             errorMessage.textContent = data.message;
         }
     } catch (error) {
-        alert('Erro ao fazer login:', error);
+        mostrarPopup('Erro ao fazer login: ' + error.message, "error");
     }
 
 
