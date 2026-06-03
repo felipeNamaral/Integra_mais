@@ -213,6 +213,8 @@ DB_NAME=integraplus
 # E-mail de recuperacao de senha
 EMAIL_USER=seu_email@gmail.com
 EMAIL_PASS=sua_senha_de_app_gmail
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
 
 # Cloudinary
 CLOUDINARY_CLOUD_NAME=seu_cloud_name
@@ -236,6 +238,8 @@ CLOUDINARY_API_SECRET=seu_api_secret
 | `DB_NAME` | Sim | Nome do banco utilizado pela aplicacao. | `integraplus` |
 | `EMAIL_USER` | Sim | Conta usada para enviar e-mails de recuperacao. | `integramais.app@gmail.com` |
 | `EMAIL_PASS` | Sim | Senha de app do Gmail usada pelo Nodemailer. | `********` |
+| `SMTP_HOST` | Nao | Servidor SMTP usado para envio de e-mails. | `smtp.gmail.com` |
+| `SMTP_PORT` | Nao | Porta SMTP. Use `587` com TLS ou `465` com SSL. | `587` |
 | `CLOUDINARY_CLOUD_NAME` | Sim | Nome da cloud usada para armazenar imagens. | `integra-mais` |
 | `CLOUDINARY_API_KEY` | Sim | Chave da API do Cloudinary. | `123456789000000` |
 | `CLOUDINARY_API_SECRET` | Sim | Segredo da API do Cloudinary. | `********` |
